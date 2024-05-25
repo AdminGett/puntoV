@@ -1,0 +1,7 @@
+{
+  "name": "PuntoVE",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

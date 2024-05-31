@@ -1,0 +1,24 @@
+table {
+    width: 80%; /* Ancho de la tabla */
+    border-collapse: collapse; /* Elimina los bordes entre las celdas */
+    margin-left: 4%;
+  }
+  
+  th, td {
+    padding: 8px; /* Espacio entre el contenido de las celdas y los bordes */
+    border: 1px solid #ddd; /* Borde de las celdas */
+    text-align: left; /* Alineación del texto a la izquierda */
+  }
+  
+  th {
+    background-color: #f0f0f0; /* Color de fondo del encabezado */
+  }
+  
+  tbody tr:nth-child(odd) {
+    background-color: #fff; /* Color de fondo de las filas pares */
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f5f5f5; /* Color de fondo de las filas impares */
+  }
+  

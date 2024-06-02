@@ -4,19 +4,20 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ProductsPageRoutingModule } from './products-routing.module';
+import { MenuPageRoutingModule } from './menu-routing.module';
 
-import { ProductsPage } from './products.page';
+import { MenuPage } from './menu.page';
 import { SharedModule } from 'src/app/shared/shared.module';
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ProductsPageRoutingModule,
+    MenuPageRoutingModule,
     SharedModule
   ],
-  declarations: [ProductsPage]
+  declarations: [MenuPage]
 })
-export class ProductsPageModule {}
+export class MenuPageModule {}

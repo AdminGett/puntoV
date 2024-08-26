@@ -4,22 +4,19 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { MenuPageRoutingModule } from './menu-routing.module';
+import { SingUpPageRoutingModule } from './sing-up-routing.module';
 
-import { MenuPage } from './menu.page';
+import { SingUpPage } from './sing-up.page';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { NgxPaginationModule } from 'ngx-pagination';
-
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MenuPageRoutingModule,
-    SharedModule,
-    NgxPaginationModule
+    SingUpPageRoutingModule,
+    SharedModule
   ],
-  declarations: [MenuPage]
+  declarations: [SingUpPage]
 })
-export class MenuPageModule {}
+export class SingUpPageModule {}

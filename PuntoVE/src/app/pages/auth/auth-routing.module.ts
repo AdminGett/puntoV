@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: AuthPage
+  },  {
+    path: 'sing-up',
+    loadChildren: () => import('./sing-up/sing-up.module').then( m => m.SingUpPageModule)
   }
+
 ];
 
 @NgModule({

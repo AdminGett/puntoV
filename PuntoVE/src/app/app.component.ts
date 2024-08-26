@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FirebaseService } from './services/firebase.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  firebaseSvc: FirebaseService;
+  constructor(firebaseSvc:FirebaseService) {
+    this.firebaseSvc = firebaseSvc;
+    let path = `productos`
+    this.firebaseSvc.getDocument(path).then((res)=>{
+      console.log(res)
+    }).catch(error=>{
+      console.log(error)
+    })
+   }
 }
+

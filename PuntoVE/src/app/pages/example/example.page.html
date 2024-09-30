@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <div class="header">
+        <h1 class="store-title">STORE</h1>
+        <div class="store-logo">
+          <img src="" alt="Imagen de la tienda" />
+        </div>
+        <div class="user-info">Cristian Alejandro Perez Ortiz</div>
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="main-content">
+    <h2 class="section-title">Detalles de compra</h2>
+
+    <!-- Opciones de entrega -->
+    <ion-list class="delivery-options">
+      <ion-radio-group [(ngModel)]="deliveryOption">
+        <ion-item>
+          <ion-label>Entrega en tienda gratis</ion-label>
+          <ion-radio slot="start" value="store"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Envío a domicilio</ion-label>
+          <ion-radio slot="start" value="home"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+
+    <!-- Detalles del producto -->
+    <div class="product-details">
+      <img src="https://http2.mlstatic.com/carreola-carriola-cochesito-bebe-graco-literider-marco-D_NQ_NP_115201-MLM20294155072_052015-F.jpg" class="product-image" alt="Producto" />
+      <div class="product-info">
+        <h3>$1,200.00</h3>
+        <p><strong>Garantía de 12 meses</strong></p>
+        <p>Carriola con pañalera incluida, estante de biberón, manubrios de goma para mejor comodidad, seguros en el manubrio y protector solar.</p>
+        <div class="actions">
+          <a href="#" (click)="removeItem(item)">Eliminar</a> | 
+          <a href="#">Guardar para después</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subtotal y botón de pago -->
+    <div class="summary">
+      <div class="subtotal">
+        <p><strong>Subtotal:</strong> $1,200.00</p>
+        <p><strong>Total:</strong> $1,200.00 (IVA Incluido)</p>
+      </div>
+      <ion-button expand="full" color="primary">Pagar</ion-button>
+    </div>
+  </div>
+</ion-content>

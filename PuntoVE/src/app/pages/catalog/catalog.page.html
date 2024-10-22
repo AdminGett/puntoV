@@ -2,7 +2,6 @@
   <ion-toolbar>
     <ion-title>STORE</ion-title>
     <ion-buttons slot="end">
-      <!-- Al hacer clic en el botón del carrito, se llama a goToCart() -->
       <ion-button (click)="goToCart()">
         <ion-icon name="cart-outline"></ion-icon>
       </ion-button>
@@ -11,25 +10,26 @@
 </ion-header>
 
 <ion-content>
+
+  <!-- Filtro de categoría actualizado para usar un menú desplegable -->
   <ion-item>
-    <ion-label>Filtros:</ion-label>
-    <ion-segment [(ngModel)]="filter">
-      <ion-segment-button value="all">
-        <ion-label>Todo</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="category1">
-        <ion-label>Categoria 1</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="category2">
-        <ion-label>Categoria 2</ion-label>
-      </ion-segment-button>
-    </ion-segment>
+    <ion-label>Categoría</ion-label>
+    <ion-select [(ngModel)]="filter" placeholder="Selecciona una categoría">
+      <ion-select-option value="all">Todo</ion-select-option>
+      <ion-select-option value="category1">Categoria 1</ion-select-option>
+      <ion-select-option value="category2">Categoria 2</ion-select-option>
+    </ion-select>
   </ion-item>
 
-  <ion-item>
-    <ion-searchbar [(ngModel)]="searchQuery" placeholder="Buscar productos"></ion-searchbar>
+  <!-- Estilo de la barra de búsqueda actualizado para coincidir con la captura de pantalla -->
+  <ion-item class="search-bar-container">
+    <ion-input type="text" [(ngModel)]="searchQuery" placeholder="Buscar producto"></ion-input>
+    <ion-button fill="clear">
+      <ion-icon name="search-outline"></ion-icon>
+    </ion-button>
   </ion-item>
 
+  <!-- Cuadrícula de productos -->
   <ion-grid>
     <ion-row>
       <ion-col size="6" size-md="4" size-lg="3" *ngFor="let product of filteredProducts">
@@ -40,6 +40,15 @@
             <ion-card-subtitle>{{ product.price }}</ion-card-subtitle>
           </ion-card-header>
           <ion-card-content>
+            <div>
+              <ion-icon *ngFor="let star of [1, 2, 3, 4, 5]" 
+                        [name]="star <= product.rating ? 'star' : 'star-outline'" 
+                        color="warning"></ion-icon>
+            </div>
+            <div>
+              <p>Colores disponibles:</p>
+              <ion-chip *ngFor="let color of product.colors" [style.backgroundColor]="color"></ion-chip>
+            </div>
             <ion-button fill="outline">
               <ion-icon name="cart-outline"></ion-icon>
               Añadir al carrito

@@ -10,8 +10,7 @@
 </ion-header>
 
 <ion-content>
-
-  <!-- Filtro de categoría actualizado para usar un menú desplegable -->
+  <!-- Filtro de categoría -->
   <ion-item>
     <ion-label>Categoría</ion-label>
     <ion-select [(ngModel)]="filter" placeholder="Selecciona una categoría">
@@ -21,7 +20,7 @@
     </ion-select>
   </ion-item>
 
-  <!-- Estilo de la barra de búsqueda actualizado para coincidir con la captura de pantalla -->
+  <!-- Barra de búsqueda -->
   <ion-item class="search-bar-container">
     <ion-input type="text" [(ngModel)]="searchQuery" placeholder="Buscar producto"></ion-input>
     <ion-button fill="clear">
@@ -29,8 +28,13 @@
     </ion-button>
   </ion-item>
 
+  <!-- Mensaje de alerta en rojo si no se encuentran resultados -->
+  <div *ngIf="filteredProducts.length === 0" style="color: red; text-align: center; margin: 16px;">
+    No se encontraron resultados para "{{ searchQuery }}"
+  </div>
+
   <!-- Cuadrícula de productos -->
-  <ion-grid>
+  <ion-grid *ngIf="filteredProducts.length > 0">
     <ion-row>
       <ion-col size="6" size-md="4" size-lg="3" *ngFor="let product of filteredProducts">
         <ion-card>

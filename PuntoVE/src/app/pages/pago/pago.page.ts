@@ -44,12 +44,7 @@ export class PagoPage {
   }
 
   validarTarjeta() {
-    // Validaciones básicas para los campos de la tarjeta
     const { numero, expiracion, cvv, nombreTitular } = this.tarjeta;
-    if (!numero || !expiracion || !cvv || !nombreTitular) {
-      return false;
-    }
-    // Otras validaciones como longitud del número de tarjeta, formato de CVV, etc.
-    return true;
+    return numero && expiracion && cvv && nombreTitular;
   }
 }

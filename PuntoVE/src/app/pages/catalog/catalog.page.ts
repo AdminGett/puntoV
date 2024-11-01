@@ -13,12 +13,12 @@ export class CatalogPage implements OnInit {
   products: any[] = [];
 
   constructor(
-    private alertController: AlertController,  // Controlador para alertas
+    private alertController: AlertController,
     private router: Router
   ) {}
 
   ngOnInit() {
-    this.loadProducts();  // Cargamos los productos al iniciar la página
+    this.loadProducts();
   }
 
   loadProducts() {
@@ -29,8 +29,8 @@ export class CatalogPage implements OnInit {
         imageUrl: 'https://http2.mlstatic.com/carreola-carriola-cochesito-bebe-graco-literider-marco-D_NQ_NP_115201-MLM20294155072_052015-F.jpg',
         category: 'category1',
         description: 'Carreola Multifuncional, Monbebe Blaze, HB2479BOH, El moderno sistema de viaje blaze cuenta con un elegante marco con un asa de agarre de cuero sintetico ajustable para mayor comodidad para mamá mientras dirige el cochecito o sostiene el asiento para bebés.',
-        rating: 4,  // Calificación del producto
-        colors: ['#ff0000', '#00ff00', '#0000ff']  // Colores disponibles
+        rating: 4,
+        colors: ['#ff0000', '#00ff00', '#0000ff']
       },
       {
         title: 'CARREOLA',
@@ -63,7 +63,6 @@ export class CatalogPage implements OnInit {
     ];
   }
 
-  // Filtra productos por categoría y búsqueda
   get filteredProducts() {
     let filtered = this.products;
 
@@ -80,7 +79,6 @@ export class CatalogPage implements OnInit {
     return filtered;
   }
 
-  // Muestra detalles del producto en una alerta
   async showProductInfo(product: any) {
     const alert = await this.alertController.create({
       header: product.title,
@@ -92,8 +90,7 @@ export class CatalogPage implements OnInit {
     await alert.present();
   }
 
-  // Navega a la página del carrito (ExamplePage)
   goToCart() {
-    this.router.navigate(['/example']);  // Navegar a la página del carrito
+    this.router.navigate(['/example']);
   }
 }

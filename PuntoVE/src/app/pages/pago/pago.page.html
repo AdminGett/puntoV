@@ -1,0 +1,69 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>PagoFinal</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-item lines="none">
+        <ion-icon name="checkmark-circle" color="success" slot="start"></ion-icon>
+        <ion-label>Agregado al carrito</ion-label>
+      </ion-item>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="4">
+            <img src="https://http2.mlstatic.com/carreola-carriola-cochesito-bebe-graco-literider-marco-D_NQ_NP_115201-MLM20294155072_052015-F.jpg" alt="Producto" class="product-image">
+          </ion-col>
+          <ion-col size="8">
+            <h2>$1,200.00</h2>
+            <p>Vendido</p>
+            <p>Garantía de 12 meses</p>
+            <p>Se pagará en línea</p>
+            <p>Color rojo carmesí</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-button expand="block" color="primary" (click)="finalizarCompra()">
+        Finalizar compra
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-label>Información de Pago</ion-label>
+    </ion-card-header>
+
+    <ion-card-content>
+      <!-- Orden actualizado de los campos -->
+      <ion-item>
+        <ion-label position="floating">Nombre del titular</ion-label>
+        <ion-input type="text" [(ngModel)]="tarjeta.nombreTitular"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Número de tarjeta</ion-label>
+        <ion-input type="text" [(ngModel)]="tarjeta.numero"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Fecha de expiración</ion-label>
+        <ion-input type="month" [(ngModel)]="tarjeta.expiracion"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Código CVV</ion-label>
+        <ion-input type="password" [(ngModel)]="tarjeta.cvv"></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" color="success" (click)="procesarPago()">
+        Procesar Pago
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

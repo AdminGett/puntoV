@@ -1,0 +1,82 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .store-title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .store-logo img {
+    width: 150px;
+    height: auto;
+  }
+  
+  .user-info {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .main-content {
+    padding: 20px;
+  }
+  
+  .section-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .delivery-options {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+  
+  .product-details {
+    display: flex;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .product-image {
+    width: 150px;
+    height: auto;
+    margin-right: 15px;
+  }
+  
+  .product-info h3 {
+    color: red;
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  
+  .product-info p {
+    margin: 5px 0;
+  }
+  
+  .actions a {
+    color: #007bff;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .summary {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: right;
+    margin-bottom: 20px;
+  }
+  
+  .summary p {
+    margin: 5px 0;
+  }
+  
+  ion-button {
+    margin-top: 10px;
+  }
+  

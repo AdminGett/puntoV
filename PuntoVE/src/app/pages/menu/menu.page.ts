@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UtilsService } from 'src/app/services/utils.service';
 import { FirebaseService } from '../../services/firebase.service';
 import { orderBy } from 'firebase/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-menu',
@@ -24,16 +25,31 @@ export class MenuPage implements OnInit {
 
   ngOnInit() {
   }
+  async chooseFile(event) {
+   console.log(event)
+  }
   agregar(){
-    // this.utils.datos={
-    //   codigo: this.form.value.codigo
-    // }
+    let datos = {
+      codigo: this.form.value.codigo,
+      nombre: this.form.value.nombre,
+      cantida: this.form.value.cantidad,
+      precio: this.form.value.precio,
+      prNEto: this.form.value.prNeto
+    }
+    console.log(datos)
     this.utils.datos.push(this.form.value)
     let path = `tiendas/tienda1/productos`
     console.log(this.utils.datos)
   }
   getProduct() {
-    console.log(10)
+  //  this.fare.setMetadata()
+   let info = this.fare.getMetadata().subscribe({
+      next: (res: any) => {
+        console.log(res)
+        info.unsubscribe()
+      }
+    })
+
   let path = 'tiendas/tienda1/Productos'
     let query = [
       orderBy('soldUnits', 'desc'), 
@@ -41,12 +57,12 @@ export class MenuPage implements OnInit {
     ]
    
 
-    let sub = this.fare.getCollection(path, query).subscribe({
-      next: (res: any) => {
-        console.log(res)
-        sub.unsubscribe()
-      }
-    })
+    // let sub = this.fare.getCollection(path, query).subscribe({
+    //   next: (res: any) => {
+    //     console.log(res)
+    //     sub.unsubscribe()
+    //   }
+    // })
 
   }
   print() {

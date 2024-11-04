@@ -65,7 +65,7 @@
         </ion-button>
       </ion-buttons>
     </div>
-1
+
   </div>
   
   <ion-modal #modal trigger="open-modal" backdropDismiss="false">
@@ -97,11 +97,15 @@
             <ion-input type="text" placeholder="Descripcion"></ion-input>
             <ion-input type="text" placeholder="Cantidad"></ion-input> -->
           </ion-list>
+          <div id="import_start">
+            <ion-input type="file" accept=".csv, text/plain" (change)="chooseFile($event)"><ion-img src=""></ion-img></ion-input>
+          </div>
           <ion-button expand="block" type="sibmit">
             Agregar producto
           </ion-button>
           <ion-img src=""></ion-img>
         </form>
+          
         <ion-list *ngIf="utils.datos">
           <ion-item *ngFor="let item of utils.datos;">
             <ion-label>{{item.codigo}}</ion-label>

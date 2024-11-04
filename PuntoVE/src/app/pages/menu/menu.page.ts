@@ -13,28 +13,30 @@ import { Observable } from 'rxjs';
 export class MenuPage implements OnInit {
   page:number =1
   noOfRows:number = 10
+  selectedFile: File;
+  imageUrl: string;
+
   form = new FormGroup({
     codigo: new FormControl('', [Validators.required]),
     nombre: new FormControl('', [Validators.required]),
     cantidad: new FormControl(0, [Validators.required]),
     precio: new FormControl(0, [Validators.required]),
     prNeto: new FormControl(0, [Validators.required]),
+    img: new FormControl('', [Validators.required]),
   })
   utils = inject(UtilsService)
   fare = inject(FirebaseService)
 
   ngOnInit() {
   }
-  async chooseFile(event) {
-   console.log(event)
-  }
+
   agregar(){
     let datos = {
       codigo: this.form.value.codigo,
       nombre: this.form.value.nombre,
       cantida: this.form.value.cantidad,
       precio: this.form.value.precio,
-      prNEto: this.form.value.prNeto
+      prNEto: this.form.value.prNeto,
     }
     console.log(datos)
     this.utils.datos.push(this.form.value)
@@ -64,6 +66,20 @@ export class MenuPage implements OnInit {
     //   }
     // })
 
+  }
+  chooseFile(event) {
+    this.selectedFile = event.target.files[0];
+
+    if (this.selectedFile.type.startsWith('image/')) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        this.imageUrl = reader.result as string;
+      };
+      reader.readAsDataURL(this.selectedFile);
+    } else {
+      // Handle non-image files (e.g., CSV)
+      console.log('Non-image file selected');
+    }
   }
   print() {
     window.print();

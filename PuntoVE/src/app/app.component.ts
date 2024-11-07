@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FirebaseService } from './services/firebase.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ export class AppComponent {
     }).catch(error=>{
       console.log(error)
     })
+   
    }
 }
 

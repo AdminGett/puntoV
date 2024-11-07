@@ -14,7 +14,8 @@ export class MenuPage implements OnInit {
   page:number =1
   noOfRows:number = 10
   selectedFile: File;
-  imageUrl: string;
+  imageUrl: string;d
+  dataP: any[]
 
   form = new FormGroup({
     codigo: new FormControl('', [Validators.required]),
@@ -28,6 +29,10 @@ export class MenuPage implements OnInit {
   fare = inject(FirebaseService)
 
   ngOnInit() {
+    this.fare.getMetadata().subscribe((data:any)=>{
+       this.dataP = data
+       console.log(this.dataP) 
+    })
   }
 
   agregar(){
@@ -37,11 +42,13 @@ export class MenuPage implements OnInit {
       cantida: this.form.value.cantidad,
       precio: this.form.value.precio,
       prNEto: this.form.value.prNeto,
+      image: this.form.value.img
     }
     console.log(datos)
-    this.utils.datos.push(this.form.value)
-    let path = `tiendas/tienda1/productos`
-    console.log(this.utils.datos)
+    this.fare.setMetadata(datos)
+    // this.utils.datos.push(this.form.value)
+    // let path = `tiendas/tienda1/productos`
+    // console.log(this.utils.datos)
   }
   getProduct() {
   //  this.fare.setMetadata()
@@ -72,8 +79,10 @@ export class MenuPage implements OnInit {
 
     if (this.selectedFile.type.startsWith('image/')) {
       const reader = new FileReader();
+     
       reader.onload = (e) => {
-        this.imageUrl = reader.result as string;
+        // this.imageUrl = reader.result as string;
+       this.form.value.img = reader.result as string;
       };
       reader.readAsDataURL(this.selectedFile);
     } else {

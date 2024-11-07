@@ -17,14 +17,14 @@
           <th>Precio Neto</th>
         </tr>
       </thead>
-      <tbody *ngFor="let item of utils.datos | paginate: { itemsPerPage: noOfRows, currentPage: page }">
+      <tbody *ngFor="let item of dataP | paginate: { itemsPerPage: noOfRows, currentPage: page }">
 
         <tr>
           <td><ion-checkbox></ion-checkbox> {{item.codigo}}</td>
           <td>{{item.nombre}}</td>
-          <td>{{item.cantidad}}</td>
+          <td>{{item.cantida}}</td>
           <td>${{item.precio}}</td>
-          <td>${{item.prNeto}}</td>
+          <td>${{item.prNEto}}</td>
         </tr>
 
 

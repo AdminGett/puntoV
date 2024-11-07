@@ -108,15 +108,15 @@ async getDocument( path: string){
   deleteFile(path: string){
     return deleteObject(ref(getStorage(), path))
   }
-  // **************get colecion de datos ********************
-  setMetadata(){ 
-    let dato ={
-      dato:'text1'
-    }
-    return this.firestor.collection('datos').add(dato)
+  // **************CRUD colecion de datos ********************
+  setMetadata(data){ 
+    console.log(data)
+    return this.firestor.collection('datos').add(data)
   } 
   getMetadata():Observable<any[]> {
-    return this.firestor.collection('datos').valueChanges();
+    const ref = collection(getFirestore(), 'datos')
+    return collectionData(ref,{idField:'id'}) as Observable<any>
+    // return this.firestor.collection('datos').valueChanges();
   }
 
 }

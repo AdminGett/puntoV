@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, AlertOptions, LoadingController, ModalController, ModalOptions, ToastController, ToastOptions } from '@ionic/angular';
 import { retry } from 'rxjs';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 // import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
 @Injectable({
@@ -16,16 +17,19 @@ export class UtilsService {
  router = inject(Router)
  modalCtrl = inject(ModalController)
  alertCtrl = inject(AlertController)
-  // async takePicture(promptLabelHeader: string) {
-  //   return await Camera.getPhoto({
-  //     quality: 90,
-  //     allowEditing: true,
-  //     resultType: CameraResultType.DataUrl,
-  //     source: CameraSource.Prompt,
-  //     promptLabelHeader,
-  //     promptLabelPhoto: 'Selecciona una imagen',
-  //     promptLabelPicture: 'Toma una forto'
-  //   });
+ 
+ 
+ async takePicture(promptLabelHeader: string) {
+  return await Camera.getPhoto({
+    quality: 90,
+    allowEditing: true,
+    resultType: CameraResultType.DataUrl,
+    source: CameraSource.Prompt,
+    promptLabelHeader,
+    promptLabelPhoto: 'Selecciona una imagen',
+    promptLabelPicture: 'Toma una forto'
+  });
+};
 
 
   // };

@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UtilsService } from 'src/app/services/utils.service';
 import { FirebaseService } from '../../services/firebase.service';
 import { orderBy } from 'firebase/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-menu',
@@ -12,28 +13,52 @@ import { orderBy } from 'firebase/firestore';
 export class MenuPage implements OnInit {
   page:number =1
   noOfRows:number = 10
+  selectedFile: File;
+  imageUrl: string;d
+  dataP: any[]
+
   form = new FormGroup({
     codigo: new FormControl('', [Validators.required]),
     nombre: new FormControl('', [Validators.required]),
     cantidad: new FormControl(0, [Validators.required]),
     precio: new FormControl(0, [Validators.required]),
     prNeto: new FormControl(0, [Validators.required]),
+    img: new FormControl('', [Validators.required]),
   })
   utils = inject(UtilsService)
   fare = inject(FirebaseService)
 
   ngOnInit() {
+    this.fare.getMetadata().subscribe((data:any)=>{
+       this.dataP = data
+       console.log(this.dataP) 
+    })
   }
+
   agregar(){
-    // this.utils.datos={
-    //   codigo: this.form.value.codigo
-    // }
-    this.utils.datos.push(this.form.value)
-    let path = `tiendas/tienda1/productos`
-    console.log(this.utils.datos)
+    let datos = {
+      codigo: this.form.value.codigo,
+      nombre: this.form.value.nombre,
+      cantida: this.form.value.cantidad,
+      precio: this.form.value.precio,
+      prNEto: this.form.value.prNeto,
+      image: this.form.value.img
+    }
+    console.log(datos)
+    this.fare.setMetadata(datos)
+    // this.utils.datos.push(this.form.value)
+    // let path = `tiendas/tienda1/productos`
+    // console.log(this.utils.datos)
   }
   getProduct() {
-    console.log(10)
+  //  this.fare.setMetadata()
+   let info = this.fare.getMetadata().subscribe({
+      next: (res: any) => {
+        console.log(res)
+        info.unsubscribe()
+      }
+    })
+
   let path = 'tiendas/tienda1/Productos'
     let query = [
       orderBy('soldUnits', 'desc'), 
@@ -41,13 +66,29 @@ export class MenuPage implements OnInit {
     ]
    
 
-    let sub = this.fare.getCollection(path, query).subscribe({
-      next: (res: any) => {
-        console.log(res)
-        sub.unsubscribe()
-      }
-    })
+    // let sub = this.fare.getCollection(path, query).subscribe({
+    //   next: (res: any) => {
+    //     console.log(res)
+    //     sub.unsubscribe()
+    //   }
+    // })
 
+  }
+  chooseFile(event) {
+    this.selectedFile = event.target.files[0];
+
+    if (this.selectedFile.type.startsWith('image/')) {
+      const reader = new FileReader();
+     
+      reader.onload = (e) => {
+        // this.imageUrl = reader.result as string;
+       this.form.value.img = reader.result as string;
+      };
+      reader.readAsDataURL(this.selectedFile);
+    } else {
+      // Handle non-image files (e.g., CSV)
+      console.log('Non-image file selected');
+    }
   }
   print() {
     window.print();

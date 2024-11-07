@@ -7,6 +7,7 @@ import { getFirestore,setDoc, doc, getDoc, addDoc, collection, collectionData, q
 import { UtilsService } from './utils.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { getStorage, uploadString, ref, getDownloadURL, deleteObject } from "firebase/storage";
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +34,7 @@ export class FirebaseService {
     console.log(ref)
     return collectionData(query(ref, ...collectionQuery),{idField:'id'})
   }
+
 
 
   //====== Autenticacion =========
@@ -106,4 +108,15 @@ async getDocument( path: string){
   deleteFile(path: string){
     return deleteObject(ref(getStorage(), path))
   }
+  // **************CRUD colecion de datos ********************
+  setMetadata(data){ 
+    console.log(data)
+    return this.firestor.collection('datos').add(data)
+  } 
+  getMetadata():Observable<any[]> {
+    const ref = collection(getFirestore(), 'datos')
+    return collectionData(ref,{idField:'id'}) as Observable<any>
+    // return this.firestor.collection('datos').valueChanges();
+  }
+
 }

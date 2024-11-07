@@ -17,14 +17,14 @@
           <th>Precio Neto</th>
         </tr>
       </thead>
-      <tbody *ngFor="let item of utils.datos | paginate: { itemsPerPage: noOfRows, currentPage: page }">
+      <tbody *ngFor="let item of dataP | paginate: { itemsPerPage: noOfRows, currentPage: page }">
 
         <tr>
           <td><ion-checkbox></ion-checkbox> {{item.codigo}}</td>
           <td>{{item.nombre}}</td>
-          <td>{{item.cantidad}}</td>
+          <td>{{item.cantida}}</td>
           <td>${{item.precio}}</td>
-          <td>${{item.prNeto}}</td>
+          <td>${{item.prNEto}}</td>
         </tr>
 
 
@@ -97,11 +97,18 @@
             <ion-input type="text" placeholder="Descripcion"></ion-input>
             <ion-input type="text" placeholder="Cantidad"></ion-input> -->
           </ion-list>
+          
+          <ion-item>
+            <ion-input type="file" accept=".csv, text/plain" (change)="chooseFile($event)"></ion-input>
+            <ion-img *ngIf="imageUrl" [src]="imageUrl"></ion-img>
+          </ion-item>
+            
+          
           <ion-button expand="block" type="sibmit">
             Agregar producto
           </ion-button>
-          <ion-img src=""></ion-img>
         </form>
+          
         <ion-list *ngIf="utils.datos">
           <ion-item *ngFor="let item of utils.datos;">
             <ion-label>{{item.codigo}}</ion-label>

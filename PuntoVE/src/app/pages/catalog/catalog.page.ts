@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-catalog',
@@ -11,7 +12,9 @@ export class CatalogPage implements OnInit {
   filter: string = 'all';
   searchQuery: string = '';
   products: any[] = [];
+  dataP: any[] =[]
 
+  fare = inject(FirebaseService) 
   constructor(
     private alertController: AlertController,
     private router: Router
@@ -19,6 +22,10 @@ export class CatalogPage implements OnInit {
 
   ngOnInit() {
     this.loadProducts();
+    this.fare.getMetadata().subscribe((data:any)=>{
+      this.dataP = data
+      console.log(this.dataP) 
+   })
   }
 
   loadProducts() {

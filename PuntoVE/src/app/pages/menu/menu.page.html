@@ -4,9 +4,10 @@
   <!-- <ion-searchbar [debounce]="1000" (ionInput)="handleInput($event)"></ion-searchbar> -->
   <div>
     <div class="searchbar-container">
+      <!-- <ion-icon style="height: 25px; width: 25px; padding-top: 1.5%;"  name="funnel-outline"></ion-icon> -->
       <ion-searchbar [debounce]="1000" style="width: 50%;"></ion-searchbar>
     </div>
-    <div style="width: 100%;">
+    <div class="main-container">
       <table style="width: 95%;">
         <!-- <caption>Datos de ventas</caption> -->
         <thead>
@@ -32,7 +33,7 @@
       </table>
 
       <!-- paginacion de tabla de producto +  paginacion dinamica -->
-      <div class="d-flex ">
+      <div style="display: flex; flex-direction: column; align-items: center;">
         <pagination-controls (pageChange)="page = $event"></pagination-controls>
         <pagination-template #p="paginationApi" (pageChange)="page=$event">
           <div class="form-grup">
@@ -50,7 +51,7 @@
         </pagination-template>
       </div>
 
-      <div style="width: 100%; margin: 20px 40px; ">
+      <div >
         <ion-buttons slot="end">
           <ion-button id="open-modal">
             <ion-icon slot="start" name="add"></ion-icon>
@@ -102,7 +103,16 @@
           </ion-list>
 
           <ion-item>
-            <ion-input type="file" accept=".csv, text/plain" (change)="chooseFile($event)"></ion-input>
+            <ion-avatar *ngIf="form.value.img">
+              <img [src]="form.value.img"/>
+          </ion-avatar>
+          <ion-icon *ngIf="!form.value.img" class="image-icon" name="image"></ion-icon>
+            <!-- ============ Tomar/seleccionar una imagen ========-->
+        <ion-button *ngIf="!form.value.img" (click)=" takeImage($event)" mode="ios" size="small" shape="round">
+          <ion-icon  slot="start" name="image"></ion-icon> Add una imagen
+       </ion-button>
+       <input type="file" name="file-upload" (change)="takeImage($event)">
+            <!-- <ion-input type="file" accept=".csv, text/plain" (change)="chooseFile($event)"></ion-input> -->
             <ion-img *ngIf="imageUrl" [src]="imageUrl"></ion-img>
           </ion-item>
 

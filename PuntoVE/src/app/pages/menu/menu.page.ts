@@ -2,10 +2,11 @@ import { Component, Input, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UtilsService } from 'src/app/services/utils.service';
 import { FirebaseService } from '../../services/firebase.service';
-import { orderBy } from 'firebase/firestore';
-import { ref, Storage} from '@angular/fire/storage';
+import { orderBy, } from 'firebase/firestore';
+import { Storage} from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { getStorage, uploadBytesResumable,ref } from "firebase/storage";
 
 @Component({
   selector: 'app-menu',
@@ -119,18 +120,20 @@ export class MenuPage implements OnInit {
   print() {
     window.print();
   }
+  
+
   async createProduct() {
-    let path = 'datos'
+    let path:string = 'datos'
     const loading = await this.utils.loading()
       await loading.present()
 
-    let dataUrl = this.form.value.img
-    const filePath =`Images/${Date.now()}`
-    console.log(filePath)
-    // const fileRef = ref(this.storage,filePath)
-    let imageUrl = await this.fare.uploadImage(filePath,dataUrl)
-    console.log(imageUrl)
-    this.form.controls.img.setValue(imageUrl)
+    let dataUrl:string = this.form.value.img
+    const filePath:string =`images/${Date.now()}`
+    const fileRef = ref(getStorage(), path)
+    console.log(fileRef)
+    let imageUrl = await this.fare.uploadImage(filePath, dataUrl)
+    // let imageUrl = uploadBytesResumable(fileRef, dataUrl,filePath)
+      // this.form.controls.img.setValue(imageUrl)
 
    
     
@@ -145,30 +148,31 @@ export class MenuPage implements OnInit {
 
     // // delete this.form.value.id
 
-    this.fare.addDocument(path, this.form.value).then(async res=>{
+      // this.fare.addDocument(path, this.form.value).then(async res=>{
+    // this.fare.setMetadata( this.form.value).then(async res=>{
 
-      this.fare.dimissModal({ success:true })
+    //   this.fare.dimissModal({ success:true })
 
-      this.utils.presentToast({
-        message: 'Producto creado exitosamente',
-        duration: 1500,
-        color: 'success',
-        position:'middle',
-        icon: 'checkmark-circle'
-      })
+    //   this.utils.presentToast({
+    //     message: 'Producto creado exitosamente',
+    //     duration: 1500,
+    //     color: 'success',
+    //     position:'middle',
+    //     icon: 'checkmark-circle'
+    //   })
 
-    }).catch(error=>{
-      console.log(error)
-      this.utils.presentToast({
-        message: error.message,
-        duration: 2500,
-        color: 'primary',
-        position:'middle',
-        icon: 'alert-circle'
-      })
-    }).finally(()=>{
-      loading.dismiss()
-    })
+    // }).catch(error=>{
+    //   console.log(error)
+    //   this.utils.presentToast({
+    //     message: error.message,
+    //     duration: 2500,
+    //     color: 'primary',
+    //     position:'middle',
+    //     icon: 'alert-circle'
+    //   })
+    // }).finally(()=>{
+    //   loading.dismiss()
+    // })
   }
 
 

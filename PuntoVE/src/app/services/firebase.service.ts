@@ -100,9 +100,11 @@ async getDocument( path: string){
 
 // ======== subir imagen ========
   async uploadImage(path: string, data_url: string){
-    return uploadString(ref(getStorage(), path),data_url,'data_url').then(()=>{
-      return getDownloadURL(ref(getStorage(),path))
-    })
+    console.log(path, ' ' , data_url)
+    return uploadString(ref(getStorage(), path),data_url,'data_url')
+    // return uploadString(ref(getStorage(), path),data_url,'data_url').then(()=>{
+    //   return getDownloadURL(ref(getStorage(),path))
+    // })
   }
   // ======== Optener ruta de las imagenes con su url ========
   async getFilePath( url : string ){
@@ -128,6 +130,7 @@ async getDocument( path: string){
   // **************CRUD colecion de datos ********************
   setMetadata(data){ 
     console.log(data)
+    
     return this.firestor.collection('datos').add(data)
   } 
   getMetadata():Observable<any[]> {

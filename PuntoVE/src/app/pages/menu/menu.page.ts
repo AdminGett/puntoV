@@ -6,7 +6,7 @@ import { orderBy, } from 'firebase/firestore';
 import { Storage} from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { getStorage, uploadBytesResumable,ref } from "firebase/storage";
+import { getStorage, uploadBytesResumable, ref, uploadString } from 'firebase/storage';
 
 @Component({
   selector: 'app-menu',
@@ -44,16 +44,17 @@ export class MenuPage implements OnInit {
   }
 
   agregar() {
-    let datos = {
-      codigo: this.form.value.codigo,
-      nombre: this.form.value.nombre,
-      categoria: this.form.value.categoria,
-      cantida: this.form.value.cantidad,
-      precio: this.form.value.precio,
-      prNEto: this.form.value.prNeto,
-      image: this.form.value.img
-    }
-    console.log(datos)
+    this.createProduct()
+    // let datos = {
+    //   codigo: this.form.value.codigo,
+    //   nombre: this.form.value.nombre,
+    //   categoria: this.form.value.categoria,
+    //   cantidad: this.form.value.cantidad,
+    //   precio: this.form.value.precio,
+    //   prNeto: this.form.value.prNeto,
+    //   image: this.form.value.img
+    // }
+    // console.log(datos)
     // this.fare.setMetadata(datos)
     // this.createProduct()
     // this.utils.datos.push(this.form.value)
@@ -97,9 +98,8 @@ export class MenuPage implements OnInit {
     // reader.readAsDataURL(this.path);
     
      const dataUrl = (await this.utils.takePicture('Imagen del producto')).dataUrl;
-     console.log(dataUrl);
     this.form.controls.img.setValue(dataUrl)
-    this.createProduct()
+    
   }
   chooseFile(event) {
     this.selectedFile = event.target.files[0];
@@ -129,11 +129,11 @@ export class MenuPage implements OnInit {
 
     let dataUrl:string = this.form.value.img
     const filePath:string =`images/${Date.now()}`
-    const fileRef = ref(getStorage(), path)
-    console.log(fileRef)
+    // const fileRef = ref(getStorage(), path)
+    // console.log(fileRef)
     let imageUrl = await this.fare.uploadImage(filePath, dataUrl)
     // let imageUrl = uploadBytesResumable(fileRef, dataUrl,filePath)
-      // this.form.controls.img.setValue(imageUrl)
+    this.form.controls.img.setValue( imageUrl)
 
    
     
@@ -149,30 +149,30 @@ export class MenuPage implements OnInit {
     // // delete this.form.value.id
 
       // this.fare.addDocument(path, this.form.value).then(async res=>{
-    // this.fare.setMetadata( this.form.value).then(async res=>{
+    this.fare.setMetadata( this.form.value).then(async res=>{
 
-    //   this.fare.dimissModal({ success:true })
+      this.fare.dimissModal({ success:true })
 
-    //   this.utils.presentToast({
-    //     message: 'Producto creado exitosamente',
-    //     duration: 1500,
-    //     color: 'success',
-    //     position:'middle',
-    //     icon: 'checkmark-circle'
-    //   })
+      this.utils.presentToast({
+        message: 'Producto creado exitosamente',
+        duration: 1500,
+        color: 'success',
+        position:'middle',
+        icon: 'checkmark-circle'
+      })
 
-    // }).catch(error=>{
-    //   console.log(error)
-    //   this.utils.presentToast({
-    //     message: error.message,
-    //     duration: 2500,
-    //     color: 'primary',
-    //     position:'middle',
-    //     icon: 'alert-circle'
-    //   })
-    // }).finally(()=>{
-    //   loading.dismiss()
-    // })
+    }).catch(error=>{
+      console.log(error)
+      this.utils.presentToast({
+        message: error.message,
+        duration: 2500,
+        color: 'primary',
+        position:'middle',
+        icon: 'alert-circle'
+      })
+    }).finally(()=>{
+      loading.dismiss()
+    })
   }
 
 

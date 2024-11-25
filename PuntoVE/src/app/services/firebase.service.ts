@@ -100,8 +100,6 @@ async getDocument( path: string){
 
 // ======== subir imagen ========
   async uploadImage(path: string, data_url: string){
-    console.log(path, ' ' , data_url)
-    // return uploadString(ref(getStorage(), path),data_url,'data_url')
     return uploadString(ref(getStorage(), path),data_url,'data_url').then(()=>{
       return getDownloadURL(ref(getStorage(),path))
     })
@@ -110,6 +108,7 @@ async getDocument( path: string){
   async getFilePath( url : string ){
     return ref(getStorage(), url).fullPath
   }
+    // ======== Eliminar afoto ========
   deleteFile(path: string){
     return deleteObject(ref(getStorage(), path))
   }

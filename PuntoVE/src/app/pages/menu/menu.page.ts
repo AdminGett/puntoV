@@ -7,6 +7,7 @@ import { Storage} from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { getStorage, uploadBytesResumable, ref, uploadString } from 'firebase/storage';
+import { Conditional } from '@angular/compiler';
 
 @Component({
   selector: 'app-menu',
@@ -20,7 +21,7 @@ export class MenuPage implements OnInit {
   imageUrl: string;
   dataP: any[]
   path!:File
-
+  selectedIds: string[] = [];
 
   form = new FormGroup({
     codigo: new FormControl('', [Validators.required]),
@@ -120,7 +121,9 @@ export class MenuPage implements OnInit {
   print() {
     window.print();
   }
-  
+  deleteFoto(){
+    // console.log("Eliminacion de Fotos: ",this.check)
+  }
 
   async createProduct() {
     let path:string = 'datos'
@@ -132,7 +135,7 @@ export class MenuPage implements OnInit {
     // const fileRef = ref(getStorage(), path)
     // console.log(fileRef)
     let imageUrl = await this.fare.uploadImage(filePath, dataUrl)
-    // let imageUrl = uploadBytesResumable(fileRef, dataUrl,filePath)
+    // let imageUrl = uploadBytesResumable(fileRef, dataUrl,filePath)z
     this.form.controls.img.setValue( imageUrl)
 
    
@@ -175,6 +178,15 @@ export class MenuPage implements OnInit {
     })
   }
 
+  // Sent datos de id's a eliminar de base de datos y fotos
+  onCheckboxChange(codigo: string) {
+    if (this.selectedIds.includes(codigo)) {
+      this.selectedIds = this.selectedIds.filter(id => id !== codigo);
+    } else {
+      this.selectedIds.push(codigo);
+      console.log(this.selectedIds)
+    }
+  }
 
   ngOnDestroy() {
     // this.dataP

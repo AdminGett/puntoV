@@ -20,9 +20,9 @@
             <th>Precio Neto</th>
           </tr>
         </thead>
-        <tbody *ngFor="let item of dataP | paginate: { itemsPerPage: noOfRows, currentPage: page }">
+        <tbody *ngFor="let item of dataP | paginate: { itemsPerPage: noOfRows, currentPage: page }; let i = index">
           <tr>
-            <td><ion-checkbox style="vertical-align: middle"></ion-checkbox> &nbsp; {{item.codigo}}</td>
+            <td><ion-checkbox style="vertical-align: middle" [(ngModel)]="item.checked" (ionChange)="onCheckboxChange(item.codigo)"></ion-checkbox> &nbsp; {{item.codigo}}</td>
             <td>{{item.nombre}}</td>
             <td>{{item.categoria}}</td>
             <td>{{item.cantidad}}</td>
@@ -57,7 +57,11 @@
             <ion-icon slot="start" name="add"></ion-icon>
             Producto
           </ion-button>
-          <ion-button (click)="print()">
+          <!-- <ion-button (click)="print()">
+            <ion-icon slot="start" name="trash"></ion-icon>
+            Eliminar
+          </ion-button> -->
+          <ion-button (click)="deleteFoto()">
             <ion-icon slot="start" name="trash"></ion-icon>
             Eliminar
           </ion-button>

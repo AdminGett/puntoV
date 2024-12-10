@@ -4,70 +4,76 @@
   <!-- <ion-searchbar [debounce]="1000" (ionInput)="handleInput($event)"></ion-searchbar> -->
   <div>
     <div class="searchbar-container">
+      <!-- <ion-icon style="height: 25px; width: 25px; padding-top: 1.5%;"  name="funnel-outline"></ion-icon> -->
       <ion-searchbar [debounce]="1000" style="width: 50%;"></ion-searchbar>
     </div>
-    <table style="width: 100%;">
-      <!-- <caption>Datos de ventas</caption> -->
-      <thead>
-        <tr>
-          <th>Codigo</th>
-          <th>Producto</th>
-          <th>Cantidad</th>
-          <th>Precio</th>
-          <th>Precio Neto</th>
-        </tr>
-      </thead>
-      <tbody *ngFor="let item of dataP | paginate: { itemsPerPage: noOfRows, currentPage: page }">
+    <div class="main-container">
+      <table style="width: 95%;">
+        <!-- <caption>Datos de ventas</caption> -->
+        <thead>
+          <tr>
+            <th>Codigo</th>
+            <th>Producto</th>
+            <th>Categoria</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Precio Neto</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let item of dataP | paginate: { itemsPerPage: noOfRows, currentPage: page }; let i = index">
+          <tr>
+            <td><ion-checkbox style="vertical-align: middle" [(ngModel)]="item.checked" (ionChange)="onCheckboxChange(item.codigo)"></ion-checkbox> &nbsp; {{item.codigo}}</td>
+            <td>{{item.nombre}}</td>
+            <td>{{item.categoria}}</td>
+            <td>{{item.cantidad}}</td>
+            <td>${{item.precio}}</td>
+            <td>${{item.prNeto}}</td>
+          </tr>
+        </tbody>
+      </table>
 
-        <tr>
-          <td><ion-checkbox></ion-checkbox> {{item.codigo}}</td>
-          <td>{{item.nombre}}</td>
-          <td>{{item.cantida}}</td>
-          <td>${{item.precio}}</td>
-          <td>${{item.prNEto}}</td>
-        </tr>
-
-
-
-      </tbody>
-    </table>
-    <!-- paginacion de tabla de producto +  paginacion dinamica -->
-    <div class="d-flex ">
-      <pagination-controls (pageChange)="page = $event"></pagination-controls>
-      <pagination-template #p="paginationApi" (pageChange)="page=$event">
-        <div class="form-grup">
-          <div class="item-par-page">
-            Pagina
-            <select name="noRows" id="noRows" (change)="page=1" [(ngModel)]="noOfRows">
-              <option value="10">10</option>
-              <option value="25">25</option>
-              <option value="35">35</option>
-              <option value="75">75</option>
-              <option value="100">100</option>
-            </select>
+      <!-- paginacion de tabla de producto +  paginacion dinamica -->
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+        <pagination-template #p="paginationApi" (pageChange)="page=$event">
+          <div class="form-grup">
+            <div class="item-par-page">
+              Pagina
+              <select name="noRows" id="noRows" (change)="page=1" [(ngModel)]="noOfRows">
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="35">35</option>
+                <option value="75">75</option>
+                <option value="100">100</option>
+              </select>
+            </div>
           </div>
-        </div>
-      </pagination-template>
-    </div>
-    <div style="width: 100%; display: flex;">
-      <ion-buttons slot="end">
-        <ion-button id="open-modal">
-          <ion-icon slot="start" name="add"></ion-icon>
-          Producto
-        </ion-button>
-        <ion-button (click)="print()">
-          <ion-icon slot="start" name="trash"></ion-icon>
-          Eliminar
-        </ion-button>
-        <ion-button (click)="getProduct()">
-          <ion-icon slot="start" name="refresh"  ></ion-icon>
-          Actualizar tabla
-        </ion-button>
-      </ion-buttons>
-    </div>
+        </pagination-template>
+      </div>
 
+      <div >
+        <ion-buttons slot="end">
+          <ion-button id="open-modal">
+            <ion-icon slot="start" name="add"></ion-icon>
+            Producto
+          </ion-button>
+          <!-- <ion-button (click)="print()">
+            <ion-icon slot="start" name="trash"></ion-icon>
+            Eliminar
+          </ion-button> -->
+          <ion-button (click)="deleteFoto()">
+            <ion-icon slot="start" name="trash"></ion-icon>
+            Eliminar
+          </ion-button>
+          <ion-button (click)="getProduct()">
+            <ion-icon slot="start" name="refresh"></ion-icon>
+            Actualizar tabla
+          </ion-button>
+        </ion-buttons>
+      </div>
+    </div>
   </div>
-  
+
   <ion-modal #modal trigger="open-modal" backdropDismiss="false">
     <ng-template>
       <ion-content>
@@ -86,6 +92,8 @@
               [control]="form.controls.codigo"></app-custom-input>
             <app-custom-input autocomplete="nombre" type="text" label="Nombre"
               [control]="form.controls.nombre"></app-custom-input>
+            <app-custom-input autocomplete="categoria" type="text" label="Categoria"
+              [control]="form.controls.categoria"></app-custom-input>
             <app-custom-input autocomplete="cantidad" type="number" label="Cantidad"
               [control]="form.controls.cantidad"></app-custom-input>
             <app-custom-input autocomplete="precio" type="number" label="Precio"
@@ -97,18 +105,27 @@
             <ion-input type="text" placeholder="Descripcion"></ion-input>
             <ion-input type="text" placeholder="Cantidad"></ion-input> -->
           </ion-list>
-          
+
           <ion-item>
-            <ion-input type="file" accept=".csv, text/plain" (change)="chooseFile($event)"></ion-input>
+            <ion-avatar *ngIf="form.value.img">
+              <img [src]="form.value.img"/>
+          </ion-avatar>
+          <ion-icon *ngIf="!form.value.img" class="image-icon" name="image"></ion-icon>
+            <!-- ============ Tomar/seleccionar una imagen ========-->
+        <ion-button *ngIf="!form.value.img" (click)=" takeImage($event)" mode="ios" size="small" shape="round">
+          <ion-icon  slot="start" name="image"></ion-icon> Add una imagen
+       </ion-button>
+       <input type="file" name="file-upload" (change)="takeImage($event)">
+            <!-- <ion-input type="file" accept=".csv, text/plain" (change)="chooseFile($event)"></ion-input> -->
             <ion-img *ngIf="imageUrl" [src]="imageUrl"></ion-img>
           </ion-item>
-            
-          
+
+
           <ion-button expand="block" type="sibmit">
             Agregar producto
           </ion-button>
         </form>
-          
+
         <ion-list *ngIf="utils.datos">
           <ion-item *ngFor="let item of utils.datos;">
             <ion-label>{{item.codigo}}</ion-label>

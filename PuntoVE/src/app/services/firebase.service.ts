@@ -8,6 +8,7 @@ import { UtilsService } from './utils.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { getStorage, uploadString, ref, getDownloadURL, deleteObject } from "firebase/storage";
 import { Observable } from 'rxjs';
+import { AlertController, ModalController, ModalOptions } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,9 @@ export class FirebaseService {
   firestor = inject(AngularFirestore)
   ultsSvc = inject(UtilsService)
   storge = inject(AngularFireStorage)
-
+  modalCtrl = inject(ModalController)
+  
+  alertCtrl = inject(AlertController)
 
 
   // ========================== Base de datos ==================
@@ -105,12 +108,28 @@ async getDocument( path: string){
   async getFilePath( url : string ){
     return ref(getStorage(), url).fullPath
   }
+    // ======== Eliminar afoto ========
   deleteFile(path: string){
     return deleteObject(ref(getStorage(), path))
+  }
+
+
+
+  // =========Modal ============
+  async presentModal(opts: ModalOptions) {
+    const modal = await this.modalCtrl.create(opts);
+    await modal.present();
+
+    const { data } = await modal.onWillDismiss()
+    if (data) return data
+  }
+  dimissModal(data?: any) {
+    return this.modalCtrl.dismiss(data)
   }
   // **************CRUD colecion de datos ********************
   setMetadata(data){ 
     console.log(data)
+    
     return this.firestor.collection('datos').add(data)
   } 
   getMetadata():Observable<any[]> {
@@ -119,4 +138,5 @@ async getDocument( path: string){
     // return this.firestor.collection('datos').valueChanges();
   }
 
+  
 }

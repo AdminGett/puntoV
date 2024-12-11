@@ -15,7 +15,7 @@
     <ion-label>Categoría</ion-label>
     <ion-select [(ngModel)]="filter" placeholder="Selecciona una categoría">
       <ion-select-option value="all">Todo</ion-select-option>
-      <ion-select-option value="Ropa">Ropa</ion-select-option>
+      <ion-select-option value="category1">Categoria 1</ion-select-option>
       <ion-select-option value="category2">Categoria 2</ion-select-option>
     </ion-select>
   </ion-item>
@@ -29,19 +29,19 @@
   </ion-item>
 
   <!-- Mensaje de alerta en rojo si no se encuentran resultados -->
-  <div *ngIf="filteredProducts.length === 0 " style="color: red; text-align: center; margin: 16px;">
+  <div *ngIf="filteredProducts.length === 0" style="color: red; text-align: center; margin: 16px;">
     No se encontraron resultados para "{{ searchQuery }}"
   </div>
- 
+
   <!-- Cuadrícula de productos -->
   <ion-grid *ngIf="filteredProducts.length > 0">
     <ion-row>
       <ion-col size="6" size-md="4" size-lg="3" *ngFor="let product of filteredProducts">
         <ion-card>
-          <img [src]="product.img" alt="Product Image" (click)="showProductInfo(product)">
+          <img [src]="product.imageUrl" alt="Product Image" (click)="showProductInfo(product)">
           <ion-card-header>
-            <ion-card-title>{{ product.nombre }}</ion-card-title>
-            <ion-card-subtitle>{{ product.prNeto | currency }}</ion-card-subtitle>
+            <ion-card-title>{{ product.title }}</ion-card-title>
+            <ion-card-subtitle>{{ product.price }}</ion-card-subtitle>
           </ion-card-header>
           <ion-card-content>
             <div>
@@ -62,9 +62,4 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-
-  <!-- <ion-item *ngFor="let item of products">
-    
-    <ion-img src="{{item.img}}"></ion-img>
-  </ion-item> -->
 </ion-content>

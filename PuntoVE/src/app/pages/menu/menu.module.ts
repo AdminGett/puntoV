@@ -9,8 +9,6 @@ import { MenuPageRoutingModule } from './menu-routing.module';
 import { MenuPage } from './menu.page';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { HttpClientModule } from '@angular/common/http';
-import { IonicStorageModule,Storage  } from '@ionic/storage-angular';
 
 
 @NgModule({
@@ -20,10 +18,7 @@ import { IonicStorageModule,Storage  } from '@ionic/storage-angular';
     IonicModule,
     MenuPageRoutingModule,
     SharedModule,
-    NgxPaginationModule,
-    HttpClientModule,
-    IonicModule.forRoot(),
-    IonicStorageModule.forRoot(),
+    NgxPaginationModule
   ],
   declarations: [MenuPage]
 })

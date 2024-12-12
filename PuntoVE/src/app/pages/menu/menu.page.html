@@ -22,7 +22,7 @@
         </thead>
         <tbody *ngFor="let item of dataP | paginate: { itemsPerPage: noOfRows, currentPage: page }; let i = index">
           <tr>
-            <td><ion-checkbox style="vertical-align: middle" [(ngModel)]="item.checked" (ionChange)="onCheckboxChange(item.codigo)"></ion-checkbox> &nbsp; {{item.codigo}}</td>
+            <td><ion-checkbox style="vertical-align: middle" [(ngModel)]="item.checked" (ionChange)="onCheckboxChange(item.id)"></ion-checkbox> &nbsp; {{item.codigo}}</td>
             <td>{{item.nombre}}</td>
             <td>{{item.categoria}}</td>
             <td>{{item.cantidad}}</td>
@@ -118,9 +118,9 @@
         <ion-button *ngIf="!form.value.img" (click)=" takeImage($event)" mode="ios" size="small" shape="round">
           <ion-icon  slot="start" name="image"></ion-icon> Add una imagen
        </ion-button>
-       <input type="file" name="file-upload" (change)="takeImage($event)">
-            <!-- <ion-input type="file" accept=".csv, text/plain" (change)="chooseFile($event)"></ion-input> -->
-            <ion-img *ngIf="imageUrl" [src]="imageUrl"></ion-img>
+       <!-- <input type="file" name="file-upload" (change)="takeImage($event)">
+             <ion-input type="file" accept=".csv, text/plain" (change)="chooseFile($event)"></ion-input> 
+            <ion-img *ngIf="imageUrl" [src]="imageUrl"></ion-img> -->
           </ion-item>
 
 

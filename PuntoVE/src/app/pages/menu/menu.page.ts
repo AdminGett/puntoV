@@ -22,6 +22,7 @@ export class MenuPage implements OnInit {
   dataP: any[]
   path!:File
   selectedIds: string[] = [];
+  savedData = [];
 
   form = new FormGroup({
     codigo: new FormControl('', [Validators.required]),
@@ -184,7 +185,17 @@ export class MenuPage implements OnInit {
       this.selectedIds = this.selectedIds.filter(id => id !== codigo);
     } else {
       this.selectedIds.push(codigo);
-      console.log(this.selectedIds)
+    }
+  }
+  Upd_Info(){
+   
+    for (let index = 0; index < this.selectedIds.length; index++) {
+      console.log(this.dataP)
+      const dataPr = this.dataP.find(data => data.id ===this.selectedIds[index])
+     if (dataPr) {
+       this.savedData.push(dataPr); // Add the found data to the savedData array
+      }
+      console.log(this.savedData)
     }
   }
 

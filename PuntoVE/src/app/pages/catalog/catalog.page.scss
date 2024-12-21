@@ -74,12 +74,25 @@ ion-card-content ion-button {
 .CatPro{
   padding-top: 2%; 
 }
-ion-card-header{
-  margin-bottom: -18px;
-}
 ion-card-content ion-label{
   font-size: 13px;
 }
+ion-card-content{
+  padding-bottom: 0px;
+}
 ion-col{
   max-width: calc(calc(2 / var(--ion-grid-columns, 12))* 80%);
+}
+.icon ion-icon{
+  color: rgb(94 144 169);
+
+}
+ion-card-header{
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+ion-col {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 33.33%; /* 3 columnas */
 }

@@ -21,6 +21,7 @@ export class CatalogPage implements OnInit {
     // this.loadProducts();
     this.fare.getMetadata().subscribe((data:any)=>{
       this.products = data
+      console.log(this.products)
    })
   }
 
@@ -83,8 +84,8 @@ export class CatalogPage implements OnInit {
 
   async showProductInfo(product: any) {
     const alert = await this.alertController.create({
-      header: product.title,
-      subHeader: product.price,
+      header: product.nombre,
+      subHeader: product.prNeto,
       message: product.description || 'No description available.',
       buttons: ['OK']
     });

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -24,7 +24,9 @@ import { IonicStorageModule,Storage  } from '@ionic/storage-angular';
     HttpClientModule,
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
+    
   ],
-  declarations: [MenuPage]
+  declarations: [MenuPage],
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class MenuPageModule {}

@@ -1,0 +1,70 @@
+<ion-button id="open-modal">
+            <ion-icon slot="start" name="add"></ion-icon>
+            Producto
+          </ion-button>
+
+
+ <ion-modal #modal trigger="open-modal" backdropDismiss="false">
+    <ng-template>
+      <ion-content>
+
+
+        <ion-toolbar>
+          <ion-title>Agregar Productos</ion-title>
+
+          <ion-buttons slot="end">
+            <ion-button color="light" (click)="modal.dismiss()">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+        <form [formGroup]="form" (ngSubmit)="agregar()">
+          <!-- Inputs de optencion de codigo -->
+          <ion-list style="display: flex; border-bottom: 1px solid black;">
+            <app-custom-input autocomplete="codigo" type="text" label="Codigo"
+              [control]="form.controls.codigo"></app-custom-input>
+            <app-custom-input autocomplete="nombre" type="text" label="Nombre"
+              [control]="form.controls.nombre"></app-custom-input>
+            <app-custom-input autocomplete="categoria" type="text" label="Categoria"
+              [control]="form.controls.categoria"></app-custom-input>
+            <app-custom-input autocomplete="cantidad" type="number" label="Cantidad"
+              [control]="form.controls.cantidad"></app-custom-input>
+            <app-custom-input autocomplete="precio" type="number" label="Precio"
+              [control]="form.controls.precio"></app-custom-input>
+            <app-custom-input autocomplete="precioneto" type="number" label="Precio Neto"
+              [control]="form.controls.prNeto"></app-custom-input>
+          </ion-list>
+          <ion-item>
+            <app-custom-input autocomplete="precioneto" type="text" label="Agregar una descripción"
+              [control]="form.controls.description"></app-custom-input>
+          </ion-item>
+          <ion-item>
+            <ion-avatar *ngIf="form.value.img">
+              <img [src]="form.value.img" />
+            </ion-avatar>
+            <ion-icon *ngIf="!form.value.img" class="image-icon" name="image"></ion-icon>
+            <!-- ============ Tomar/seleccionar una imagen ========-->
+            <ion-button *ngIf="!form.value.img" (click)=" takeImage($event)" mode="ios" size="small" shape="round">
+              <ion-icon slot="start" name="image"></ion-icon> Add una imagen
+            </ion-button>
+            <!-- <input type="file" name="file-upload" (change)="takeImage($event)">
+             <ion-input type="file" accept=".csv, text/plain" (change)="chooseFile($event)"></ion-input> 
+            <ion-img *ngIf="imageUrl" [src]="imageUrl"></ion-img> -->
+          </ion-item>
+
+
+          <ion-button expand="block" type="sibmit">
+            Agregar producto
+          </ion-button>
+        </form>
+
+        <ion-list *ngIf="utils.datos">
+          <ion-item *ngFor="let item of utils.datos;">
+            <ion-label>{{item.codigo}}</ion-label>
+            <ion-label>{{item.nombre}}</ion-label>
+            <ion-label>{{item.cantidad}}</ion-label>
+            <ion-label>${{item.precio}}</ion-label>
+            <ion-label>${{item.prNeto}}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-modal>

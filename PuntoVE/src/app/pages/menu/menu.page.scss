@@ -41,7 +41,7 @@ table {
   }
   ion-modal {
     --width:70%;
-    --height: 50%;
+    --height: 60%;
     --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   }
   
@@ -72,4 +72,14 @@ table {
     width: 10%; 
    height: 100%;
     object-fit: fill;
+  }
+  .ImgPro{
+    margin: 6% 3%;
+  }
+  ion-avatar{
+    width: 60px;
+    height: 60px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
   }

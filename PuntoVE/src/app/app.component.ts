@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent {
   firebaseSvc: FirebaseService;
+  isHidden = false;
   constructor(firebaseSvc:FirebaseService) {
     this.firebaseSvc = firebaseSvc;
     let path = `productos`
@@ -19,5 +20,8 @@ export class AppComponent {
     })
    
    }
+  
+
+ 
 }
 

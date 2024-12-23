@@ -1,23 +1,21 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UtilsService } from 'src/app/services/utils.service';
-import { FirebaseService } from '../../services/firebase.service';
+import { FirebaseService } from '../../../services/firebase.service';
 import { orderBy, } from 'firebase/firestore';
 import { Storage} from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ModalController } from '@ionic/angular';
-// import { getStorage, uploadBytesResumable, ref, uploadString } from 'firebase/storage';
-// import { Conditional } from '@angular/compiler';
-import { ModalCompComponent } from '../../shared/components/modal-comp/modal-comp.component';
 
 @Component({
-  selector: 'app-menu',
-  templateUrl: './menu.page.html',
-  styleUrls: ['./menu.page.scss'],
+  selector: 'app-modal-comp',
+  templateUrl: './modal-comp.component.html',
+  styleUrls: ['./modal-comp.component.scss'],
 })
-export class MenuPage implements OnInit {
-  page: number = 1
+export class ModalCompComponent  implements OnInit {
+
+page: number = 1
   noOfRows: number = 10
   selectedFile: File;
   imageUrl: string;
@@ -47,24 +45,12 @@ export class MenuPage implements OnInit {
       this.dataP = data
     })
   }
-  async openModal() {
-    const modal = await this.modalController.create({
-      component: ModalCompComponent,
-      cssClass: 'my-custom-class',
-      componentProps: {
-        // Datos que quieres pasar al modal
-        name: 'Juan',
-        age: 30
-      }
-    });
-    return await modal.present();
-  }
 
   agregar() {
-    if(this.form.valid){
+    if(!this.form){
       this.createProduct()
     }else{
-      // this.fare.dimissModal({ success:true })
+      this.fare.dimissModal({ success:true })
 
       this.utils.presentToast({
         message: '¡Revise los campos, Campos incompletos!',
@@ -216,4 +202,5 @@ export class MenuPage implements OnInit {
   ngOnDestroy() {
     // this.dataP
   }
+
 }

@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
 import { CustomInputComponent } from './components/custom-input/custom-input.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ModalCompComponent } from './components/modal-comp/modal-comp.component';
 
 
 
@@ -14,12 +15,14 @@ import { NgxPaginationModule } from 'ngx-pagination';
     HeaderComponent,
     FooterComponent,
     CustomInputComponent,
+    ModalCompComponent,
 
   ],exports:[
     HeaderComponent,
     FooterComponent,
     CustomInputComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ModalCompComponent,
   ],
   imports: [
     CommonModule,

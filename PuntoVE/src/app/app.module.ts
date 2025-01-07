@@ -19,7 +19,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
   declarations: [AppComponent],
   imports: [
     BrowserModule, 
-    IonicModule.forRoot({mode:'md'}), 
+    IonicModule.forRoot({mode:'md',innerHTMLTemplatesEnabled:true}), 
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,

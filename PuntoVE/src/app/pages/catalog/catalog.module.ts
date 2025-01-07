@@ -4,13 +4,15 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { CatalogPageRoutingModule } from './catalog-routing.module';
 import { CatalogPage } from './catalog.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CatalogPageRoutingModule
+    CatalogPageRoutingModule,
+    SharedModule,
   ],
   declarations: [CatalogPage]
 })

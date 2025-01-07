@@ -1,0 +1,26 @@
+// ion-toolbar{
+//     --background: rgb(94 144 169);
+//     color: white;
+// }
+
+ion-content{
+    background: #dddddde3;
+}
+modal-wrapper ion-overlay-wrapper{
+    height: 33%;
+}
+ion-col{
+    height: 50%;
+}
+ion-img{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+.my-custom-modal {
+    --width: 80%; 
+    --height: 60%; 
+    border-radius: 10px; 
+    background-color: #f0f0f0; 
+  }
+  

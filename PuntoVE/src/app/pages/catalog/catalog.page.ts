@@ -1,7 +1,9 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { Router, Routes } from '@angular/router';
 import { FirebaseService } from 'src/app/services/firebase.service';
+import { ModalCompComponent } from 'src/app/shared/components/modal-comp/modal-comp.component';
+
 
 @Component({
   selector: 'app-catalog',
@@ -12,10 +14,12 @@ export class CatalogPage implements OnInit {
   filter: string = 'all';
   searchQuery: string = '';
   products: any[] = [];
+  product!:any
 
   fare = inject(FirebaseService) 
   alertController = inject(AlertController)
   router = inject(Router)
+  modalController=inject(ModalController)
 
   ngOnInit() {
     // this.loadProducts();
@@ -86,14 +90,50 @@ export class CatalogPage implements OnInit {
     const alert = await this.alertController.create({
       header: product.nombre,
       subHeader: product.prNeto,
-      message: product.description || 'No description available.',
+//       message:  `<div class="msAler">
+//       <div class="image-container"> 
+//     <img  src="${product.img}" alt="Imagen del producto" style="max-width: 30%;">
+//   </div>
+//   <div class="text-container">
+//     <p>${ product.nombre }</p>
+//     <p>${product.prNeto}</p> 
+//     <p>${ product.description || 'No description available.' }</p>
+//   </div>
+// </div>
+//     `,
+      message:product.description || 'No description available.',
       buttons: ['OK']
     });
 
     await alert.present();
   }
+  addCar(){
+    
+  }
   
   goToCart() {
     this.router.navigate(['/example']);
+  }
+  async dismiss(product:any){
+      this.product=product
+    const modal = await this.modalController.create({
+      component: ModalCompComponent,
+      componentProps: {
+        Product: this.product,
+        modalStyle: 'my-custom-modal'
+      },
+      cssClass: 'my-custom-modal',
+    });
+     await modal.present();
+     const { data } = await modal.onWillDismiss(); 
+
+     if (data && data.dismissed && data.selectedProduct) { 
+     console.log(data.selectedProduct); 
+      // Realizar acciones con el producto seleccionado
+     }
+  
+  }
+  redLog(){
+    
   }
 }

@@ -35,3 +35,10 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+
+ion-input::-webkit-inner-spin-button,
+ion-input::-webkit-outer-spin-button { 
+  -webkit-appearance: none;
+  margin: 0; 
+}

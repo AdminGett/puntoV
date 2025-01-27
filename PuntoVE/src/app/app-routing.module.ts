@@ -9,6 +9,10 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'catalog',
+    loadChildren: () => import('./pages/catalog/catalog.module').then( m => m.CatalogPageModule)
+  },
+  {
     path: 'auth',
     loadChildren: () => import('./pages/auth/auth.module').then( m => m.AuthPageModule)
   },

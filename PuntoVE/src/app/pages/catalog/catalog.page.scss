@@ -28,7 +28,7 @@ ion-button {
 
 
 /* Personalizar las tarjetas de productos */
-ion-card {
+.Col01 ion-card {
   position: relative;
   // border: 1px solid #ccc;
   border: 1px solid #d7d7d785;
@@ -40,7 +40,10 @@ ion-card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 20%; /* Asegurar que la tarjeta ocupe todo el ancho posible */
+  width: 16%; /* Asegurar que la tarjeta ocupe todo el ancho posible */
+}
+.Col01{
+  height: 80%;
 }
 
 ion-card img {

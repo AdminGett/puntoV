@@ -116,3 +116,14 @@ modal-wrapper ion-overlay-wrapper{
 ion-modal{
   --height: 343px;
 }
+@media (max-width: 450px) {
+  .cool01{
+    display: contents;
+  }
+  .Col02{
+    display: contents;
+  }
+  .ion-card1{
+    width: 42%;
+  }
+}

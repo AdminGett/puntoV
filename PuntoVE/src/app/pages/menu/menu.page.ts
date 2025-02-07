@@ -204,7 +204,7 @@ export class MenuPage implements OnInit {
    
     for (let index = 0; index < this.selectedIds.length; index++) {
       const dataPr = this.dataP.find(data => data.id ===this.selectedIds[index])
-      
+      console.log(dataPr)
      if (dataPr) {
        this.savedData.push(dataPr); // Add the found data to the savedData array
       }

@@ -60,3 +60,4 @@ export class ExamplePage implements OnInit {
     this.router.navigate(['/pago']);
   }
 }
+  

@@ -61,11 +61,8 @@
             <ion-icon slot="start" name="add"></ion-icon>
             Producto
           </ion-button>
-          <ion-button *ngIf="selectedIds?.length > 0" (click)="print()">
-            <ion-icon slot="start" name="trash"></ion-icon>
-            Eliminar
-          </ion-button>
-          <ion-button (click)="Upd_Info()" id="open-modal1">
+          
+          <ion-button (click)="setOpen(true)" id="open-modal1">
             <ion-icon name="push-sharp"></ion-icon>
             Actualizar Inf.
           </ion-button>
@@ -73,9 +70,24 @@
             <ion-icon slot="start" name="refresh"></ion-icon>
             Actualizar tabla
           </ion-button>
+          <ion-button *ngIf="selectedIds?.length > 0" (click)="print()">
+            <ion-icon slot="start" name="trash"></ion-icon>
+            Eliminar
+          </ion-button>
         </ion-buttons>
       </div>
     </div>
+  </div>
+  <div  style="padding: 0; display: flex;
+  align-items: flex-end; margin-top: 2%; flex-direction: column;">
+    <ion-button  class="btnFunciones" (click)="print()">
+      <ion-icon name="print-sharp"></ion-icon>&nbsp;&nbsp;
+      Imp. Producto(s)
+    </ion-button>
+    <ion-button  class="btnFunciones">
+      <ion-icon name="bug-sharp"></ion-icon>&nbsp;&nbsp;
+      Analisis de venta
+    </ion-button>
   </div>
   <ion-modal #modal trigger="open-modal" backdropDismiss="false">
     <ng-template>
@@ -128,7 +140,7 @@
       </ion-content>
     </ng-template>
   </ion-modal>
-  <ion-modal #modal1 trigger="open-modal1" backdropDismiss="false">
+  <ion-modal [isOpen]="isModalOpen">
     <ng-template>
       <ion-content>
 
@@ -137,7 +149,7 @@
           <ion-title>Actualizar Producto</ion-title>
 
           <ion-buttons slot="end">
-            <ion-button color="light" (click)="modal1.dismiss()">Close</ion-button>
+            <ion-button color="light"  (click)="setOpen(false)">Close</ion-button>
           </ion-buttons>
         </ion-toolbar>
         <div style="width: 100%; display: flex; justify-content: space-evenly;">
@@ -148,7 +160,7 @@
           <ion-list class="modalLiP" >
             <ul *ngFor="let savedData of savedData; let i = index" class="ListProducto">
               <li>
-                <ion-input  type="text" [value]="savedData.codigo"></ion-input>
+                <ion-input [control]="form.controls.codigo"  type="text" [value]="savedData.codigo"></ion-input>
               </li>
               <li>
                 <ion-input type="text" [value]="savedData.nombre"></ion-input>
@@ -168,6 +180,13 @@
               </li>
               <li>
                 <ion-input type="text" [value]="savedData.prNeto"></ion-input>
+                
+              </li>
+              <li>
+                <div style="width: 5%;">
+                  <ion-img [src]="savedData.img"></ion-img>
+                </div>
+                
                 
               </li>
             </ul>
@@ -211,5 +230,6 @@
     </ng-template>
   </ion-modal>
   <!-- <app-footer></app-footer> -->
+  
   
 </ion-content>

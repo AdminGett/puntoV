@@ -11,6 +11,8 @@ import { ModalController } from '@ionic/angular';
 // import { Conditional } from '@angular/compiler';
 import { ModalCompComponent } from '../../shared/components/modal-comp/modal-comp.component';
 
+
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.page.html',
@@ -25,6 +27,7 @@ export class MenuPage implements OnInit {
   path!:File
   selectedIds: string[] = [];
   savedData = [];
+  isModalOpen = false;
 
   form = new FormGroup({
     codigo: new FormControl('', [Validators.required]),
@@ -211,6 +214,40 @@ export class MenuPage implements OnInit {
     }
   }
   AdUpdate(){
+    
+  }
+  setOpen(isOpen: boolean) {
+    /*** 
+     * Folio: 0203
+     */
+    this.isModalOpen = isOpen;
+     const arrayFiltrado = this.dataP.filter(item => item.checked === true);
+    // console.log(arrayFiltrado)
+    if(isOpen && arrayFiltrado.length > 0){
+      const dataMap = new Map(this.dataP.map(item => [item.id, item]));
+      this.selectedIds.forEach(id => {
+        const dataPr = dataMap.get(id); // Use the map for O(1) lookup
+        if (dataPr) {
+          this.savedData.push(dataPr);
+        }
+      });
+
+      // for (let index = 0; index < this.selectedIds.length; index++) {
+      //   const dataPr = this.dataP.find(data => data.id ===this.selectedIds[index])
+      //  if (dataPr) {
+      //    this.savedData.push(dataPr); // Add the found data to the savedData array
+      //   }
+      // }
+    }else{
+      this.savedData = []
+      this.selectedIds = []
+      this.dataP.forEach(item => item.checked = false);
+    }
+   
+      
+    /*
+      Fin Folio: 0002
+     */
     
   }
 

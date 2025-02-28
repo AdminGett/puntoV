@@ -1,7 +1,4 @@
-// ion-toolbar{
-//     --background: rgb(94 144 169);
-//     color: white;
-// }
+
 
 ion-content{
     background: #dddddde3;
@@ -23,4 +20,17 @@ ion-img{
     border-radius: 10px; 
     background-color: #f0f0f0; 
   }
-  
+.col-modal{
+    display: flex;
+    
+}
+.col-modal p{
+    margin-left: 2%;
+}
+
+@media only screen and (min-width: 768px) and (min-height: 768px) {
+    :host {
+        --width: 600px;
+        --height: 402px;
+    }
+}

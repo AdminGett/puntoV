@@ -42,3 +42,14 @@ ion-input::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0; 
 }
+.my-custom-modal{
+  --width: 709px;
+    --height: 380px;
+}
+.my-custom-modal ion-toolbar{
+  --background: rgb(94 144 169);
+  color: white;
+}
+.ListProducto .native-wrapper.sc-ion-input-md{
+  align-items: flex-end;
+}

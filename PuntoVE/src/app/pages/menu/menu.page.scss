@@ -84,3 +84,23 @@ table {
     transform: translateX(-50%);
   }
 
+  .ListProducto{
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    width: 100%;
+    padding: 0;
+  }
+  
+  .modalLiP{
+    margin: 0;
+    width: 100%;
+    padding: 3% 0;
+  }
+  .ListProducto ion-input{
+    text-align: center;
+  }
+  div .btnFunciones{
+    width: 17%;
+    margin-right: 2%;
+  }

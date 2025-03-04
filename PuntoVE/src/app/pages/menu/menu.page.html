@@ -161,7 +161,9 @@
           <ion-list class="modalLiP" >
             <ul *ngFor="let savedData of savedData; let i = index" class="ListProducto">
               <li>
-                <ion-input [control]="form.controls.codigo"  type="text" [value]="savedData.codigo"></ion-input>
+                <!-- <app-custom-input autocomplete="codigo" type="text" 
+              [control]="form.controls.codigo" [value]="savedData.codigo"></app-custom-input> -->
+                <ion-input  type="text" [value]="savedData.codigo" ></ion-input>
               </li>
               <li>
                 <ion-input type="text" [value]="savedData.nombre"></ion-input>
@@ -222,7 +224,7 @@
             </ion-button>
           </ion-item> -->
           <!-- ==========Btn + Product===========-->
-          <ion-button expand="block" type="sibmit">
+          <ion-button expand="block" type="sibmit" >
             Actualizar Inf.
           </ion-button>
         </form>

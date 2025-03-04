@@ -214,7 +214,8 @@ export class MenuPage implements OnInit {
     }
   }
   AdUpdate(){
-    
+    if(this.form.valid)
+    console.log(this.form.value)
   }
   setOpen(isOpen: boolean) {
     /*** 
@@ -248,9 +249,9 @@ export class MenuPage implements OnInit {
     /*
       Fin Folio: 0002
      */
-    
+      
   }
-
+  
   ngOnDestroy() {
     // this.dataP
   }

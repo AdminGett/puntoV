@@ -41,7 +41,7 @@
         </ion-card>
 
       </ion-col>
-      <ion-col size="9" style="display:flex; flex-wrap: wrap;" class="Col01">
+      <ion-col size="9"  style="display: flex; flex-wrap: wrap;" class="Col01">
         <!-- Mensaje de alerta en rojo si no se encuentran resultados -->
         <div class="ion-text-center" *ngIf="filteredProducts.length === 0 " style="color: red; position: absolute; text-align: center; margin: 16px;">
           No se encontraron resultados para "{{ searchQuery }}"
@@ -56,10 +56,10 @@
           </ion-card-header>
           <ion-card-content>
             <ion-label>{{ product.prNeto | currency }}</ion-label>
-            <div>
+            <!-- <div>
               <ion-icon *ngFor="let star of [1, 2, 3, 4, 5]" [name]="star <= product.rating ? 'star' : 'star-outline'"
                 color="warning"></ion-icon>
-            </div>
+            </div> -->
             <div class="icon" (click)="addCar()">
               <ion-icon name="home"></ion-icon> &nbsp;
               <!-- <ion-icon style="font-size: 1em;" name="cart"></ion-icon> &nbsp; -->

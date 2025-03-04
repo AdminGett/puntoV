@@ -21,11 +21,13 @@ export class CatalogPage implements OnInit {
   router = inject(Router)
   modalController=inject(ModalController)
 
+  
+ 
+
   ngOnInit() {
     // this.loadProducts();
     this.fare.getMetadata().subscribe((data:any)=>{
       this.products = data
-      console.log(this.products)
    })
   }
 

@@ -12,6 +12,7 @@ export class CustomInputComponent  implements OnInit {
   @Input() label !:String
   @Input() autocomplete !:String
   @Input() icon !:String
+  @Input() value!:number
   constructor() { }
 
   ngOnInit() {}

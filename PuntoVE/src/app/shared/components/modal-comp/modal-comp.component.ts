@@ -25,6 +25,16 @@ export class ModalCompComponent  implements OnInit {
       'selectedProduct': this.Product ,
     });
   }
+  product:any = {
+    rating: 3.5, // Ejemplo de rating
+    // ... otras propiedades
+  };
+  carrito(){
+    
+    if(this.Product){
+      console.log(1)
+    }
+  }
 
   ngOnInit() {
   }

@@ -11,14 +11,20 @@
         
         <ion-col size="12" class="col-modal">
           <ion-img [src]="Product.img"></ion-img>
-          <p>
+          <div>
             {{Product.description}}
-          </p>
+            <br>
+            <div>
+              <ion-icon *ngFor="let star of [1, 2, 3, 4, 5]" [name]="star <= Product.rating ? 'star' : 'star-outline'"
+                color="warning"></ion-icon>
+            </div>
+          </div><br>
+        
         </ion-col>
       </ion-row>
     </ion-grid>
        
-    <ion-button  expand="block" fill="clear" shape="round">
+    <ion-button  expand="block" fill="clear" shape="round" (click)="carrito()">
       Agregsar Carrito
     </ion-button>
   </ion-content>

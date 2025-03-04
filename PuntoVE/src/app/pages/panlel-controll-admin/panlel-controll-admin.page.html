@@ -1,0 +1,51 @@
+
+<app-header name="Gestion de permisos"></app-header>
+<ion-content  color="light">
+  <ion-header>
+    <ion-toolbar>
+      <ion-segment value="all" (ionChange)="segmentChanged($event)">
+        <ion-segment-button value="all">
+          <ion-label>Permisos</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="favorites">
+          <ion-label>Nuevo Colavorador</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="sistema">
+          <ion-label>Sistema</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+  </ion-header>
+  <div [ngSwitch]="segmentValue">
+    <div *ngSwitchCase="'all'">
+      <ion-list [inset]="true">
+        <ion-item style="width: 100%;">
+          <select name="name" id="" class="selectCol">
+            <option value="select">Colaboradores</option>
+            <option value="select">dos</option>
+          </select>
+          <!-- <ion-input label="Usuario"></ion-input> -->
+        </ion-item>
+        <ion-item>
+          <ion-toggle>
+            <ion-label>Actualizar productos</ion-label>
+          </ion-toggle>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div *ngSwitchCase="'favorites'">
+      <p>Mostrar permisos favoritos.</p>
+    </div>
+    <div *ngSwitchCase="'sistema'">
+      <ion-card>      
+          <img src="https://cdn.prod.website-files.com/667dd87dbc0ba33527e088a4/67a52df4ff7d6575786d3330_5dc98b57151e75dee69ebc94_IMA_LOGO_Sept_2019.jpeg" />
+      </ion-card>
+        
+    </div>
+  </div>
+   
+  
+   
+  
+   
+</ion-content>

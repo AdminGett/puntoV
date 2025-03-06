@@ -56,8 +56,8 @@ export class ExamplePage implements OnInit {
     console.log('Opción de entrega seleccionada:', this.deliveryOption);
     console.log('Total a pagar:', this.total);
 
-    // Aquí se redirige a la página de pago
-    this.router.navigate(['/pago']);
+    // Aquí se redirige a la página de auth para que se loguee el user
+    this.router.navigate(['/auth']);
   }
 }
    

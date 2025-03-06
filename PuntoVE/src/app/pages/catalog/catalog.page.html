@@ -1,12 +1,12 @@
-<ion-header s class="ion-no-border">
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-title>STORE</ion-title>
-    <ion-buttons slot="end" >
-      <ion-button (click)="redLog()">
+    <ion-buttons slot="end">
+      <a routerLink="/auth" (click)="redLog()"> 
         <ion-avatar style="display: flex; align-items: center;">
           <img class="img" alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />&nbsp;<label>Inicio</label>
         </ion-avatar>
-      </ion-button>
+      </a>
       <ion-button (click)="goToCart()">
         <ion-icon name="cart-outline"></ion-icon>
       </ion-button>

@@ -11,7 +11,7 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 export class UtilsService {
   [x: string]: any;
   datos: any[] = []
- //Se crean el servicio de utils para ser mas rapida la respuesta en el proyecto al logearse
+ //Se crean el servicio de utils para ser mas r apida la respuesta en el proyecto al logearse
  loadingCtrl = inject(LoadingController)
  toastCtrl = inject(ToastController)
  router = inject(Router)

@@ -1,9 +1,12 @@
-
 <app-header name="Gestion de permisos"></app-header>
-<ion-content  color="light">
+<ion-content color="light">
   <ion-header>
     <ion-toolbar>
-      <ion-segment value="all" (ionChange)="segmentChanged($event)">
+
+      <ion-segment value="graficas" (ionChange)="segmentChanged($event)">
+        <ion-segment-button value="graficas">
+          <ion-label>Graficas</ion-label>
+        </ion-segment-button>
         <ion-segment-button value="all">
           <ion-label>Permisos</ion-label>
         </ion-segment-button>
@@ -13,6 +16,7 @@
         <ion-segment-button value="sistema">
           <ion-label>Sistema</ion-label>
         </ion-segment-button>
+
       </ion-segment>
     </ion-toolbar>
   </ion-header>
@@ -36,16 +40,38 @@
     <div *ngSwitchCase="'favorites'">
       <p>Mostrar permisos favoritos.</p>
     </div>
+    <!-- Seccion paginado para paginas graficas -->
+    <div *ngSwitchCase="'graficas'">
+      <div style="display: flex;">
+        <ion-card style="width: 50%;">
+          <ion-card-content>
+            <div id="chart2">
+              <apx-chart [series]="chartOptionsPastel.series" [chart]="chartOptionsPastel.chart"
+                [labels]="chartOptionsPastel.labels" [responsive]="chartOptionsPastel.responsive"></apx-chart>
+            </div>
+          </ion-card-content>
+        </ion-card>
+        <ion-card style="width: 50%;">
+          <div id="chart">
+            <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
+              [stroke]="chartOptions.stroke" [tooltip]="chartOptions.tooltip"
+              [dataLabels]="chartOptions.dataLabels"></apx-chart>
+          </div>
+        </ion-card>
+      </div>
+
+    </div>
     <div *ngSwitchCase="'sistema'">
-      <ion-card>      
-          <img src="https://cdn.prod.website-files.com/667dd87dbc0ba33527e088a4/67a52df4ff7d6575786d3330_5dc98b57151e75dee69ebc94_IMA_LOGO_Sept_2019.jpeg" />
+      <ion-card>
+        <img
+          src="https://cdn.prod.website-files.com/667dd87dbc0ba33527e088a4/67a52df4ff7d6575786d3330_5dc98b57151e75dee69ebc94_IMA_LOGO_Sept_2019.jpeg" />
       </ion-card>
-        
+
     </div>
   </div>
-   
-  
-   
-  
-   
+
+
+
+
+
 </ion-content>

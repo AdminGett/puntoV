@@ -13,6 +13,8 @@ import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 ///========== 
 import {NgxPaginationModule} from 'ngx-pagination';
+///=========Importacion de librerias de 
+import { NgApexchartsModule } from "ng-apexcharts";
 
 
 @NgModule({
@@ -24,6 +26,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     NgxPaginationModule,
+    NgApexchartsModule,
     
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

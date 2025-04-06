@@ -2,16 +2,18 @@
 
 <ion-content>
   <div class="menu-container">
-    <ion-button routerLink="/panlel-controll-admin" class="admin-button">Gestión</ion-button>
-    <div class="searchbar-container">
+    <div class="searchbar-container" style="padding: 0 23px;">
       <ion-searchbar [debounce]="1000" style="width: 50%;"></ion-searchbar>
+      <ion-button fill="clear" style="--border-radius: 28px;" routerLink="/panlel-controll-admin"><ion-icon
+          name="settings-sharp"></ion-icon></ion-button>
+
     </div>
   </div>
 
   <div class="main-container">
     <table style="width: 95%;">
       <thead>
-        <tr> 
+        <tr>
           <th>Codigo</th>
           <th>Producto</th>
           <th>Categoria</th>

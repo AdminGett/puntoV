@@ -136,7 +136,8 @@ export class MenuPage implements OnInit {
     }
   }
   print() {
-    window.print();
+    this.utils.generateAndSharePdf()
+    // window.print();
   }
   deleteFoto(){
     // console.log("Eliminacion de Fotos: ",this.check)

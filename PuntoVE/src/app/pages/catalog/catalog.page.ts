@@ -15,6 +15,8 @@ export class CatalogPage implements OnInit {
   searchQuery: string = '';
   products: any[] = [];
   product!:any
+  catSlect:boolean = true
+  isExpanded: { [key: number]: boolean } = {}; 
 
   fare = inject(FirebaseService) 
   alertController = inject(AlertController)
@@ -134,6 +136,9 @@ export class CatalogPage implements OnInit {
       // Realizar acciones con el producto seleccionado
      }
   
+  }
+  toggleProduct(index: number) {
+    this.isExpanded[index] = !this.isExpanded[index];
   }
   redLog(){
     

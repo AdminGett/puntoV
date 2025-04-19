@@ -2,8 +2,21 @@
 
 <ion-content>
   <div class="menu-container">
-    <div class="searchbar-container" style="padding: 0 23px;">
-      <ion-searchbar [debounce]="1000" style="width: 50%;"></ion-searchbar>
+    <div class="searchbar-container">
+      <ion-select slot="end" aria-label="Categoría" placeholder="Selecciona categoría">
+        <ion-select-option value="ropa">Ropa</ion-select-option>
+        <ion-select-option value="ropa-camisas">-- Camisas</ion-select-option>
+        <ion-select-option value="ropa-pantalones">-- Pantalones</ion-select-option>
+
+        <ion-select-option value="zapatos">Zapatos</ion-select-option>
+        <ion-select-option value="zapatos-deportivos">-- Deportivos</ion-select-option>
+        <ion-select-option value="zapatos-formales">-- Formales</ion-select-option>
+      </ion-select>
+      <!-- <ion-select  slot="end" aria-label="Fruit" placeholder="Seleccióna categoria">
+        <ion-select-option value="apples">Ropa</ion-select-option>
+        <ion-select-option value="oranges">Zapatos</ion-select-option>
+      </ion-select> -->
+      <ion-searchbar [debounce]=" 1000" style="width: 50%;"></ion-searchbar>
       <ion-button fill="clear" style="--border-radius: 28px;" routerLink="/panlel-controll-admin"><ion-icon
           name="settings-sharp"></ion-icon></ion-button>
 

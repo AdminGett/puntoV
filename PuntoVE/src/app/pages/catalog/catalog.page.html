@@ -2,9 +2,10 @@
   <ion-toolbar>
     <ion-title>STORE</ion-title>
     <ion-buttons slot="end">
-      <a routerLink="/auth" (click)="redLog()"> 
+      <a routerLink="/auth" (click)="redLog()">
         <ion-avatar style="display: flex; align-items: center;">
-          <img class="img" alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />&nbsp;<label>Inicio</label>
+          <img class="img" alt=""
+            src="https://ionicframework.com/docs/img/demos/avatar.svg" />&nbsp;<label>Inicio</label>
         </ion-avatar>
       </a>
       <ion-button (click)="goToCart()">
@@ -18,40 +19,77 @@
   <ion-grid>
     <ion-row class="ion-justify-content-center ">
       <ion-col size="3" class="cool01">
-        <ion-card style="width: 100%; height: 28%;">
+        <ion-card style="width: 100%; height: auto;">
           <ion-card-content style="display: flex;     flex-direction: column;
     flex-wrap: nowrap;">
             <!-- <ion-item class="search-bar-container"> -->
             <ion-item>
-              <ion-input type="text" [(ngModel)]="searchQuery" placeholder="Buscar producto" [clearInput]="true"> <ion-icon slot="end" name="search-outline"></ion-icon></ion-input>
+              <ion-input type="text" [(ngModel)]="searchQuery" placeholder="Buscar producto" [clearInput]="true">
+                <ion-icon slot="end" name="search-outline"></ion-icon></ion-input>
               <!-- <ion-button fill="clear">
                 <ion-icon name="search-outline"></ion-icon>
               </ion-button> -->
             </ion-item>
+            <br>
+            <!-- <ion-checkbox [(ngModel)]="catSlect" mod="ios" style="text-decoration: none;">Todos los
+              productos</ion-checkbox> -->
             <!-- Filtro de categoría y busqueda por nombre -->
-            <div style="display: flex; align-items: center; ">
-              <ion-label>Categoría</ion-label> &nbsp;&nbsp;
-              <ion-select [(ngModel)]="filter" interface="popover" placeholder="Selecciona una categoría" mod="ios">
-                <ion-select-option value="all">Todo</ion-select-option>
-                <ion-select-option *ngFor="let product of filteredProducts"
-                  [value]="product.categoria">{{product.categoria}}</ion-select-option>
+            <!-- <br>
+            <div *ngIf="catSlect===false">
+              <ion-label>Categorías</ion-label> &nbsp;&nbsp;
+              <ion-select [(ngModel)]="filter" *ngFor="let product of filteredProducts" interface="popover"
+                placeholder="Selecciona una categoría" mod="ios">
+                <ion-select-option value="all">{{product.categoria}}</ion-select-option>
+                <ion-select-option [value]="product.categoria">{{product.categoria}}</ion-select-option>
               </ion-select>
-              
+            </div> -->
+          </ion-card-content>
+        </ion-card>
+        <ion-card style="width: 100%; height: auto;">
+          <ion-card-content style="display: flex;     flex-direction: column;
+    flex-wrap: nowrap;">
+            <ion-label><b>Filtrar por</b></ion-label>
+            <br>
+            <!-- Filtro de categoría y busqueda por nombre -->
+            <div *ngFor="let product of filteredProducts; let i = index" class="product-item">
+              <!-- Contenedor clickable -->
+              <div class="clickable-header" (click)="toggleProduct(i)" [class.active]="isExpanded[i]">
+                <label>{{ product.categoria }}</label>
+                <ion-icon [name]="isExpanded[i] ? 'chevron-up-circle-sharp' : 'add-sharp'" slot="end"></ion-icon>
+              </div>
+
+              <!-- Contenido oculto -->
+              <div class="hidden-content" [class.show]="isExpanded[i]">
+                <ion-checkbox>Todas las opciones </ion-checkbox>
+              </div>
             </div>
+            <!-- <div *ngFor="let product of filteredProducts">
+              <div style="width: 100%;">
+                <label for="toggle-categoria" class="clickable-div">
+                  {{product.categoria}}
+                </label>
+                <ion-icon name="chevron-down-circle-sharp" slot="end"></ion-icon>
+              </div>
+              <div class="hidden-content">
+                 {{product.subcategoria}}
+              </div>
+            </div> -->
+
           </ion-card-content>
         </ion-card>
 
       </ion-col>
-      <ion-col size="9"  style="display: flex; flex-wrap: wrap;" class="Col01">
+      <ion-col size="9" style="display: flex; flex-wrap: wrap;" class="Col01">
         <!-- Mensaje de alerta en rojo si no se encuentran resultados -->
-        <div class="ion-text-center" *ngIf="filteredProducts.length === 0 " style="color: red; position: absolute; text-align: center; margin: 16px;">
+        <div class="ion-text-center" *ngIf="filteredProducts.length === 0 "
+          style="color: red; position: absolute; text-align: center; margin: 16px;">
           No se encontraron resultados para "{{ searchQuery }}"
         </div>
         <!-- Ion cartd para los productos -->
         <ion-card class="ion-card1" *ngFor="let product of filteredProducts">
           <!-- <img [src]="product.img" alt="Product Image" (click)="showProductInfo(product)"> -->
-          <img [src]="product.img" alt="Product Image" (click)="dismiss(product)" >
-          
+          <img [src]="product.img" alt="Product Image" (click)="dismiss(product)">
+
           <ion-card-header>
             <ion-card-title>{{ product.nombre }}</ion-card-title>
           </ion-card-header>

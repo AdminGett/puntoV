@@ -38,6 +38,8 @@ table {
   .searchbar-container {
     display: flex; /* Enable flexbox layout */
     justify-content: flex-end; /* Align items to the end */
+    align-items: center;
+    padding: 0 23px;
   }
   ion-modal {
     --width:70%;
@@ -103,4 +105,10 @@ table {
   div .btnFunciones{
     width: 17%;
     margin-right: 2%;
+  }
+  .selectCol{
+    border: none;
+    padding: 0 10px;
+    margin: 0px 7px;
+    padding: 0 17px;
   }

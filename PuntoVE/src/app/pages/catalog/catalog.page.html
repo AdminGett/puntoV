@@ -59,8 +59,8 @@
               </div>
 
               <!-- Contenido oculto -->
-              <div class="hidden-content" [class.show]="isExpanded[i]">
-                <ion-checkbox>Todas las opciones </ion-checkbox>
+              <div *ngIf="product.subcategoria " class="hidden-content" [class.show]="isExpanded[i]">
+                <ion-checkbox>{{ product.subcategoria}}</ion-checkbox>
               </div>
             </div>
             <!-- <div *ngFor="let product of filteredProducts">

@@ -1,4 +1,5 @@
 /* style.css */
+/*--002|josue.deñuna|Optimizacion a pantalla de menu al agregar un producto|F-*/
 
 .main-container {
   display: flex;
@@ -41,9 +42,10 @@ table {
     align-items: center;
     padding: 0 23px;
   }
-  ion-modal {
+
+  ion-modal { //--02
     --width:70%;
-    --height: 60%;
+    --height: 67.5%;
     --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   }
   

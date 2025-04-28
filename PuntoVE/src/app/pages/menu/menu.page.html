@@ -3,14 +3,16 @@
 <ion-content>
   <div class="menu-container">
     <div class="searchbar-container">
-      <ion-select slot="end" aria-label="Categoría" placeholder="Selecciona categoría">
-        <ion-select-option value="ropa">Ropa</ion-select-option>
-        <ion-select-option value="ropa-camisas">-- Camisas</ion-select-option>
-        <ion-select-option value="ropa-pantalones">-- Pantalones</ion-select-option>
-
-        <ion-select-option value="zapatos">Zapatos</ion-select-option>
-        <ion-select-option value="zapatos-deportivos">-- Deportivos</ion-select-option>
-        <ion-select-option value="zapatos-formales">-- Formales</ion-select-option>
+      <ion-select slot="end" placeholder="Categoria" interface="popover" multiple="true">
+        <ion-select-option value="brown">Brown</ion-select-option>
+        <ion-select-option value="blonde">Blonde</ion-select-option>
+        <ion-select-option value="red">Red</ion-select-option>
+      </ion-select>
+      &nbsp; &nbsp;
+      <ion-select slot="end" placeholder="Supcategoria" interface="popover" multiple="true">
+        <ion-select-option value="brown">Brown</ion-select-option>
+        <ion-select-option value="blonde">Blonde</ion-select-option>
+        <ion-select-option value="red">Red</ion-select-option>
       </ion-select>
       <!-- <ion-select  slot="end" aria-label="Fruit" placeholder="Seleccióna categoria">
         <ion-select-option value="apples">Ropa</ion-select-option>
@@ -111,33 +113,62 @@
           </ion-buttons>
         </ion-toolbar>
         <form [formGroup]="form" (ngSubmit)="agregar()">
-          <ion-list style="display: flex; border-bottom: 1px solid black;">
-            <app-custom-input autocomplete="codigo" type="text" label="Codigo"
-              [control]="form.controls.codigo"></app-custom-input>
-            <app-custom-input autocomplete="nombre" type="text" label="Nombre"
-              [control]="form.controls.nombre"></app-custom-input>
-            <app-custom-input autocomplete="categoria" type="text" label="Categoria"
-              [control]="form.controls.categoria"></app-custom-input>
-            <app-custom-input autocomplete="cantidad" type="number" label="Cantidad"
-              [control]="form.controls.cantidad"></app-custom-input>
-            <app-custom-input autocomplete="precio" type="number" label="Precio"
-              [control]="form.controls.precio"></app-custom-input>
-            <app-custom-input autocomplete="precioneto" type="number" label="Precio Neto"
-              [control]="form.controls.prNeto"></app-custom-input>
-          </ion-list>
-          <ion-item>
-            <app-custom-input type="text" label="Agregar una descripción"
-              [control]="form.controls.description"></app-custom-input>
-          </ion-item>
-          <ion-item>
-            <ion-avatar *ngIf="form.value.img">
-              <img [src]="form.value.img" />
-            </ion-avatar>
-            <ion-icon *ngIf="!form.value.img" class="image-icon" name="image"></ion-icon>
-            <ion-button *ngIf="!form.value.img" (click)=" takeImage($event)" mode="ios" size="small" shape="round">
-              <ion-icon slot="start" name="image"></ion-icon> Add una imagen
-            </ion-button>
-          </ion-item>
+          <!-- <ion-list style="display: flex; border-bottom: 1px solid black;"> -->
+          <div style="padding: 3%;">
+            <ion-grid>
+              <ion-row>
+                <ion-col size-md="6">
+                  <app-custom-input autocomplete="codigo" type="text" label="Codigo"
+                    [control]="form.controls.codigo"></app-custom-input>
+                </ion-col>
+                <ion-col size-md="6">
+                  <app-custom-input autocomplete="nombre" type="text" label="Nombre"
+                    [control]="form.controls.nombre"></app-custom-input>
+                </ion-col>
+                <ion-col size-md="6">
+                  <!-- <app-custom-input autocomplete="categoria" type="text" label="Categoria"
+                    [control]="form.controls.categoria"></app-custom-input> -->
+                  <ion-select style="width: 100%;" aria-label="Categoria" interface="popover"
+                    placeholder="Selecciona Categoria">
+                    <ion-select-option value="apples">Apples</ion-select-option>
+                    <ion-select-option value="oranges">Oranges</ion-select-option>
+                    <ion-select-option value="bananas">Bananas</ion-select-option>
+                  </ion-select>
+
+                </ion-col>
+                <ion-col size-md="6">
+                  <app-custom-input autocomplete="cantidad" type="number" label="Cantidad"
+                    [control]="form.controls.cantidad"></app-custom-input>
+                </ion-col>
+                <ion-col size-md="6">
+                  <app-custom-input autocomplete="precio" type="number" label="Precio"
+                    [control]="form.controls.precio"></app-custom-input>
+                </ion-col>
+                <ion-col size-md="6">
+                  <app-custom-input autocomplete="precioneto" type="number" label="Precio Neto"
+                    [control]="form.controls.prNeto"></app-custom-input>
+                </ion-col>
+                <ion-col size-md="12">
+                  <ion-item>
+                    <app-custom-input type="text" label="Agregar una descripción"
+                      [control]="form.controls.description"></app-custom-input>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+            <ion-item>
+              <ion-avatar *ngIf="form.value.img">
+                <img [src]="form.value.img" />
+              </ion-avatar>
+              <ion-icon *ngIf="!form.value.img" class="image-icon" name="image"></ion-icon>
+              <ion-button *ngIf="!form.value.img" (click)=" takeImage($event)" mode="ios" size="small" shape="round">
+                <ion-icon slot="start" name="image"></ion-icon> Add una imagen
+              </ion-button>
+            </ion-item>
+          </div>
+          <!-- </ion-list> -->
+
+
           <ion-button expand="block" type="sibmit">
             Agregar producto
           </ion-button>

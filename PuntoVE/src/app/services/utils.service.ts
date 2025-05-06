@@ -88,7 +88,7 @@ export class UtilsService {
           title: 'Compartir PDF',
           url: result.uri
         });
-      } else {
+      } else { 
         const blob = new Blob([text], { type: 'application/pdf' });
         const link = document.createElement('a');
         link.href = window.URL.createObjectURL(blob);

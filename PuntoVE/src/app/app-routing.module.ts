@@ -35,7 +35,8 @@ const routes: Routes = [
   {
     path: 'pago',
     loadChildren: () => import('./pages/pago/pago.module').then( m => m.PagoPageModule)
-  },  {
+  },
+  {
     path: 'panlel-controll-admin',
     loadChildren: () => import('./pages/panlel-controll-admin/panlel-controll-admin.module').then( m => m.PanlelControllAdminPageModule)
   },

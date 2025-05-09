@@ -4,6 +4,6 @@ export interface  categorias
         Electronica, 
         Hogar,
         Deportes,
-         
+         ssss
     },
 }

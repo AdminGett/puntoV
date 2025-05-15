@@ -128,64 +128,13 @@
       </div>
 
     </div>
-    
-<!-- Primer cambio de la pantalla de sistema JSCG-2508 -->
-<ion-card *ngSwitchCase="'sistema'">
-  <ion-card-header>
-    <ion-card-title>Datos de Negocio</ion-card-title>
-  </ion-card-header>
+    <div *ngSwitchCase="'sistema'">
+      <ion-card>
+        <img
+          src="https://cdn.prod.website-files.com/667dd87dbc0ba33527e088a4/67a52df4ff7d6575786d3330_5dc98b57151e75dee69ebc94_IMA_LOGO_Sept_2019.jpeg" />
+      </ion-card>
 
-  <ion-card-content>
-    <form class="negocio-form">
-
-      <div class="logo-section">
-        <div class="logo-box"></div>
-        <div class="logo-label">Add tu Logo</div>
-      </div>
-
-      <div class="form-section">
-
-        <ion-item>
-          <ion-label position="stacked">Nombre de compañía</ion-label>
-          <ion-input type="text" placeholder="Ingresa el nombre de la compañía" name="nombre"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label position="stacked">Correo</ion-label>
-          <ion-input type="email" placeholder="Ingresa el correo electrónico" name="correo"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label position="stacked">RFC</ion-label>
-          <ion-input type="text" placeholder="Ingresa el RFC" name="rfc"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label position="stacked">Administrador</ion-label>
-          <ion-input type="text" placeholder="Ingresa el nombre del administrador" name="admin"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label position="stacked">Usuario</ion-label>
-          <ion-input type="text" placeholder="Ingresa el nombre de usuario" name="usuario"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label position="stacked">Contraseña</ion-label>
-          <ion-input type="password" placeholder="Ingresa la contraseña" name="password"></ion-input>
-        </ion-item>
-
-        <div class="button-section">
-          <ion-button type="submit" color="success">
-            Editar
-          </ion-button>
-        </div>
-
-      </div>
-    </form>
-  </ion-card-content>
-</ion-card>
-
+    </div>
   </div>
 
 

@@ -1,3 +1,4 @@
+<!-- --001|josue.deluna|CambioTipoGrafica|F-2509 -->
 <app-header name="Gestion de permisos"></app-header>
 <ion-content color="light">
   <ion-header>
@@ -11,7 +12,7 @@
           <ion-label>Permisos</ion-label>
         </ion-segment-button>
         <ion-segment-button value="favorites">
-          <ion-label>Nuevo Colaborador</ion-label>
+          <ion-label>Settings de colavorador</ion-label>
         </ion-segment-button>
         <ion-segment-button value="sistema">
           <ion-label>Sistema</ion-label>
@@ -38,26 +39,92 @@
       </ion-list>
     </div>
     <div *ngSwitchCase="'favorites'">
-      <p>Mostrar permisos favoritos.</p>
+      {{category | json}}
     </div>
     <!-- Seccion paginado para paginas graficas -->
     <div *ngSwitchCase="'graficas'">
-      <div style="display: flex;">
-        <ion-card style="width: 50%;">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12" size-sm="3">
+            <ion-card color="success">
+              <ion-card-header>
+                <ion-card-title>Ingresos</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <p> Ganancias:</p>
+                <p> %:</p>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+          <ion-col size="12" size-sm="3">
+            <ion-card color="secondary">
+              <ion-card-header>
+                <ion-card-title>Inverción</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <p> Ganancias:</p>
+                <p> %:</p>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+          <ion-col size="12" size-sm="3">
+            <ion-card color="warning">
+              <ion-card-header>
+                <ion-card-title>Detenido</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <p> Ganancias:</p>
+                <p> %:</p>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+          <ion-col size="12" size-sm="3">
+            <ion-card color="danger">
+              <ion-card-header>
+                <ion-card-title>Egresos</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <p> Ganancias:</p>
+                <p> %:</p>
+              </ion-card-content>
+            </ion-card></ion-col>
+        </ion-row>
+      </ion-grid>
+
+
+      <div>
+        <ion-card style="width: 100%; box-shadow: none;">
           <ion-card-content>
-            <div id="chart2">
-              <apx-chart [series]="chartOptionsPastel.series" [chart]="chartOptionsPastel.chart"
-                [labels]="chartOptionsPastel.labels" [responsive]="chartOptionsPastel.responsive"></apx-chart>
+            <div style="display: flex;">
+              <ion-card style="width: 50%;">
+                <!-- <div id="chart">
+                  <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
+                    [stroke]="chartOptions.stroke" [tooltip]="chartOptions.tooltip"
+                    [dataLabels]="chartOptions.dataLabels"></apx-chart>
+                </div> -->
+                <!-- --001 -->
+                <div id="chart3">
+                  <apx-chart [series]="chartOptionsBarras.series" [chart]="chartOptionsBarras.chart"
+                    [dataLabels]="chartOptionsBarras.dataLabels" [plotOptions]="chartOptionsBarras.plotOptions"
+                    [yaxis]="chartOptionsBarras.yaxis" [xaxis]="chartOptionsBarras.xaxis"
+                    [stroke]="chartOptionsBarras.stroke" [grid]="chartOptionsBarras.grid"
+                    [fill]="chartOptionsBarras.fill" [annotations]="chartOptionsBarras.annotations"></apx-chart>
+                </div>
+                <!-- --001 Fin folio-->
+              </ion-card>
+              <ion-card style="width: 50%;">
+                <ion-card-content>
+                  <div id="chart2">
+                    <apx-chart [series]="chartOptionsPastel.series" [chart]="chartOptionsPastel.chart"
+                      [labels]="chartOptionsPastel.labels" [responsive]="chartOptionsPastel.responsive"></apx-chart>
+                  </div>
+                </ion-card-content>
+              </ion-card>
+
             </div>
           </ion-card-content>
         </ion-card>
-        <ion-card style="width: 50%;">
-          <div id="chart">
-            <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
-              [stroke]="chartOptions.stroke" [tooltip]="chartOptions.tooltip"
-              [dataLabels]="chartOptions.dataLabels"></apx-chart>
-          </div>
-        </ion-card>
+
       </div>
 
     </div>

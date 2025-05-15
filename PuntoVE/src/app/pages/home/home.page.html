@@ -1,0 +1,53 @@
+<ion-content class="ion-padding">
+
+  <!-- Imagen superior -->
+<div class="top-banner">
+  <img src="assets/img/banner-home.png" alt="Logo de tienda" />
+  <ion-icon name="cart-outline" class="cart-icon"></ion-icon>
+</div>
+
+  <!-- Íconos de categorías -->
+  <div class="category-icons">
+    <ion-icon name="desktop-outline"></ion-icon>
+    <ion-icon name="barbell-outline"></ion-icon>
+    <ion-icon name="home-outline"></ion-icon>
+    <ion-icon name="american-football-outline"></ion-icon>
+    <ion-icon name="car-outline"></ion-icon>
+  </div>
+
+  <!-- Imagen de productos recientes y promocional -->
+  <div class="image-section">
+    <div class="image-box">Imagen de Productos recientes</div>
+    <div class="image-box">Imagen Promocional</div>
+  </div>
+
+  <!-- Descuentos especiales -->
+  <div class="special-discounts">
+    <div class="discount-card" *ngFor="let i of [1,2,3]">
+      <h4>Descuentos especiales <span>15%</span></h4>
+      <div class="discount-img">Imagen</div>
+      <p>descripción</p>
+      <div class="discount-img">Imagen</div>
+      <p>descripción</p>
+    </div>
+  </div>
+
+  <!-- Recomendado para ti -->
+  <h5 class="recommended-title">Recomendado para ti</h5>
+  <div class="recommendation-list">
+    <div class="recommendation-card" *ngFor="let i of [1,2,3]">
+      <div class="recommendation-img"></div>
+      <p>descripción</p>
+      <p>$ Precio</p>
+    </div>
+  </div>
+
+</ion-content>
+
+<!-- footer -->
+<div class="footer">
+  <p>MiniSúper XYZ</p>
+  <p>Dirección: Calle Ficticia 123, Aguascalientes</p>
+  <p>Tel: (449) 123 4567</p>
+
+</div>

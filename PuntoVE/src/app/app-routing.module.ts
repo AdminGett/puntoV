@@ -39,6 +39,10 @@ const routes: Routes = [
     path: 'panlel-controll-admin',
     loadChildren: () => import('./pages/panlel-controll-admin/panlel-controll-admin.module').then( m => m.PanlelControllAdminPageModule)
   },
+  {
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+  },
 
   
 ];

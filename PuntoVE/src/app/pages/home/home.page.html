@@ -1,10 +1,10 @@
 <ion-content class="ion-padding">
 
   <!-- Imagen superior -->
-<div class="top-banner">
-  <img src="assets/img/banner-home.png" alt="Logo de tienda" />
-  <ion-icon name="cart-outline" class="cart-icon"></ion-icon>
-</div>
+  <div class="top-banner">
+    <img src="assets/img/banner-home.png" alt="Logo de tienda" />
+    <ion-icon name="cart-outline" class="cart-icon"></ion-icon>
+  </div>
 
   <!-- Íconos de categorías -->
   <div class="category-icons">
@@ -26,7 +26,8 @@
     <div class="discount-card" *ngFor="let product of discountedProducts">
       <h4>Descuentos especiales <span>15%</span></h4>
       <div class="discount-img">Imagen</div>
-      <ion-img src="assets/img/prod2.png"></ion-img>
+      <ion-img src="product.image"></ion-img>
+      <ion-img [src]="product.image"></ion-img>
       <p>descripción</p>
       <div class="discount-img">Imagen</div>
       <p>descripción</p>

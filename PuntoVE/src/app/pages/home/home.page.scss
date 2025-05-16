@@ -1,0 +1,154 @@
+.top-banner img {
+  width: 100%;
+  border-radius: 12px;
+}
+.cart-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 28px;
+  background: white;
+  padding: 8px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(207, 186, 186, 0.15);
+  z-index: 10;
+}
+
+.category-icons {
+  display: flex;
+  justify-content: space-between;
+  margin: 16px 0;
+  ion-icon {
+    font-size: 28px;
+    background: #f4f4f4;
+    padding: 10px;
+    border-radius: 10px;
+  }
+}
+
+.image-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+
+  .image-box {
+    flex: 1;
+    background-color: #ddd;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border-radius: 10px;
+  }
+}
+
+.special-discounts {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+
+  .discount-card {
+    flex: 1;
+    background: #e3e3e3;
+    padding: 10px;
+    border-radius: 10px;
+
+    h4 {
+      margin: 0 0 8px;
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .discount-img {
+      background: #fbb;
+      height: 80px;
+      margin-bottom: 5px;
+      border-radius: 8px;
+    }
+
+    p {
+      margin: 0 0 8px;
+      font-size: 13px;
+    }
+  }
+}
+
+.recommended-title {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.recommendation-list {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+
+  .recommendation-card {
+    flex: 1;
+    background: #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+
+    .recommendation-img {
+      height: 100px;
+      background: #89bfc2;
+      border-radius: 8px;
+      margin-bottom: 8px;
+    }
+
+    p {
+      font-size: 13px;
+      margin: 4px 0;
+    }
+  }
+}
+:host {
+  --primary: #4F46E5;
+  --secondary: #6366F1;
+  --background: #F9FAFB;
+  --neutral: #E5E7EB;
+  --text-dark: #111827;
+}
+
+ion-content {
+  background-color: var(--background);
+}
+
+.category-icons ion-icon {
+  background: var(--neutral);
+  color: var(--primary);
+}
+
+.image-box {
+  background-color: var(--neutral);
+  color: var(--text-dark);
+}
+
+.discount-card {
+  background: var(--neutral);
+}
+
+.discount-img {
+  background: var(--secondary);
+  opacity: 0.8;
+}
+
+.recommendation-card {
+  background: var(--neutral);
+  color: var(--text-dark);
+}
+
+.recommendation-img {
+  background: var(--secondary);
+}
+.footer {
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-dark);
+  margin-top: 30px;
+  padding: 20px 10px;
+  border-top: 1px solid var(--neutral);
+}

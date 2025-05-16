@@ -13,6 +13,7 @@ import { ModalCompComponent } from '../../shared/components/modal-comp/modal-com
 
 
 
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.page.html',

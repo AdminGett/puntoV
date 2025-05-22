@@ -1,7 +1,14 @@
 .top-banner img {
-  width: 100%;
+  width: 200px; /* o el tamaño que prefieras */
   border-radius: 12px;
+  display: block;
+  margin: 0;
 }
+.top-banner {
+  text-align: left;
+}
+
+
 .cart-icon {
   position: absolute;
   top: 20px;

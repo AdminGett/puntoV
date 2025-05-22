@@ -2,7 +2,7 @@
 
   <!-- Imagen superior -->
 <div class="top-banner">
-  <img src="assets/img/banner-home.png" alt="Logo de tienda" />
+  <img src="assets/img/logo1-removebg-preview.png" alt="Logo de tienda" />
   <ion-icon name="cart-outline" class="cart-icon"></ion-icon>
 </div>
 
@@ -22,21 +22,19 @@
   </div>
 
   <!-- Descuentos especiales -->
-  <div class="special-discounts">
-    <div class="discount-card" *ngFor="let product of discountedProducts">
-      <h4>Descuentos especiales <span>15%</span></h4>
-      <div class="discount-img">Imagen</div>
-      <ion-img src="assets/img/prod2.png"></ion-img>
-      <p>descripción</p>
-      <div class="discount-img">Imagen</div>
-      <p>descripción</p>
-    </div>
+ <div class="special-discounts">
+  <div class="discount-card" *ngFor="let product of discountedProducts">
+    <h4>Descuentos especiales <span>15%</span></h4>
+    <ion-img [src]="product.image"></ion-img>
+    <p>{{ product.description }}</p>
   </div>
+</div>
+
 
   <!-- Recomendado para ti -->
   <h5 class="recommended-title">Recomendado para ti</h5>
   <div class="recommendation-list">
-    <div class="recommendation-card" *ngFor="let i of [1,2,3]">
+    <div class="recommendation-card" *ngFor="let product of recommendedProducts">
       <div class="recommendation-img"></div>
       <p>descripción</p>
       <p>$ Precio</p>
@@ -46,9 +44,9 @@
 </ion-content>
 
 <!-- footer -->
-<div class="footer">
-  <p>MiniSúper XYZ</p>
-  <p>Dirección: Calle Ficticia 123, Aguascalientes</p>
-  <p>Tel: (449) 123 4567</p>
+<footer class="footer">
+  <div class="copyright">
+    © 2025 El nido de mama. Todos los derechos reservados.
+  </div>
+</footer>
 
-</div>

@@ -19,9 +19,9 @@ export class HomePage implements OnInit {
   // Productos con descuentos
   discountedProducts = [
     { image: '/PuntoVE/src/assets/img/prod2.png', description: 'Detergente XYZ' },
-    { image: 'assets/img/prod2.png', description: 'Suavizante ABC' },
+    { image: 'assets/img/prod2.png', description: 'Pack de estudiante' },
     { image: 'assets/img/prod3.png', description: 'Limpiador Multiusos' },
-    { image: 'assets/img/prod4.png', description: 'Desinfectante' },
+    { image: 'assets/img/prod4.png', description: 'PS5' },
     { image: 'assets/img/prod5.png', description: 'Shampoo para ropa' },
     { image: 'assets/img/prod6.png', description: 'Jabón líquido' }
   ];

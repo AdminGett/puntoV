@@ -129,67 +129,190 @@
 
     </div>
     
-<!-- Primer cambio de la pantalla de sistema JSCG-2508 -->
-<ion-card *ngSwitchCase="'sistema'">
+<!-- Pantalla de sistema JSCG-2508 -->
+<ion-card *ngSwitchCase="'sistema'" class="dark-background">
   <ion-card-header>
     <ion-card-title>Datos de Negocio</ion-card-title>
   </ion-card-header>
 
   <ion-card-content>
+    <!-- Formulario principal -->
     <form class="negocio-form">
-
       <div class="logo-section">
-        <div class="logo-box"></div>
-        <div class="logo-label">Add tu Logo</div>
+        <div class="logo-box" title="Haz clic para cambiar logo"></div>
+        <div class="logo-label">Agrega tu Logo</div>
       </div>
 
       <div class="form-section">
-
         <ion-item>
-          <ion-label position="stacked">Nombre de compañía</ion-label>
-          <ion-input type="text" placeholder="Ingresa el nombre de la compañía" name="nombre"></ion-input>
+          <ion-label position="stacked" for="nombre">Nombre de compañía</ion-label>
+          <ion-input id="nombre" type="text" placeholder="Ingresa el nombre de la compañía" name="nombre"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label position="stacked">Correo</ion-label>
-          <ion-input type="email" placeholder="Ingresa el correo electrónico" name="correo"></ion-input>
+          <ion-label position="stacked" for="correo">Correo</ion-label>
+          <ion-input id="correo" type="email" placeholder="Ingresa el correo electrónico" name="correo"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label position="stacked">RFC</ion-label>
-          <ion-input type="text" placeholder="Ingresa el RFC" name="rfc"></ion-input>
+          <ion-label position="stacked" for="rfc">RFC</ion-label>
+          <ion-input id="rfc" type="text" placeholder="Ingresa el RFC" name="rfc"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label position="stacked">Administrador</ion-label>
-          <ion-input type="text" placeholder="Ingresa el nombre del administrador" name="admin"></ion-input>
+          <ion-label position="stacked" for="admin">Administrador</ion-label>
+          <ion-input id="admin" type="text" placeholder="Ingresa el nombre del administrador" name="admin"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label position="stacked">Usuario</ion-label>
-          <ion-input type="text" placeholder="Ingresa el nombre de usuario" name="usuario"></ion-input>
+          <ion-label position="stacked" for="usuario">Usuario</ion-label>
+          <ion-input id="usuario" type="text" placeholder="Ingresa el nombre de usuario" name="usuario"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label position="stacked">Contraseña</ion-label>
-          <ion-input type="password" placeholder="Ingresa la contraseña" name="password"></ion-input>
+          <ion-label position="stacked" for="password">Contraseña</ion-label>
+          <ion-input id="password" type="password" placeholder="Ingresa la contraseña" name="password"></ion-input>
         </ion-item>
 
         <div class="button-section">
-          <ion-button type="submit" color="success">
-            Editar
-          </ion-button>
+          <ion-button color="success" type="submit">Editar</ion-button>
         </div>
-
       </div>
     </form>
+
+    <!-- Sección Colores y Notificaciones -->
+    <div class="configuracion-wrapper">
+      <!-- Colores -->
+      <ion-card class="colores-card dark-card">
+        <ion-card-header>
+          <ion-card-title>COLORES</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <div class="color-item">
+            <span>Encabezados</span>
+            <ion-range mode="ios" color="primary" pin="true"></ion-range>
+          </div>
+          <div class="color-item">
+            <span>Promociones</span>
+            <ion-range mode="ios" color="success" pin="true"></ion-range>
+          </div>
+          <div class="color-item">
+            <span>Alertas</span>
+            <ion-range mode="ios" color="warning" pin="true"></ion-range>
+          </div>
+          <div class="color-item">
+            <span>Descuentos</span>
+            <ion-range mode="ios" color="tertiary" pin="true"></ion-range>
+          </div>
+          <div class="color-item">
+            <span>Notificaciones</span>
+            <ion-range mode="ios" color="medium" pin="true"></ion-range>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+      <!-- Notificaciones -->
+      <ion-card class="notificaciones-card dark-card">
+        <ion-card-header>
+          <ion-card-title>Notificaciones</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-item>
+            <ion-icon name="pricetags-outline" slot="start" color="primary"></ion-icon>
+            <ion-label>Promociones</ion-label>
+            <ion-toggle mode="ios" checked color="primary"></ion-toggle>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="cash-outline" slot="start" color="secondary"></ion-icon>
+            <ion-label>Descuentos</ion-label>
+            <ion-toggle mode="ios" checked color="secondary"></ion-toggle>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="warning-outline" slot="start" color="tertiary"></ion-icon>
+            <ion-label>Adeudo</ion-label>
+            <ion-toggle mode="ios" checked color="tertiary"></ion-toggle>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="gift-outline" slot="start" color="success"></ion-icon>
+            <ion-label>Nuevo producto</ion-label>
+            <ion-toggle mode="ios" checked color="success"></ion-toggle>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <!-- Sección Promociones e Impresoras -->
+    <div class="extra-config-wrapper">
+
+      <!-- PROMOCIONES -->
+      <ion-card class="promo-card dark-card">
+        <ion-card-header>
+          <ion-card-title>PROMOCIONES</ion-card-title>
+        </ion-card-header>
+        <ion-card-content class="promo-content">
+          <div class="promo-images">
+            <div class="promo-box">
+              <div class="promo-placeholder"></div>
+              <a href="#">Ver lista de imagenes</a><br />
+              <a href="#">Actualizar lista</a>
+            </div>
+            <div class="promo-box">
+              <div class="promo-placeholder"></div>
+              <a href="#">Ver lista de imagenes</a><br />
+              <a href="#">Actualizar lista</a>
+            </div>
+          </div>
+          <ion-toggle slot="end" color="primary" checked></ion-toggle>
+        </ion-card-content>
+      </ion-card>
+
+      <!-- IMPRESORAS -->
+      <ion-card class="impresoras-card dark-card">
+        <ion-card-header>
+          <ion-card-title>IMPRESORAS</ion-card-title>
+        </ion-card-header>
+        <ion-card-content class="impresoras-content">
+          <div class="impresora-bloque">
+            <h4>Tickets</h4>
+            <ion-item>
+              <ion-label position="stacked">Nombre:</ion-label>
+              <ion-select interface="popover" placeholder="Selecciona">
+              </ion-select>
+            </ion-item>
+            <div class="pantallas-checks">
+              <ion-checkbox labelPlacement="end" justify="start" checked>Punto de venta</ion-checkbox>
+              <ion-checkbox labelPlacement="end" justify="start" checked>Abonos</ion-checkbox>
+            </div>
+            <ion-button color="primary">
+              Ajt. Impresion
+              <ion-icon name="settings-outline" slot="end"></ion-icon>
+            </ion-button>
+          </div>
+
+          <div class="impresora-bloque">
+            <h4>Documentos</h4>
+            <ion-item>
+              <ion-label position="stacked">Nombre:</ion-label>
+              <ion-select interface="popover" placeholder="Selecciona">
+              </ion-select>
+            </ion-item>
+            <div class="pantallas-checks">
+              <ion-checkbox labelPlacement="end" justify="start" checked>Punto de venta</ion-checkbox>
+              <ion-checkbox labelPlacement="end" justify="start">Administracion</ion-checkbox>
+              <ion-checkbox labelPlacement="end" justify="start" checked>Graficas</ion-checkbox>
+            </div>
+            <ion-button color="primary">
+              Ajt. Impresion
+              <ion-icon name="settings-outline" slot="end"></ion-icon>
+            </ion-button>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
   </ion-card-content>
 </ion-card>
 
+
   </div>
-
-
-
-
 
 </ion-content>

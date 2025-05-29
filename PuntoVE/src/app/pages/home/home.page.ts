@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit {
 
+  
+
   // Íconos de categorías
   categories = [
     { name: 'Tecnología', icon: 'desktop-outline' },
@@ -36,7 +38,7 @@ export class HomePage implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    // Aquí podrías cargar los productos desde un servicio si tuvieras backend
+    
   }
 
 }

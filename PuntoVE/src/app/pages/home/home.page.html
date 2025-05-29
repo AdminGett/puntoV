@@ -6,6 +6,7 @@
   <ion-icon name="cart-outline" class="cart-icon"></ion-icon>
 </div>
 
+
   <!-- Íconos de categorías -->
   <div class="category-icons">
     <ion-icon name="desktop-outline"></ion-icon>
@@ -32,21 +33,29 @@
 
 
   <!-- Recomendado para ti -->
-  <h5 class="recommended-title">Recomendado para ti</h5>
-  <div class="recommendation-list">
-    <div class="recommendation-card" *ngFor="let product of recommendedProducts">
-      <div class="recommendation-img"></div>
-      <p>descripción</p>
-      <p>$ Precio</p>
-    </div>
+<h5 class="recommended-title">Recomendado para ti</h5>
+<div class="recommendation-list">
+  <div class="recommendation-card" *ngFor="let product of recommendedProducts">
+    <img [src]="product.image" alt="Producto recomendado" class="recommendation-img">
+    <p>{{ product.description }}</p>
+    <p>${{ product.price }}</p>
   </div>
+</div>
 
-</ion-content>
-
-<!-- footer -->
-<footer class="footer">
-  <div class="copyright">
-    © 2025 El nido de mama. Todos los derechos reservados.
-  </div>
-</footer>
-
+<ion-footer>
+  <ion-toolbar color="light">
+    <ion-grid>
+      <ion-row class="ion-justify-content-between ion-align-items-center">
+        <ion-col size="12" size-md="4" class="ion-text-center ion-text-md-start">
+          <p>&copy; 2025. Todos los derechos reservados.</p>
+        </ion-col>
+        <ion-col size="12" size-md="4" class="ion-text-center">
+          <ion-icon name="logo-facebook" class="social-icon"></ion-icon>
+          <ion-icon name="logo-instagram" class="social-icon"></ion-icon>
+          <ion-icon name="logo-twitter" class="social-icon"></ion-icon>
+        </ion-col>
+        
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

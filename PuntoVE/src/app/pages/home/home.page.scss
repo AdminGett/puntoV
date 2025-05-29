@@ -1,10 +1,11 @@
 .top-banner img {
-  width: 200px; /* o el tamaño que prefieras */
+  width: 200px;
   border-radius: 12px;
   display: block;
   margin: 0;
 }
 .top-banner {
+  position: relative; 
   text-align: left;
 }
 
@@ -14,17 +15,26 @@
   top: 20px;
   right: 20px;
   font-size: 28px;
-  background: white;
-  padding: 8px;
-  border-radius: 50%;
-  box-shadow: 0 2px 8px rgba(207, 186, 186, 0.15);
+  background: white;          
+  padding: 10px;             
+  border-radius: 12px;        
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); 
+  color: #000;               
   z-index: 10;
 }
 
+
 .category-icons {
+  
   display: flex;
   justify-content: space-between;
   margin: 16px 0;
+  .special-discounts,
+.recommendation-list,
+.category-icons {
+  flex-wrap: wrap;
+}
+
   ion-icon {
     font-size: 28px;
     background: #f4f4f4;
@@ -37,6 +47,11 @@
   display: flex;
   gap: 10px;
   margin-bottom: 16px;
+.special-discounts,
+.recommendation-list,
+.category-icons {
+  flex-wrap: wrap;
+}
 
   .image-box {
     flex: 1;
@@ -47,6 +62,12 @@
     justify-content: center;
     font-weight: bold;
     border-radius: 10px;
+    .special-discounts,
+.recommendation-list,
+.category-icons {
+  flex-wrap: wrap;
+}
+
   }
 }
 
@@ -54,6 +75,11 @@
   display: flex;
   justify-content: space-between;
   gap: 10px;
+.special-discounts,
+.recommendation-list,
+.category-icons {
+  flex-wrap: wrap;
+}
 
   .discount-card {
     flex: 1;
@@ -91,6 +117,7 @@
   display: flex;
   gap: 10px;
   margin-top: 10px;
+  
 
   .recommendation-card {
     flex: 1;
@@ -100,11 +127,12 @@
     text-align: center;
 
     .recommendation-img {
-      height: 100px;
-      background: #89bfc2;
-      border-radius: 8px;
-      margin-bottom: 8px;
-    }
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
 
     p {
       font-size: 13px;
@@ -127,7 +155,12 @@ ion-content {
 .category-icons ion-icon {
   background: var(--neutral);
   color: var(--primary);
+  font-size: 80px; 
+  padding: 1px;  
+  border-radius: 12px; 
 }
+
+
 
 .image-box {
   background-color: var(--neutral);
@@ -149,13 +182,72 @@ ion-content {
 }
 
 .recommendation-img {
-  background: var(--secondary);
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 8px;
 }
-.footer {
-  text-align: center;
-  font-size: 13px;
-  color: var(--text-dark);
-  margin-top: 30px;
-  padding: 20px 10px;
-  border-top: 1px solid var(--neutral);
+
+
+.main-container {
+  flex: 1;
+  
+}
+
+ion-footer {
+  font-size: 14px;
+  padding: 10px 0;
+  background-color: #f8f8f8;
+
+  .social-icon {
+    font-size: 20px;
+    margin: 0 8px;
+    color: #3b5998; 
+    cursor: pointer;
+  }
+
+  a {
+    text-decoration: none;
+    color: #0078d4;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+  .category-icons {
+    flex-wrap: wrap;
+    justify-content: center;
+
+    ion-icon {
+      font-size: 60px;
+      margin: 8px;
+    }
+  }
+
+  .image-section {
+    flex-direction: column;
+  }
+
+  .special-discounts {
+    flex-direction: column;
+  }
+
+  .recommendation-list {
+    flex-direction: column;
+  }
+
+  .top-banner img {
+    max-width: 100%;
+  }
+
+  .cart-icon {
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+  }
 }

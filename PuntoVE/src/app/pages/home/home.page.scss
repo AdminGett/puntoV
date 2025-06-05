@@ -19,30 +19,66 @@ body {
 }
 
 .top-banner {
-  position: relative;
-  text-align: left;
-  background-color: #ffffff ;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 3px 2px;
+  color: black;
+  font-family: Arial, sans-serif;
+  border-bottom: 1px solid #ddd;
 }
 
-.top-banner img {
-  width: 200px;
-  border-radius: 12px;
-  display: block;
-  margin: 0;
-  background-color: #ffffff ; 
+.store-logo {
+  height: 70px;
+  border-radius: 8px;
 }
 
-.cart-icon {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 28px;
-  background: white;
-  padding: 10px;
+.banner-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.banner-icons a {
+  color: #1a73e8;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.banner-icons a:hover {
+  text-decoration: underline;
+}
+
+.icon {
+  font-size: 24px;
+  color: #333;
+}
+
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  color: #000;
-  z-index: 10;
+  margin: 15px auto;
+}
+
+.carousel-slide {
+  display: flex;
+  width: 50%; /* 100% * número de imágenes */
+  animation: slide 9s infinite;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: auto;
+  flex-shrink: 0;
+}
+
+@keyframes slide {
+  0%   { transform: translateX(0%); }
+  33%  { transform: translateX(-100%); }
+  66%  { transform: translateX(-200%); }
+  100% { transform: translateX(0%); }
 }
 
 .category-icons {

@@ -7,8 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit {
 
-  
-
   // Íconos de categorías
   categories = [
     { name: 'Tecnología', icon: 'desktop-outline' },

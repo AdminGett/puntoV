@@ -1,21 +1,10 @@
 <ion-content class="ion-padding">
 
   <!-- Imagen superior -->
-<<<<<<< HEAD
   <div class="top-banner">
-    <img src="assets/img/banner-home.png" alt="Logo de tienda" />
+    <img src="assets/img/logo1-removebg-preview.png" alt="Logo de tienda" />
     <ion-icon name="cart-outline" class="cart-icon"></ion-icon>
   </div>
-=======
-<div class="top-banner">
-  <img src="assets/img/logo1-removebg-preview.png" alt="Logo de tienda" class="store-logo" />
-  <div class="banner-icons">
-    <ion-icon name="person-circle-outline" class="icon"></ion-icon>
-    <a href="#">Inicio</a>
-    <ion-icon name="cart-outline" class="icon"></ion-icon>
-  </div>
-</div>
->>>>>>> origin/diego02
 
 <!-- CARRUSEL -->
 <div class="carousel-container">
@@ -44,7 +33,6 @@
   </div>
 
   <!-- Descuentos especiales -->
-<<<<<<< HEAD
   <div class="special-discounts">
     <div class="discount-card" *ngFor="let product of discountedProducts">
       <h4>Descuentos especiales <span>15%</span></h4>
@@ -55,26 +43,18 @@
       <div class="discount-img">Imagen</div>
       <p>descripción</p>
     </div>
-=======
- <div class="special-discounts">
-  <div class="discount-card" *ngFor="let product of discountedProducts">
-    <h4>Descuentos especiales <span>15%</span></h4>
-    <ion-img [src]="product.image"></ion-img>
-    <p>{{ product.description }}</p>
->>>>>>> origin/diego02
   </div>
-</div>
 
 
   <!-- Recomendado para ti -->
-<h5 class="recommended-title">Recomendado para ti</h5>
-<div class="recommendation-list">
-  <div class="recommendation-card" *ngFor="let product of recommendedProducts">
-    <img [src]="product.image" alt="Producto recomendado" class="recommendation-img">
-    <p>{{ product.description }}</p>
-    <p>${{ product.price }}</p>
+  <h5 class="recommended-title">Recomendado para ti</h5>
+  <div class="recommendation-list">
+    <div class="recommendation-card" *ngFor="let product of recommendedProducts">
+      <img [src]="product.image" alt="Producto recomendado" class="recommendation-img">
+      <p>{{ product.description }}</p>
+      <p>${{ product.price }}</p>
+    </div>
   </div>
-<<<<<<< HEAD
 
 </ion-content>
 
@@ -85,24 +65,3 @@
   <p>Tel: (449) 123 4567</p>
 
 </div>
-=======
-</div>
-
-<ion-footer>
-  <ion-toolbar color="black">
-    <ion-grid>
-      <ion-row class="ion-justify-content-between ion-align-items-center">
-        <ion-col size="12" size-md="4" class="ion-text-center ion-text-md-start">
-          <p>&copy; 2025. Todos los derechos reservados.</p>
-        </ion-col>
-        <ion-col size="12" size-md="4" class="ion-text-center">
-          <ion-icon name="logo-facebook" class="social-icon"></ion-icon>
-          <ion-icon name="logo-instagram" class="social-icon"></ion-icon>
-          <ion-icon name="logo-twitter" class="social-icon"></ion-icon>
-        </ion-col>
-        
-      </ion-row>
-    </ion-grid>
-  </ion-toolbar>
-</ion-footer>
->>>>>>> origin/diego02

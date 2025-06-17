@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
+  
 })
 export class HomePage implements OnInit {
 
@@ -15,6 +17,18 @@ export class HomePage implements OnInit {
     { name: 'Deportes', icon: 'american-football-outline' },
     { name: 'Automotriz', icon: 'car-outline' }
   ];
+
+productosRecientes = [
+  'assets/productos/p1.jpg',
+  'assets/productos/p2.jpg',
+  'assets/productos/p3.jpg'
+];
+
+imagenesPromocionales = [
+  'assets/promos/promo1.jpg',
+  'assets/promos/promo2.jpg'
+];
+
 
   // Productos con descuentos
   discountedProducts = [

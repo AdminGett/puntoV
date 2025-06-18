@@ -128,57 +128,59 @@
       </div>
 
     </div>
-    
-<!-- Pantalla de sistema JSCG-2508 -->
+    <!-- Formulario principal JSCG-->
 <ion-card *ngSwitchCase="'sistema'" class="dark-background">
   <ion-card-header>
     <ion-card-title>Datos de Negocio</ion-card-title>
   </ion-card-header>
 
   <ion-card-content>
-    <!-- Formulario principal -->
-    <form class="negocio-form">
+  
+    <form [formGroup]="negocioForm" (ngSubmit)="guardarDatos()" class="negocio-form">
+
       <div class="logo-section">
-        <div class="logo-box" title="Haz clic para cambiar logo"></div>
+        <input type="file" accept="image/*" hidden (change)="cargarLogo($event)" #logoInput />
+        <div class="logo-box" (click)="logoInput.click()" title="Haz clic para cambiar logo"></div>
         <div class="logo-label">Agrega tu Logo</div>
       </div>
 
       <div class="form-section">
         <ion-item>
-          <ion-label position="stacked" for="nombre">Nombre de compañía</ion-label>
-          <ion-input id="nombre" type="text" placeholder="Ingresa el nombre de la compañía" name="nombre"></ion-input>
+          <ion-label position="stacked">Nombre de compañía</ion-label>
+          <ion-input formControlName="nombre" type="text" placeholder="Ingresa el nombre de la compañía"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label position="stacked" for="correo">Correo</ion-label>
-          <ion-input id="correo" type="email" placeholder="Ingresa el correo electrónico" name="correo"></ion-input>
+          <ion-label position="stacked">Correo</ion-label>
+          <ion-input formControlName="correo" type="email" placeholder="Ingresa el correo electrónico"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label position="stacked" for="rfc">RFC</ion-label>
-          <ion-input id="rfc" type="text" placeholder="Ingresa el RFC" name="rfc"></ion-input>
+          <ion-label position="stacked">RFC</ion-label>
+          <ion-input formControlName="rfc" type="text" placeholder="Ingresa el RFC"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label position="stacked" for="admin">Administrador</ion-label>
-          <ion-input id="admin" type="text" placeholder="Ingresa el nombre del administrador" name="admin"></ion-input>
+          <ion-label position="stacked">Administrador</ion-label>
+          <ion-input formControlName="admin" type="text" placeholder="Ingresa el nombre del administrador"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label position="stacked" for="usuario">Usuario</ion-label>
-          <ion-input id="usuario" type="text" placeholder="Ingresa el nombre de usuario" name="usuario"></ion-input>
+          <ion-label position="stacked">Usuario</ion-label>
+          <ion-input formControlName="usuario" type="text" placeholder="Ingresa el nombre de usuario"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label position="stacked" for="password">Contraseña</ion-label>
-          <ion-input id="password" type="password" placeholder="Ingresa la contraseña" name="password"></ion-input>
+          <ion-label position="stacked">Contraseña</ion-label>
+          <ion-input formControlName="password" type="password" placeholder="Ingresa la contraseña"></ion-input>
         </ion-item>
 
         <div class="button-section">
-          <ion-button color="success" type="submit">Editar</ion-button>
+          <ion-button color="success" type="submit" expand="full">Editar</ion-button>
         </div>
       </div>
     </form>
+ 
 
     <!-- Sección Colores y Notificaciones -->
     <div class="configuracion-wrapper">

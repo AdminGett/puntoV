@@ -16,6 +16,12 @@
   padding: 0;
 }
 
+/* Fondo oscuro unificado */
+.dark-background {
+  background-color: #1c1c1e;
+  color: #ffffff;
+}
+
 /* Formulario principal */
 .negocio-form {
   display: flex;
@@ -55,7 +61,7 @@
 .logo-label {
   margin-top: 6px;
   font-size: 13px;
-  color: #555;
+  color: #ccc;
 }
 
 .form-section {
@@ -75,6 +81,22 @@
 .button-section ion-button {
   font-size: 13px;
   padding: 6px 14px;
+  --background: #007aff;
+  --color: white;
+}
+
+/* Elementos de formulario con estilo claro sobre fondo oscuro */
+ion-item {
+  --background: transparent;
+  --color: #ffffff;
+}
+
+ion-label,
+ion-input,
+ion-select,
+ion-checkbox,
+ion-toggle {
+  color: #ffffff !important;
 }
 
 /* Sección Colores y Notificaciones */
@@ -87,11 +109,14 @@
 }
 
 .colores-card,
-.notificaciones-card {
+.notificaciones-card,
+.promo-card,
+.impresoras-card {
   flex: 1 1 300px;
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  border-radius: 12px;
+  background-color: transparent !important;
+  color: #ffffff;
+  box-shadow: none;
+  border: 1px solid #2c2c2e;
 }
 
 .color-item,
@@ -112,16 +137,11 @@
 
 ion-range {
   flex: 1;
+  color: #ffffff;
 }
 
 ion-toggle {
   transform: scale(0.85);
-}
-
-/* Estilo  para notificaciones */
-.dark-card {
-  background-color: #1c1c1e !important;
-  color: #ffffff;
 }
 
 .notificaciones-header {
@@ -133,27 +153,16 @@ ion-toggle {
 
 ion-card-title {
   font-size: 15px;
+  color: #ffffff;
 }
 
 ion-card-content {
   padding: 10px 16px;
+  background-color: transparent !important;
+  color: inherit;
 }
 
-@media screen and (max-width: 700px) {
-  .form-section {
-    grid-template-columns: 1fr;
-  }
-
-  .button-section {
-    grid-column: span 1;
-    justify-content: center;
-  }
-
-  .configuracion-wrapper {
-    flex-direction: column;
-  }
-}
-/*  Promociones e Impresoras */
+/* Promociones e Impresoras */
 .extra-config-wrapper {
   display: flex;
   flex-direction: column;
@@ -211,7 +220,21 @@ ion-button ion-icon {
   margin-left: 6px;
 }
 
+/* Responsividad */
 @media screen and (max-width: 700px) {
+  .form-section {
+    grid-template-columns: 1fr;
+  }
+
+  .button-section {
+    grid-column: span 1;
+    justify-content: center;
+  }
+
+  .configuracion-wrapper {
+    flex-direction: column;
+  }
+
   .promo-content,
   .impresoras-content {
     flex-direction: column;
@@ -225,4 +248,3 @@ ion-button ion-icon {
     width: 100%;
   }
 }
-

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, ViewChild } from '@angular/core';
-import {categorias} from 'src/app/models/datatype'
+import { categorias } from 'src/app/models/datatype';
 import {
   ChartComponent,
   ApexAxisChartSeries,
@@ -16,8 +16,10 @@ import {
   ApexFill,
   ApexGrid,
   ApexTitleSubtitle,
- 
 } from "ng-apexcharts";
+
+//  FORMULARIO DE NEGOCIO 
+import { FormBuilder, FormGroup } from '@angular/forms'; // Importamos para formularios 
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -27,6 +29,7 @@ export type ChartOptions = {
   tooltip: ApexTooltip;
   dataLabels: ApexDataLabels;
 };
+
 export type ChartOptionsBarras = {
   series: ApexAxisChartSeries;
   chart: ApexChart;
@@ -46,6 +49,7 @@ export type chartOptionsPastel = {
   responsive: ApexResponsive[];
   labels: any;
 };
+
 // --001|josue.deluna|CambioTipoGrafica|F-2509
 @Component({
   selector: 'app-panlel-controll-admin',
@@ -53,18 +57,24 @@ export type chartOptionsPastel = {
   styleUrls: ['./panlel-controll-admin.page.scss'],
 })
 export class PanlelControllAdminPage implements OnInit {
-  // se crea variable para as graficas de tipo chartOption
-  chartOptions:ChartOptions
-  chartOptionsPastel:chartOptionsPastel
-  category:any 
-  chartOptionsBarras:ChartOptionsBarras
 
-  segmentValue = 'graficas'; 
-  constructor() {
-    this.category= categorias
+  // se crea variable para las graficas de tipo chartOption
+  chartOptions: ChartOptions;
+  chartOptionsPastel: chartOptionsPastel;
+  category: any; 
+  chartOptionsBarras: ChartOptionsBarras;
+
+  segmentValue = 'graficas';
+
+  // formulario
+  negocioForm: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    this.category = categorias;
   }
-  //Creacion de metodo para el funcionamiento del grafico
- generateData(baseval, count, yrange) {
+
+  //Creacion  para el funcionamiento del grafico
+  generateData(baseval, count, yrange) {
     var i = 0;
     var series = [];
     while (i < count) {
@@ -79,14 +89,56 @@ export class PanlelControllAdminPage implements OnInit {
     }
     return series;
   }
+
   segmentChanged(ev: any) {
     this.segmentValue = ev.detail.value;
     // Aquí puedes realizar acciones basadas en el valor del segmento
   }
+
+  // Método para crear el formulario JSCG0617
+  crearFormulario() {
+    this.negocioForm = this.fb.group({
+      nombre: [''],
+      correo: [''],
+      rfc: [''],
+      admin: [''],
+      usuario: [''],
+      password: ['']
+    });
+  }
+
+  guardarDatos() {
+    if (this.negocioForm.valid) {
+      console.log('Datos guardados:', this.negocioForm.value);
+    } else {
+      console.warn('Formulario inválido');
+    }
+  }
+
+  cargarLogo(event: any) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = (e: any) => {
+      const logoBox = document.querySelector('.logo-box') as HTMLElement;
+      if (logoBox) {
+        logoBox.style.backgroundImage = `url(${e.target.result})`;
+        logoBox.style.backgroundSize = 'cover';
+        logoBox.style.backgroundPosition = 'center';
+      }
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  }
+
   ngOnInit() {
+    this.crearFormulario(); 
+
     //uso de la variable para llenar la variable del grafico
     // --001
-   this.chartOptionsBarras = {
+    this.chartOptionsBarras = {
       series: [
         {
           name: "Servings",
@@ -171,7 +223,8 @@ export class PanlelControllAdminPage implements OnInit {
           stops: [50, 0, 100]
         }
       }
-    };// --001 Fina folio
+    }; // --001 Final folio
+
     // this.chartOptions = {
     //   series: [
     //     {
@@ -209,9 +262,9 @@ export class PanlelControllAdminPage implements OnInit {
     //     x: {
     //       format: "dd/MM/yy HH:mm"
     //     }
-    //   } 
+    //   }
     // };
-    this.chartOptionsPastel={
+    this.chartOptionsPastel = {
       series: [44, 55, 13, 43, 22],
       chart: {
         type: "donut"
@@ -233,9 +286,7 @@ export class PanlelControllAdminPage implements OnInit {
         }
       ]
     };
-    //Forsa el evento "reize", actualizando el chart 
-    setTimeout(()=>(window as any).dispatchEvent(new Event('reize')),1);
-    
+    //Forsa el evento "resize", actualizando el chart
+    setTimeout(() => (window as any).dispatchEvent(new Event('resize')), 1);
   }
-
 }

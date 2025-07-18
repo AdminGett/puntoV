@@ -69,6 +69,10 @@ export class PanlelControllAdminPage implements OnInit {
   // formulario
   negocioForm: FormGroup;
 
+  // Propiedades para el logo
+  mostrarAgregarLogo: boolean = true;
+  logoPreview: string | ArrayBuffer | null = null;
+
   constructor(private fb: FormBuilder) {
     this.category = categorias;
   }
@@ -115,22 +119,25 @@ export class PanlelControllAdminPage implements OnInit {
     }
   }
 
+  // actualizado para cargar el logo  JSCG
   cargarLogo(event: any) {
     const file = event.target.files[0];
     const reader = new FileReader();
 
     reader.onload = (e: any) => {
-      const logoBox = document.querySelector('.logo-box') as HTMLElement;
-      if (logoBox) {
-        logoBox.style.backgroundImage = `url(${e.target.result})`;
-        logoBox.style.backgroundSize = 'cover';
-        logoBox.style.backgroundPosition = 'center';
-      }
+      this.logoPreview = e.target.result;
+      this.mostrarAgregarLogo = false; // Oculta "Agrega tu Logo"
     };
 
     if (file) {
       reader.readAsDataURL(file);
     }
+  }
+
+  // eliminar el logo y volver a mostrar el cuadro
+  eliminarLogo() {
+    this.logoPreview = null;
+    this.mostrarAgregarLogo = true;
   }
 
   ngOnInit() {

@@ -128,7 +128,7 @@
       </div>
 
     </div>
-    <!-- Formulario principal JSCG-->
+    <!-- fromiulario JSCG-->
 <ion-card *ngSwitchCase="'sistema'" class="dark-background">
   <ion-card-header>
     <ion-card-title>Datos de Negocio</ion-card-title>
@@ -140,8 +140,14 @@
 
       <div class="logo-section">
         <input type="file" accept="image/*" hidden (change)="cargarLogo($event)" #logoInput />
-        <div class="logo-box" (click)="logoInput.click()" title="Haz clic para cambiar logo"></div>
-        <div class="logo-label">Agrega tu Logo</div>
+        <!-- Mostrar el cuadro solo si no hay logo -->
+        <div *ngIf="mostrarAgregarLogo" class="logo-box" (click)="logoInput.click()" title="Haz clic para cambiar logo"></div>
+        <div *ngIf="mostrarAgregarLogo" class="logo-label">Agrega tu Logo</div>
+        <!-- Mostrar la imagen cargada  -->
+        <div *ngIf="!mostrarAgregarLogo" class="logo-preview">
+          <img [src]="logoPreview" alt="Logo cargado" class="logo-img" />
+          <ion-button color="danger" size="small" (click)="eliminarLogo()">Cambiar Logo</ion-button>
+        </div>
       </div>
 
       <div class="form-section">
@@ -180,7 +186,6 @@
         </div>
       </div>
     </form>
- 
 
     <!-- Sección Colores y Notificaciones -->
     <div class="configuracion-wrapper">

@@ -16,11 +16,7 @@
   padding: 0;
 }
 
-/* Fondo oscuro unificado */
-.dark-background {
-  background-color: #1c1c1e;
-  color: #ffffff;
-}
+
 
 /* Formulario principal */
 .negocio-form {
@@ -38,7 +34,11 @@
 .logo-box {
   width: 100px;
   height: 100px;
-  background-color: #ccc;
+  background-image: url('https://ionicframework.com/docs/img/demos/thumbnail.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   border: 2px solid #007aff;
   border-radius: 6px;
   margin: auto;
@@ -85,18 +85,12 @@
   --color: white;
 }
 
-/* Elementos de formulario con estilo claro sobre fondo oscuro */
-ion-item {
-  --background: transparent;
-  --color: #ffffff;
-}
-
 ion-label,
 ion-input,
 ion-select,
 ion-checkbox,
 ion-toggle {
-  color: #ffffff !important;
+  color: inherit !important;
 }
 
 /* Sección Colores y Notificaciones */
@@ -114,7 +108,7 @@ ion-toggle {
 .impresoras-card {
   flex: 1 1 300px;
   background-color: transparent !important;
-  color: #ffffff;
+  color: inherit;
   box-shadow: none;
   border: 1px solid #2c2c2e;
 }
@@ -137,7 +131,7 @@ ion-toggle {
 
 ion-range {
   flex: 1;
-  color: #ffffff;
+  color: inherit;
 }
 
 ion-toggle {
@@ -153,7 +147,7 @@ ion-toggle {
 
 ion-card-title {
   font-size: 15px;
-  color: #ffffff;
+  color: inherit;
 }
 
 ion-card-content {
@@ -161,6 +155,7 @@ ion-card-content {
   background-color: transparent !important;
   color: inherit;
 }
+
 
 /* Promociones e Impresoras */
 .extra-config-wrapper {

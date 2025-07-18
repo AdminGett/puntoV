@@ -2,12 +2,13 @@
   <ion-toolbar>
     <ion-title>STORE</ion-title>
     <ion-buttons slot="end">
-      <a routerLink="/auth">
+      <ion-router-link routerLink="/auth">
         <ion-avatar style="display: flex; align-items: center;">
-          <img class="img" alt=""
-            src="https://ionicframework.com/docs/img/demos/avatar.svg" />&nbsp;<label>Inicio</label>
+          <img class="img" alt="Avatar usuario"
+            src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+          <label>Inicio</label>
         </ion-avatar>
-      </a>
+      </ion-router-link>
       <ion-button>
         <ion-icon name="cart-outline"></ion-icon>
       </ion-button>
@@ -16,7 +17,8 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <!-- CARRUSEL -->
+
+  <!-- Carrusel principal -->
   <div class="carousel-container1">
     <div class="carousel-slide1">
       <img src="assets/img/banner1.png" alt="Promoción 1" />
@@ -44,11 +46,8 @@
     </ion-router-link>
   </div>
 
-
-
+  <!-- Carrusel de productos y promociones -->
   <div class="image-section">
-
-
     <div class="image-box">
       <div class="carousel-container">
         <div class="carousel-slide productos">
@@ -58,9 +57,6 @@
         </div>
       </div>
     </div>
-
-
-
     <div class="image-box">
       <div class="carousel-container">
         <div class="carousel-slide promo">
@@ -73,20 +69,14 @@
 
   </div>
 
-
   <!-- Descuentos especiales -->
   <div class="special-discounts">
     <div class="discount-card" *ngFor="let product of discountedProducts">
       <h4>Descuentos especiales <span>15%</span></h4>
-      <div class="discount-img">Imagen</div>
-      <ion-img src="product.image"></ion-img>
       <ion-img [src]="product.image"></ion-img>
-      <p>descripción</p>
-      <div class="discount-img">Imagen</div>
-      <p>descripción</p>
+      <p>{{ product.description }}</p>
     </div>
   </div>
-
 
   <!-- Recomendado para ti -->
   <h5 class="recommended-title">Recomendado para ti</h5>
@@ -98,7 +88,7 @@
     </div>
   </div>
 
-
+  <!-- Footer -->
   <ion-footer>
     <ion-toolbar color="black">
       <ion-grid>
@@ -111,7 +101,6 @@
             <ion-icon name="logo-instagram" class="social-icon"></ion-icon>
             <ion-icon name="logo-twitter" class="social-icon"></ion-icon>
           </ion-col>
-
         </ion-row>
       </ion-grid>
     </ion-toolbar>

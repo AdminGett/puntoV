@@ -2,12 +2,13 @@
   <ion-toolbar>
     <ion-title>STORE</ion-title>
     <ion-buttons slot="end">
-      <a routerLink="/auth">
+      <ion-router-link routerLink="/auth">
         <ion-avatar style="display: flex; align-items: center;">
-          <img class="img" alt=""
-            src="https://ionicframework.com/docs/img/demos/avatar.svg" />&nbsp;<label>Inicio</label>
+          <img class="img" alt="Avatar usuario"
+            src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+          <label>Inicio</label>
         </ion-avatar>
-      </a>
+      </ion-router-link>
       <ion-button>
         <ion-icon name="cart-outline"></ion-icon>
       </ion-button>
@@ -16,100 +17,91 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-<!-- CARRUSEL -->
-<div class="carousel-container1">
-  <div class="carousel-slide1">
-    <img src="assets/img/banner1.png" alt="Promoción 1" />
-    <img src="assets/img/banner2.png" alt="Promoción 2" />
-    <img src="assets/img/banner3.png" alt="Promoción 3" />
+
+  <!-- Carrusel principal -->
+  <div class="carousel-container1">
+    <div class="carousel-slide1">
+      <img src="assets/img/banner1.png" alt="Promoción 1" />
+      <img src="assets/img/banner2.png" alt="Promoción 2" />
+      <img src="assets/img/banner3.png" alt="Promoción 3" />
+    </div>
   </div>
-</div>
 
   <!-- Íconos de categorías -->
   <div class="category-icons">
-  <ion-router-link [routerLink]="['/catalog']">
-    <ion-icon name="desktop-outline"></ion-icon>
-  </ion-router-link>
-  <ion-router-link [routerLink]="['/catalog']">
-    <ion-icon name="barbell-outline"></ion-icon>
-  </ion-router-link>
-  <ion-router-link [routerLink]="['/catalog']">
-    <ion-icon name="home-outline"></ion-icon>
-  </ion-router-link>
-  <ion-router-link [routerLink]="['/catalog']">
-    <ion-icon name="american-football-outline"></ion-icon>
-  </ion-router-link>
-  <ion-router-link [routerLink]="['/catalog']">
-    <ion-icon name="car-outline"></ion-icon>
-  </ion-router-link>
-</div>
+    <ion-router-link [routerLink]="['/catalog']">
+      <ion-icon name="desktop-outline"></ion-icon>
+    </ion-router-link>
+    <ion-router-link [routerLink]="['/catalog']">
+      <ion-icon name="barbell-outline"></ion-icon>
+    </ion-router-link>
+    <ion-router-link [routerLink]="['/catalog']">
+      <ion-icon name="home-outline"></ion-icon>
+    </ion-router-link>
+    <ion-router-link [routerLink]="['/catalog']">
+      <ion-icon name="american-football-outline"></ion-icon>
+    </ion-router-link>
+    <ion-router-link [routerLink]="['/catalog']">
+      <ion-icon name="car-outline"></ion-icon>
+    </ion-router-link>
+  </div>
 
-
-
-<div class="image-section">
-
-  
-  <div class="image-box">
-    <div class="carousel-container">
-      <div class="carousel-slide productos">
-        <img src="assets/img/producto1.png" alt="Producto 1" />
-        <img src="assets/img/producto2.png" alt="Producto 2" />
-        <img src="assets/img/producto3.png" alt="Producto 3" />
+  <!-- Carrusel de productos y promociones -->
+  <div class="image-section">
+    <div class="image-box">
+      <div class="carousel-container">
+        <div class="carousel-slide productos">
+          <img src="assets/img/producto1.png" alt="Producto 1" />
+          <img src="assets/img/producto2.png" alt="Producto 2" />
+          <img src="assets/img/producto3.png" alt="Producto 3" />
+        </div>
+      </div>
+    </div>
+    <div class="image-box">
+      <div class="carousel-container">
+        <div class="carousel-slide promo">
+          <img src="assets/img/promo1.png" alt="Promo 1" />
+          <img src="assets/img/promo2.png" alt="Promo 2" />
+          <img src="assets/img/promo3.png" alt="Promo 3" />
+        </div>
       </div>
     </div>
   </div>
-
-    
-
-  <div class="image-box">
-    <div class="carousel-container">
-      <div class="carousel-slide promo">
-        <img src="assets/img/promo1.png" alt="Promo 1" />
-        <img src="assets/img/promo2.png" alt="Promo 2" />
-        <img src="assets/img/promo3.png" alt="Promo 3" />
-      </div>
-    </div>
-  </div>
-
-</div>
-
 
   <!-- Descuentos especiales -->
- <div class="special-discounts">
-  <div class="discount-card" *ngFor="let product of discountedProducts">
-    <h4>Descuentos especiales <span>15%</span></h4>
-    <ion-img [src]="product.image"></ion-img>
-    <p>{{ product.description }}</p>
+  <div class="special-discounts">
+    <div class="discount-card" *ngFor="let product of discountedProducts">
+      <h4>Descuentos especiales <span>15%</span></h4>
+      <ion-img [src]="product.image"></ion-img>
+      <p>{{ product.description }}</p>
+    </div>
   </div>
-</div>
-
 
   <!-- Recomendado para ti -->
-<h5 class="recommended-title">Recomendado para ti</h5>
-<div class="recommendation-list">
-  <div class="recommendation-card" *ngFor="let product of recommendedProducts">
-    <img [src]="product.image" alt="Producto recomendado" class="recommendation-img">
-    <p>{{ product.description }}</p>
-    <p>${{ product.price }}</p>
+  <h5 class="recommended-title">Recomendado para ti</h5>
+  <div class="recommendation-list">
+    <div class="recommendation-card" *ngFor="let product of recommendedProducts">
+      <img [src]="product.image" alt="Producto recomendado" class="recommendation-img">
+      <p>{{ product.description }}</p>
+      <p>${{ product.price }}</p>
+    </div>
   </div>
-</div>
 
-
-<ion-footer>
-  <ion-toolbar color="black">
-    <ion-grid>
-      <ion-row class="ion-justify-content-between ion-align-items-center">
-        <ion-col size="12" size-md="4" class="ion-text-center ion-text-md-start">
-          <p>&copy; 2025. Todos los derechos reservados.</p>
-        </ion-col>
-        <ion-col size="12" size-md="4" class="ion-text-center">
-          <ion-icon name="logo-facebook" class="social-icon"></ion-icon>
-          <ion-icon name="logo-instagram" class="social-icon"></ion-icon>
-          <ion-icon name="logo-twitter" class="social-icon"></ion-icon>
-        </ion-col>
-         
-      </ion-row>
-    </ion-grid>
-  </ion-toolbar>
-</ion-footer>
+  <!-- Footer -->
+  <ion-footer>
+    <ion-toolbar color="black">
+      <ion-grid>
+        <ion-row class="ion-justify-content-between ion-align-items-center">
+          <ion-col size="12" size-md="4" class="ion-text-center ion-text-md-start">
+            <p>&copy; 2025. Todos los derechos reservados.</p>
+          </ion-col>
+          <ion-col size="12" size-md="4" class="ion-text-center">
+            <ion-icon name="logo-facebook" class="social-icon"></ion-icon>
+            <ion-icon name="logo-instagram" class="social-icon"></ion-icon>
+            <ion-icon name="logo-twitter" class="social-icon"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-toolbar>
+  </ion-footer>
 </ion-content>

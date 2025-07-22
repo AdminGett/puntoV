@@ -1,13 +1,19 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-
+/**
+ * 001|josue.deluna|Modificacion de cambio de panalla de inicio|F-N/A
+ */
 const routes: Routes = [
   
   {
     path: '',
-    redirectTo: 'catalog',
+    redirectTo: 'home',//001
     pathMatch: 'full'
   },
+  {   //001
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+  },//001 fin 
   {
     path: 'catalog',
     loadChildren: () => import('./pages/catalog/catalog.module').then( m => m.CatalogPageModule)
@@ -35,14 +41,12 @@ const routes: Routes = [
   {
     path: 'pago',
     loadChildren: () => import('./pages/pago/pago.module').then( m => m.PagoPageModule)
-  },  {
+  },
+  {
     path: 'panlel-controll-admin',
     loadChildren: () => import('./pages/panlel-controll-admin/panlel-controll-admin.module').then( m => m.PanlelControllAdminPageModule)
   },
-  {
-    path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
-  },
+  
 
   
 ];

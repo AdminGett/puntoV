@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -9,6 +10,8 @@ import { PanlelControllAdminPageRoutingModule } from './panlel-controll-admin-ro
 import { PanlelControllAdminPage } from './panlel-controll-admin.page';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { NgApexchartsModule } from "ng-apexcharts";
+
+
 
 @NgModule({
   imports: [

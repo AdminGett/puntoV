@@ -63,7 +63,7 @@ export class FirebaseService {
  }
   //==== Actualizar Usiario =====
   UpdateUser(displayName: string){
-    // return updateProfile(getAuth().currentUser, { displayName });
+     return updateProfile(getAuth().currentUser, { displayName });
  }
   //  ===================== enviar emeil para restablecer contraseña 
  sendRecoveryEmail(email:string){

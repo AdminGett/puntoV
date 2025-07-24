@@ -1,14 +1,19 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes, CanMatchFn } from '@angular/router';
+// import { AuthGuard } from './guards/auth.guard';
+import { RedirectGuard  } from './guards/auth.guard';
 /**
  * 001|josue.deluna|Modificacion de cambio de panalla de inicio|F-N/A
  */
+
 const routes: Routes = [
   
   {
     path: '',
-    redirectTo: 'home',//001
-    pathMatch: 'full'
+    // redirectTo: 'home',//001
+    // pathMatch: 'full'
+    canActivate: [RedirectGuard],
+    children: [] 
   },
   {   //001
     path: 'home',
@@ -20,7 +25,8 @@ const routes: Routes = [
   },
   {
     path: 'auth',
-    loadChildren: () => import('./pages/auth/auth.module').then( m => m.AuthPageModule)
+    loadChildren: () => import('./pages/auth/auth.module').then( m => m.AuthPageModule),
+    
   },
   {
     path: 'main',
@@ -44,7 +50,8 @@ const routes: Routes = [
   },
   {
     path: 'panlel-controll-admin',
-    loadChildren: () => import('./pages/panlel-controll-admin/panlel-controll-admin.module').then( m => m.PanlelControllAdminPageModule)
+    loadChildren: () => import('./pages/panlel-controll-admin/panlel-controll-admin.module').then( m => m.PanlelControllAdminPageModule),
+     
   },
   
 

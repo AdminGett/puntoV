@@ -15,7 +15,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import {NgxPaginationModule} from 'ngx-pagination';
 ///=========Importacion de librerias de 
 import { NgApexchartsModule } from "ng-apexcharts";
-
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,7 +27,7 @@ import { NgApexchartsModule } from "ng-apexcharts";
     AngularFireAuthModule,
     NgxPaginationModule,
     NgApexchartsModule,
-    
+    IonicStorageModule.forRoot(),
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

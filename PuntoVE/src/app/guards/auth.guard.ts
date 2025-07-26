@@ -46,7 +46,7 @@ export class RedirectGuard implements CanActivate {
    const local = localStorage.getItem('isAdmin') 
     // Obtener la variable del localStorage
     if(local === 'true'){
-      this.redirectTo = 'auth';
+      this.redirectTo = 'auth-users';
     }else{
       this.redirectTo = 'home';
       console.log(this.redirectTo)

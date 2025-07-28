@@ -61,7 +61,6 @@ export class UtilsService {
   }
   //======= rutas ========= 
   routerLink(url: string) {
-    console.log(url)
     return this.router.navigateByUrl(url)
   }
   //======= Guarda un elemento en el local storage ========= 

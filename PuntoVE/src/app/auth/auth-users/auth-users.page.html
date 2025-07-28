@@ -1,0 +1,26 @@
+<app-header name="Colaboradores"></app-header>
+<ion-content>
+  <div class="d-flex-center">
+
+    <form [formGroup]="form" class="auth-form" (ngSubmit)="submit()" (keypress.enter)="submit()">
+      <div style="width: 50%; margin: 14% auto; ">
+        <app-custom-input autocomplete="Usuario" icon="person-sharp" type="text" label="ID Usuario"
+          [control]="form.controls.ID"></app-custom-input>
+        <app-custom-input icon="lock-closed-sharp" autocomplete="pass" type="password" label="Contraseña"
+          [control]="form.controls.pass"></app-custom-input>
+        <!-- <p routerLinkActive="router-link-active" class="ion-text-end">¿Olvidaste tu
+          contraseña?</p> -->
+        <ion-button expand="block" style="--background: rgb(94 144 169);" mode="ios" class="submint"
+          [disabled]="form.invalid" type="sibmit">
+          ingresar
+        </ion-button>
+        <!-- <ion-button expand="block" [routerLink]="['sing-up']"
+          style="color: rgb(94 144 169); --border-color: rgb(94 144 169);" routerLinkActive="router-link-active"
+          mode="ios" fill="outline">
+          Registrarte
+          <ion-icon slot="end" name="person-add-outline"></ion-icon>
+        </ion-button> -->
+      </div>
+    </form>
+  </div>
+</ion-content>

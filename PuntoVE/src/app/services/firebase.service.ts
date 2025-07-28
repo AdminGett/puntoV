@@ -7,9 +7,9 @@ import { getFirestore,setDoc, doc, getDoc, addDoc, collection, collectionData, q
 import { UtilsService } from './utils.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { getStorage, uploadString, ref, getDownloadURL, deleteObject } from "firebase/storage";
-import { Observable } from 'rxjs';
 import { AlertController, ModalController, ModalOptions } from '@ionic/angular';
-
+import { catchError, map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -63,7 +63,7 @@ export class FirebaseService {
  }
   //==== Actualizar Usiario =====
   UpdateUser(displayName: string){
-    // return updateProfile(getAuth().currentUser, { displayName });
+     return updateProfile(getAuth().currentUser, { displayName });
  }
   //  ===================== enviar emeil para restablecer contraseña 
  sendRecoveryEmail(email:string){
@@ -137,6 +137,25 @@ async getDocument( path: string){
     return collectionData(ref,{idField:'id'}) as Observable<any>
     // return this.firestor.collection('datos').valueChanges();
   }
-
+  //**************Optencion de Colavoradores */
+   checkIfFieldExists( fieldName: string, password: string): Observable<boolean> {
+      return this.firestor.collection('settingsSystem', ref => 
+    ref.where(`colavoradores.${fieldName}.contraseña`, '==', password).limit(1)
+  ).get().pipe(
+    map(querySnapshot => {
+      console.log('Documentos encontrados:', querySnapshot.docs.length);
+      return !querySnapshot.empty;
+    }),
+    catchError(error => {
+      console.error('Error en la búsqueda:', error);
+      return of(false);
+    })
+  );
+    // return this.firestor.collection('settings', ref => 
+    //   ref.where(`id.colavoradores.${fieldName}.contraseña`, '==', password).limit(1)
+    // ).get().pipe(
+    //   map(querySnapshot => !querySnapshot.empty)
+    // );
+  }
   
 }

@@ -52,6 +52,14 @@ const routes: Routes = [
     path: 'panlel-controll-admin',
     loadChildren: () => import('./pages/panlel-controll-admin/panlel-controll-admin.module').then( m => m.PanlelControllAdminPageModule),
      
+  },,
+  {
+    path: 'auth-users',
+    loadChildren: () => import('./auth/auth-users/auth-users.module').then( m => m.AuthUsersPageModule)
+  },
+  {
+    path: 'punto-venta',
+    loadChildren: () => import('./pages/punto-venta/punto-venta.module').then( m => m.PuntoVentaPageModule)
   },
 ];
 

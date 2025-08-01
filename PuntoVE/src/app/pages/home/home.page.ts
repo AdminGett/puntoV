@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, inject } from '@angular/core';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
-  
 })
 export class HomePage implements OnInit {
 
@@ -18,17 +17,14 @@ export class HomePage implements OnInit {
     { name: 'Automotriz', icon: 'car-outline' }
   ];
 
-productosRecientes = [
-  'assets/productos/p1.jpg',
-  'assets/productos/p2.jpg',
-  'assets/productos/p3.jpg'
-];
+  firebaseService = inject(FirebaseService);
 
-imagenesPromocionales = [
-  'assets/promos/promo1.jpg',
-  'assets/promos/promo2.jpg'
-];
+  productosRecientes: any[] = []; 
 
+  imagenesPromocionales = [
+    'assets/promos/promo1.jpg',
+    'assets/promos/promo2.jpg'
+  ];
 
   // Productos con descuentos
   discountedProducts = [
@@ -50,7 +46,9 @@ imagenesPromocionales = [
   constructor() { }
 
   ngOnInit() {
-    
+    this.firebaseService.getMetadata().subscribe((data: any[]) => {
+      this.productosRecientes = data;
+       });
   }
 
 }

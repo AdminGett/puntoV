@@ -1,9 +1,10 @@
+/*005|josue.deluna|Se agraga consulta a solo producto para venta*/
 import { Injectable, inject } from '@angular/core';
 import { AngularFireAuth} from '@angular/fire/compat/auth';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, sendPasswordResetEmail  } from "firebase/auth";
 import { user } from '../models/users.model';
 import { AngularFirestore} from '@angular/fire/compat/firestore';
-import { getFirestore,setDoc, doc, getDoc, addDoc, collection, collectionData, query,updateDoc,deleteDoc} from '@angular/fire/firestore';
+import { getFirestore,setDoc, doc, getDoc, addDoc, collection, collectionData, query,updateDoc,deleteDoc, docData, where} from '@angular/fire/firestore';
 import { UtilsService } from './utils.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { getStorage, uploadString, ref, getDownloadURL, deleteObject } from "firebase/storage";
@@ -137,25 +138,42 @@ async getDocument( path: string){
     return collectionData(ref,{idField:'id'}) as Observable<any>
     // return this.firestor.collection('datos').valueChanges();
   }
+//005 inicio
+  getProductoPorCodigo(codigo: string): Observable<any> {
+  const db = getFirestore();
+  const q = query(
+    collection(db, 'datos'),
+    where('codigo', '==', codigo) // Busca donde el campo 'codigo' sea igual al valor proporcionado
+  );
+
+  return collectionData(q, { idField: 'id' }).pipe(
+    map((productos) => productos[0] || null) // Devuelve el primer producto (o null si no existe)
+  );
+  }
+//005 fin
   //**************Optencion de Colavoradores */
-   checkIfFieldExists( fieldName: string, password: string): Observable<boolean> {
-      return this.firestor.collection('settingsSystem', ref => 
-    ref.where(`colavoradores.${fieldName}.contraseña`, '==', password).limit(1)
+  checkIfFieldExists(fieldName: string, password: string): Observable<any> {
+  return this.firestor.collection('settingsSystem', ref => 
+    ref.where(`DatosEmpresas.SISAR.colaboradores.${fieldName}.contraseña`, '==', password).limit(1)
   ).get().pipe(
     map(querySnapshot => {
-      console.log('Documentos encontrados:', querySnapshot.docs.length);
-      return !querySnapshot.empty;
+      console.log(querySnapshot)
+      if (!querySnapshot.empty) {
+        // Documento encontrado, devolvemos los datos
+        const docData = querySnapshot.docs[0].data();
+        console.log('Documento encontrado:', docData);
+        return docData;
+      } else {
+        // No se encontró el documento
+        console.log('Documento no encontrado');
+        return null;
+      }
     }),
     catchError(error => {
       console.error('Error en la búsqueda:', error);
-      return of(false);
+      return of(null); // Devuelve null en caso de error
     })
   );
-    // return this.firestor.collection('settings', ref => 
-    //   ref.where(`id.colavoradores.${fieldName}.contraseña`, '==', password).limit(1)
-    // ).get().pipe(
-    //   map(querySnapshot => !querySnapshot.empty)
-    // );
-  }
+}
   
 }

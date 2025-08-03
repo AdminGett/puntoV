@@ -49,6 +49,7 @@ export class MenuPage implements OnInit {
   ngOnInit() {
     this.fare.getMetadata().subscribe((data: any) => {
       this.dataP = data
+      console.log(this.dataP)
     })
   }
   async openModal() {

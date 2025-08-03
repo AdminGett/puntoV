@@ -12,5 +12,5 @@ export class PuntoVentaPage implements OnInit {
 
   ngOnInit() {
   }
-
+ 
 }

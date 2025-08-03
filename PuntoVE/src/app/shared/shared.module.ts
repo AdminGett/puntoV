@@ -7,6 +7,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CustomInputComponent } from './components/custom-input/custom-input.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ModalCompComponent } from './components/modal-comp/modal-comp.component';
+import { VentaProductoComponent } from './components/venta-producto/venta-producto.component';
 
 
 
@@ -16,13 +17,14 @@ import { ModalCompComponent } from './components/modal-comp/modal-comp.component
     FooterComponent,
     CustomInputComponent,
     ModalCompComponent,
-
+    VentaProductoComponent
   ],exports:[
     HeaderComponent,
     FooterComponent,
     CustomInputComponent,
     ReactiveFormsModule,
     ModalCompComponent,
+    VentaProductoComponent
   ],
   imports: [
     CommonModule,

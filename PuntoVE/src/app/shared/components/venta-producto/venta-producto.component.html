@@ -1,0 +1,16 @@
+<ion-item>
+  <ion-searchbar class="Buscar" [(ngModel)]="binding" color="light" slot="end"></ion-searchbar>
+  <ion-button slot="end" (click)="Add(binding)">
+    Agregar producto
+  </ion-button>
+</ion-item>
+<div *ngIf="add">
+  <ion-list>
+    <ion-item>
+      <ion-label>Pokémon Yellow</ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-button slot="end">
+    Realizar pago
+  </ion-button>
+</div>

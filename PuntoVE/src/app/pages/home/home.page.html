@@ -48,15 +48,13 @@
 
   <!-- Carrusel de productos y promociones -->
   <div class="image-section">
-    <div class="image-box">
-      <div class="carousel-container">
-        <div class="carousel-slide productos">
-          <img src="assets/img/producto1.png" alt="Producto 1" />
-          <img src="assets/img/producto2.png" alt="Producto 2" />
-          <img src="assets/img/producto3.png" alt="Producto 3" />
-        </div>
+  <div class="image-box">
+    <div class="carousel-container">
+      <div class="carousel-slide productos">
+        <img *ngFor="let producto of productosRecientes" [src]="producto.img" [alt]="producto.nombre" />
       </div>
     </div>
+  </div>
     <div class="image-box">
       <div class="carousel-container">
         <div class="carousel-slide promo">

@@ -4,3 +4,54 @@
   border-radius: 30px;
   height: 74%;
 }
+/* En tu archivo .scss */
+ion-card {
+  width: 100%; /* Ocupa todo el ancho disponible */
+  margin: 10px 0;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: row; /* Cambiamos a horizontal */
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+
+  ion-card-header {
+    padding: 0;
+    margin-right: 10px;
+    
+    ion-icon {
+      font-size: 32px;
+      color: var(--ion-color-primary);
+    }
+  }
+
+  ion-card-content {
+    flex-grow: 1;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .button-group {
+    display: flex;
+    gap: 5px; /* Espacio entre botones */
+  }
+
+  ion-button {
+    --padding-start: 0;
+    --padding-end: 0;
+    --padding-top: 0;
+    --padding-bottom: 0;
+    width: 36px;
+    height: 36px;
+    --border-radius: 50%; /* Botones circulares */
+    
+    ion-icon {
+      font-size: 20px;
+    }
+  }
+}

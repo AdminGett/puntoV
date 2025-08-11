@@ -5,12 +5,30 @@
   </ion-button>
 </ion-item>
 <div *ngIf="add">
-  <ion-list>
-    <ion-item>
-      <ion-label>Pokémon Yellow</ion-label>
-    </ion-item>
-  </ion-list>
-  <ion-button slot="end">
-    Realizar pago
-  </ion-button>
+
 </div>
+<ion-card *ngFor="let p of Productos">
+  <ion-card-header>
+    <ion-icon name="basket-outline"></ion-icon>
+  </ion-card-header>
+
+  <ion-card-content>
+    <span>{{p.nombre}}</span>
+    <span>{{p.precio | currency:'USD':'symbol':'1.2-2'}}</span>
+    <span>{{p.cantidad}}</span>
+
+    <div class="button-group">
+      <!-- <ion-button color="success" fill="clear" (click)="plus()">
+        <ion-icon name="add-circle-outline"></ion-icon>
+      </ion-button> -->
+
+      <ion-button color="warning" fill="clear">
+        <ion-icon name="remove-circle-outline"></ion-icon>
+      </ion-button>
+
+      <ion-button color="danger" fill="clear">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </div>
+  </ion-card-content>
+</ion-card>

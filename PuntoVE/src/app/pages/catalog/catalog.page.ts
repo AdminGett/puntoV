@@ -17,6 +17,7 @@ export class CatalogPage implements OnInit {
   product!:any
   catSlect:boolean = true
   isExpanded: { [key: number]: boolean } = {}; 
+  
 
   fare = inject(FirebaseService) 
   alertController = inject(AlertController)

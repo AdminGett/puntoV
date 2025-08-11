@@ -33,7 +33,7 @@ export class MenuPage implements OnInit {
   form = new FormGroup({
     codigo: new FormControl('', [Validators.required]),
     nombre: new FormControl('', [Validators.required]),
-    categoria: new FormControl('', [Validators.required]),
+    // categoria: new FormControl('', [Validators.required]),
     cantidad: new FormControl('', [Validators.required]),
     precio: new FormControl('', [Validators.required]),
     prNeto: new FormControl('', [Validators.required]),
@@ -70,7 +70,7 @@ export class MenuPage implements OnInit {
       this.createProduct()
     }else{
       // this.fare.dimissModal({ success:true })
-
+      console.log(this.form.value)
       this.utils.presentToast({
         message: '¡Revise los campos, Campos incompletos!',
         duration: 1500,

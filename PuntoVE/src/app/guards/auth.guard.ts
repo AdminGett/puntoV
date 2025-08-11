@@ -44,14 +44,40 @@ export class RedirectGuard implements CanActivate {
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
    const local = localStorage.getItem('isAdmin') 
+   
     // Obtener la variable del localStorage
-    if(local === 'true'){
-      this.redirectTo = 'auth-users';
-    }else{
-      this.redirectTo = 'home';
-      console.log(this.redirectTo)
-    }
+    // if(local === 'true'){
+    //   this.redirectTo = 'auth-users';
+    // }else{
+    //   this.redirectTo = 'home';
+    //   console.log(this.redirectTo)
+    // }
     // Redirigir a la página especificada
-    return this.router.createUrlTree([this.redirectTo]);
+    //return this.router.createUrlTree([this.redirectTo]);
+
+
+    const userType = localStorage.getItem('userType');
+    console.log(userType)
+    // Determine the redirect path based on user type
+    let redirectPath: string;
+    
+    switch(userType) {
+      case '1':
+        console.log(userType)
+        redirectPath = 'menu'; // or 'auth-users' as in your original
+        break;
+      case '2':
+        redirectPath = 'catalog';
+        break;
+      case 'user':
+        redirectPath = 'user-dashboard';
+        break;
+      default:
+        // Default path for unauthenticated or unknown user types
+        redirectPath = 'home';
+    }
+    
+    // Redirect to the appropriate path
+    return this.router.createUrlTree([redirectPath]);
   }
 }

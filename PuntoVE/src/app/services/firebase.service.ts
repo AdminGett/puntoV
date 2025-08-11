@@ -157,7 +157,6 @@ async getDocument( path: string){
     ref.where(`DatosEmpresas.SISAR.colaboradores.${fieldName}.contraseña`, '==', password).limit(1)
   ).get().pipe(
     map(querySnapshot => {
-      console.log(querySnapshot)
       if (!querySnapshot.empty) {
         // Documento encontrado, devolvemos los datos
         const docData = querySnapshot.docs[0].data();

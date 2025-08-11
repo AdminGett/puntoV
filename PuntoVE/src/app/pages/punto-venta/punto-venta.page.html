@@ -1,5 +1,48 @@
-<app-header name="Punto de Venta"></app-header>
-<ion-content [fullscreen]="true">
+<ion-header>
+  <ion-toolbar class="app">
+    <ion-title>Punto de venta <ion-icon name="cart"></ion-icon></ion-title>
 
-  <app-venta-producto></app-venta-producto>
-</ion-content>
+  </ion-toolbar>
+</ion-header>
+
+<ion-split-pane contentId="main-content">
+  <!-- Menú lateral -->
+  <ion-menu contentId="main-content" type="overlay">
+    <!-- <app-header name="Punto de Venta"></app-header> -->
+
+    <ion-content>
+      <ion-list>
+        <div class="imgUSer">
+          <ion-avatar>
+            <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+          </ion-avatar>
+        </div>
+        <ion-list-header class="UserData">
+          <ion-label class="nombre">Nombre colaborador</ion-label>
+          <ion-label>N° de colavorador</ion-label>
+        </ion-list-header>
+
+        @for (component of availableComponents; track component; let i = $index) {
+        <ion-item button (click)="loadComponent(component.id)" detail="false">
+          <ion-icon name="{{component.icon}}" slot="start"></ion-icon>
+          <ion-label>{{ component.name }}</ion-label>
+        </ion-item>
+        }
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <!-- Área de contenido principal -->
+  <div id="main-content">
+    <!-- Aquí se cargará el componente dinámico -->
+    <ng-container *ngIf="currentComponent">
+      <ng-container *ngComponentOutlet="currentComponent"></ng-container>
+    </ng-container>
+
+    <!-- Mensaje cuando no hay componente seleccionado -->
+    <div *ngIf="!currentComponent" class="empty-state">
+      <ion-icon name="cube-outline" size="large"></ion-icon>
+      <p>Selecciona un componente del menú</p>
+    </div>
+  </div>
+</ion-split-pane>

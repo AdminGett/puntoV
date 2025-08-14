@@ -53,10 +53,30 @@ export class VentaProductoComponent  implements OnInit {
           this.add = true
       }else{
         console.log('Error')
-        this.Utils.presentAlert()
+        this.alerte()
       }
     
     });
   }
+  async alerte(){
+    this.Utils.presentAlert({
+      header: 'Elemento no Existente!',
+      message: 'Buscar otro producto!',
+      mode:'ios',
+      cssClass: 'custom-alert',
+      buttons: [
+        {
+          text: 'Cancel',
+          cssClass: 'cancel-button'
+        }, {
+          text: 'Aceptar',
+          handler: () => {
+            // this.delateProduct(producto)
+          }
+        }
+      ]
+    });
+  }
+  
 
 }

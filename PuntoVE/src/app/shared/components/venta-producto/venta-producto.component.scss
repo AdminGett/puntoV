@@ -91,3 +91,60 @@ ion-card-content{
   align-items: center;
   font-weight: bold;
 }
+/***Mensaje alerta*****/
+/* Alert principal */
+.custom-alert {
+  --backdrop-opacity: 0.7;
+  --background: #ffffff;
+  --border-radius: 16px;
+  
+  /* Header */
+  .alert-head {
+    background: linear-gradient(135deg, #ff4d4d, #ff1a1a);
+    color: white;
+    padding: 16px;
+    
+    .alert-title {
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+  }
+  
+  /* Mensaje */
+  .alert-message {
+    color: #333;
+    font-size: 1.1rem;
+    padding: 20px 16px;
+  }
+  
+  /* Botones */
+  .alert-button-group {
+    padding: 0 16px 16px;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    
+    button {
+      margin: 0 4px;
+      border-radius: 8px;
+      flex: 1;
+    }
+  }
+  
+  /* Botón Cancelar */
+  .cancel-button {
+    --background: #f1f1f1;
+    --color: #666;
+    --background-hover: #e0e0e0;
+    --color-hover: #444;
+    border: 1px solid #ddd;
+  }
+  
+  /* Botón Eliminar */
+  .delete-button {
+    --background: #ff4444;
+    --color: white;
+    --background-hover: #ff3333;
+    --color-hover: white;
+    font-weight: bold;
+  }
+}

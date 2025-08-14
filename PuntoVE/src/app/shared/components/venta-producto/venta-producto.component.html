@@ -1,34 +1,55 @@
-<ion-item>
+<ion-item lines="full">
+  <span slot="start" style="font-weight: bold; color: #6b6b6b;">Nueva venta</span>
   <ion-searchbar class="Buscar" [(ngModel)]="binding" color="light" slot="end"></ion-searchbar>
   <ion-button slot="end" (click)="Add(binding)">
     Agregar producto
   </ion-button>
 </ion-item>
 <div *ngIf="add">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-sm="2.5" *ngFor="let p of Productos">
+        <ion-card>
+          <ion-card-header>
+            <label>{{p.categoria}}</label>
+          </ion-card-header>
+          <div style="display: flex; justify-content: center; align-items: center;">
+            <ion-icon name="basket-outline" style="font-size: 6em; color: #117e80;"></ion-icon>
+          </div>
+          <ion-card-content>
+            <div>
+              <ion-grid>
+                <ion-row>
+                  <ion-col size="auto"> <span>{{p.nombre}}</span></ion-col>
+                  <ion-col size="auto">
+                    <div style="width: 59px"><span class="PTex">Cant:&nbsp;{{p.cantidad}}</span></div>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </div>
+            <div class="button-group">
+              <span>{{p.precio | currency:'USD':'symbol':'1.2-2'}}</span>
+
+              <ion-button fill="clear">
+                <ion-icon name="remove-circle-outline"></ion-icon>
+              </ion-button>
+
+              <ion-button fill="clear">
+                <ion-icon name="trash"></ion-icon>
+              </ion-button>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
 
 </div>
-<ion-card *ngFor="let p of Productos">
-  <ion-card-header>
-    <ion-icon name="basket-outline"></ion-icon>
-  </ion-card-header>
-
-  <ion-card-content>
-    <span>{{p.nombre}}</span>
-    <span>{{p.precio | currency:'USD':'symbol':'1.2-2'}}</span>
-    <span>{{p.cantidad}}</span>
-
-    <div class="button-group">
-      <!-- <ion-button color="success" fill="clear" (click)="plus()">
-        <ion-icon name="add-circle-outline"></ion-icon>
-      </ion-button> -->
-
-      <ion-button color="warning" fill="clear">
-        <ion-icon name="remove-circle-outline"></ion-icon>
-      </ion-button>
-
-      <ion-button color="danger" fill="clear">
-        <ion-icon name="trash"></ion-icon>
-      </ion-button>
-    </div>
-  </ion-card-content>
-</ion-card>
+<div class="Total">
+  <ion-label style="background: #edecec; border-radius: 2px;">Total:&nbsp;{{ Total|
+    currency:'USD':'symbol':'1.2-2'}}</ion-label>
+  <ion-button expand="block" fill="clear" shape="round">
+    Cobrar
+  </ion-button>
+</div>

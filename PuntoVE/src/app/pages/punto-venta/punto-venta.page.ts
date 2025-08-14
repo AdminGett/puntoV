@@ -17,13 +17,13 @@ export class PuntoVentaPage implements OnInit {
   availableComponents = [
     {
       id: 'venta-producto',
-      name: 'Venta de Productos',
+      name: 'Nueva venta',
       icon: 'grid',
       component: VentaProductoComponent
     },
     {
       id: 'pies',
-      name: 'Ventas',
+      name: 'Ventas realizadas',
       icon: 'cart',
       //component: FooterComponent
     },

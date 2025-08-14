@@ -108,39 +108,39 @@ export class UtilsService {
     // pdfDoc.open();
     
     // Opción 2: Descargar o compartir en móvil
-    pdfDoc.getBuffer(async (buffer) => {
-      const blob = new Blob([buffer], { type: 'application/pdf' });
+    // pdfDoc.getBuffer(async (buffer) => {
+    //   const blob = new Blob([buffer], { type: 'application/pdf' });
       
-      // Guardar el archivo
-      const fileName = `documento-${new Date().getTime()}.pdf`;
+    //   // Guardar el archivo
+    //   const fileName = `documento-${new Date().getTime()}.pdf`;
       
-      if (this.isMobile()) {
-        console.log('01 descarga ')
-        // Para dispositivos móviles
-        const base64Data = await this.blobToBase64(blob);
+    //   if (this.isMobile()) {
+    //     console.log('01 descarga ')
+    //     // Para dispositivos móviles
+    //     const base64Data = await this.blobToBase64(blob);
         
-        // Guardar usando Filesystem API
-        const result = await Filesystem.writeFile({
-          path: fileName,
-          data: base64Data,
-          directory: Directory.Cache,
-        });
+    //     // Guardar usando Filesystem API
+    //     const result = await Filesystem.writeFile({
+    //       path: fileName,
+    //       data: base64Data,
+    //       directory: Directory.Cache,
+    //     });
         
-        // Compartir el archivo
-        await Share.share({
-          title: 'Compartir PDF',
-          url: result.uri,
-          dialogTitle: 'Compartir documento PDF'
-        });
-      } else {
-        console.log('02 descarga ')
-        // Para navegador
-        const link = document.createElement('a');
-        link.href = window.URL.createObjectURL(blob);
-        link.download = fileName;
-        link.click();
-      }
-    });
+    //     // Compartir el archivo
+    //     await Share.share({
+    //       title: 'Compartir PDF',
+    //       url: result.uri,
+    //       dialogTitle: 'Compartir documento PDF'
+    //     });
+    //   } else {
+    //     console.log('02 descarga ')
+    //     // Para navegador
+    //     const link = document.createElement('a');
+    //     link.href = window.URL.createObjectURL(blob);
+    //     link.download = fileName;
+    //     link.click();
+    //   }
+    // });
     
   }
 

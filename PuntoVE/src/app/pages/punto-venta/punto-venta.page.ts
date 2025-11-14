@@ -1,6 +1,7 @@
 import { Component, OnInit, Type } from '@angular/core';
 import { FooterComponent } from 'src/app/shared/components/footer/footer.component';
 import { VentaProductoComponent } from 'src/app/shared/components/venta-producto/venta-producto.component';
+import { VentasRealizadasComponent } from 'src/app/shared/components/ventas-realizadas/ventas-realizadas.component';
 
 @Component({
   selector: 'app-punto-venta',
@@ -24,8 +25,8 @@ export class PuntoVentaPage implements OnInit {
     {
       id: 'pies',
       name: 'Ventas realizadas',
-      icon: 'cart',
-      //component: FooterComponent
+      icon: 'list',
+      component: VentasRealizadasComponent
     },
     {
       id: 'Factura',

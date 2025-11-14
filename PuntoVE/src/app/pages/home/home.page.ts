@@ -7,6 +7,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
+   productosRecientes: any[] = []; 
 
   // Íconos de categorías
   categories = [
@@ -19,7 +20,6 @@ export class HomePage implements OnInit {
 
   firebaseService = inject(FirebaseService);
 
-  productosRecientes: any[] = []; 
 
   imagenesPromocionales = [
     'assets/promos/promo1.jpg',
@@ -48,6 +48,7 @@ export class HomePage implements OnInit {
   ngOnInit() {
     this.firebaseService.getMetadata().subscribe((data: any[]) => {
       this.productosRecientes = data;
+      console.log(data)
        });
   }
 

@@ -1,0 +1,87 @@
+<ion-content [fullscreen]="true">
+  <ion-item lines="full">
+    <span slot="start" style="font-weight: bold; color: #6b6b6b;">Venta realizada</span>
+    <!-- <select class="styled-select" [value]="usuarioSeleccionado" (ionChange)="filtrarPorUsuario($event)"
+      interface="action-sheet" [disabled]="!usuarios.length">
+      <option value="0" disabled selected>Selecciona Colaborador</option>
+      <option value="1" *ngFor="let u of usuarios; let i = index" [value]="u.IdUsuario"> {{u.nombre}}</option>
+    </select> -->
+    <ion-select interface="popover" [value]="usuarioSeleccionado" (ionChange)="filtrarPorUsuario($event)">
+      <ion-select-option value="0">Todos los Colaboradores</ion-select-option>
+      <ion-select-option *ngFor="let u of usuarios" [value]="u.IdUsuario">
+        {{ u.nombre }}
+      </ion-select-option>
+    </ion-select>
+    <ion-button>
+      Limpiar
+    </ion-button>
+    <ion-button>
+      Exportar Excel
+    </ion-button>
+  </ion-item>
+
+  <!-- <div class="table-container">
+    <table>
+      <thead>
+        <tr class="table-header">
+          <th>Forlio</th>
+          <th>Categoría</th>
+          <th>Producto</th>
+          <th>Cantidad</th>
+          <th>Precio</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let venta of ventas">
+          <tr *ngFor="let item of venta.venta">
+            <td>{{ venta.Folio }}</td>
+            <td>{{ item.categoria }}</td>
+            <td>{{ item.nombre }}</td>
+            <td>{{ item.cantidad }}</td>
+            <td>{{ item.precio | currency:'USD':'symbol':'1.2-2' }}</td>
+            <td>Activo</td>
+          </tr>
+        </ng-container>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="5" style="text-align: center;">
+            Total de ventas: {{ ventas?.length || 0 }}
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div> -->
+  <div class="table-container">
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Forlio</th>
+          <th>Producto</th>
+          <th>Categoría</th>
+          <th>Cantidad</th>
+          <th>Precio</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let venta of datosFiltrados">
+          <tr *ngFor="let item of venta.venta">
+            <td>{{ venta.Folio }}</td>
+            <td>{{ item.nombre }}</td>
+            <td>{{ item.categoria }}</td>
+            <td>{{ item.cantidad }}</td>
+            <td>{{ item.precio | currency:'USD':'symbol':'1.2-2' }}</td>
+            <td>Activo</td>
+          </tr>
+        </ng-container>
+        <tr *ngIf="datosFiltrados.length === 0">
+          <td colspan="4" class="no-data">No se encontraron resultados</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+</ion-content>

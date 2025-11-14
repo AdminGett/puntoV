@@ -1,0 +1,163 @@
+.styled-select {
+    width: 250px;
+    padding: 12px 16px;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    background-color: white;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'><path fill='%23666' d='M2 0L0 2h4zm0 5L0 3h4z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 12px;
+}
+
+.styled-select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.styled-select:hover {
+    border-color: #007bff;
+}
+
+.styled-select option {
+    padding: 12px;
+    background-color: white;
+    color: #333;
+}
+
+.styled-select option:first-child {
+    color: #999;
+    font-style: italic;
+}
+/**TABLE***/
+ .table-container {
+            overflow-x: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            max-width: 100%;
+        }
+
+        /* Estilos para la barra de scroll */
+        .table-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .table-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .table-container::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+
+        .table-container::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            min-width: 800px; /* Ancho mínimo para forzar scroll en pantallas pequeñas */
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e1e1e1;
+            white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+        }
+
+        tr:hover {
+            background-color: #f1f8ff;
+        }
+
+        .table-header {
+            background-color: #2980b9;
+            font-size: 1.1em;
+        }
+
+        tfoot td {
+            padding: 18px;
+            font-size: 1.1rem;
+            background-color: #ecf0f1;
+            text-align: center;
+            font-weight: bold;
+            color: #2c3e50;
+            position: sticky;
+            bottom: 0;
+        }
+
+        /* Estilos para categorías específicas */
+        .categoria-electronico {
+            background-color: #e8f4fd;
+        }
+
+        .categoria-zapatos {
+            background-color: #f9ebea;
+        }
+
+        .categoria-alimentos {
+            background-color: #eafaf1;
+        }
+
+        /* Indicador visual de que hay más contenido */
+        .scroll-indicator {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .table-container {
+                border-radius: 5px;
+                margin: 10px 0;
+            }
+            
+            th, td {
+                padding: 10px 12px;
+                font-size: 0.9em;
+            }
+            
+            tfoot td {
+                padding: 15px;
+                font-size: 1rem;
+            }
+
+            .scroll-indicator {
+                display: block;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .table-container {
+                margin: 5px 0;
+            }
+            
+            th, td {
+                padding: 8px 10px;
+                font-size: 0.85em;
+            }
+        }

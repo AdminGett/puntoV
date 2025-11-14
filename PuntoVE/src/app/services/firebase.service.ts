@@ -15,6 +15,7 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class FirebaseService {
+  
   auth = inject(AngularFireAuth)
   firestor = inject(AngularFirestore)
   ultsSvc = inject(UtilsService)
@@ -22,7 +23,6 @@ export class FirebaseService {
   modalCtrl = inject(ModalController)
   
   alertCtrl = inject(AlertController)
-
 
   // ========================== Base de datos ==================
   //====== Optener documentos de una colleccion =========
@@ -174,5 +174,50 @@ async getDocument( path: string){
     })
   );
 }
+/*Ventas*/
+// async addVenta(producto:any,folio:any){
+//   const path = 'settingsSystem'
+//    await updateDoc(doc(getFirestore(),path),producto);
+//   //return 1
+// }
+async addVenta(producto: any) {
+  console.log(producto)
+  const empresa = 'SISAR'
+
+  const id = `XVwCpuEKdcRZytzizHjL/${empresa}`
+  const db = getFirestore();
+  const path = `settingsSystem`
+  const docRef = await addDoc(collection(db, path,id), producto);
+  console.log("Documento agregado con ID: ", docRef.id);
+}
+/*getProductos(): Observable<any[]> {
+  const ref = collection(getFirestore(), 'ventas');
+  return collectionData(ref) as Observable<any[]>;
+}*/
+ getProductos():Observable<any[]> {
+
+    /*const ref = collection(getFirestore(), 'settingsSystem');
+    return collectionData(ref,{idField:'id'}); */
+    const docRef = doc(getFirestore(), 'settingsSystem', 'XVwCpuEKdcRZytzizHjL');
+    const subCollectionRef = collection(docRef, 'SISAR');
+
+    return collectionData(subCollectionRef, { idField: 'id' });
+    
+  }
+
+  getUsuarios(){
+    const docRef = doc(getFirestore(), 'settingsSystem', 'XVwCpuEKdcRZytzizHjL');
+return docData(docRef).pipe(
+  map((data: any) => {
+    const colaboradores = data?.DatosEmpresas?.SISAR?.colaboradores || {};
+    
+    return Object.entries(colaboradores).map(([id, colaborador]: [string, any]) => ({
+      id,
+      nombre: colaborador.nombre,
+      IdUsuario:colaborador.IdUsuario
+    }));
+  })
+);
+  }
   
 }

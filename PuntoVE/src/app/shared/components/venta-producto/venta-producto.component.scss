@@ -148,3 +148,10 @@ ion-card-content{
     font-weight: bold;
   }
 }
+/*Modal*/
+ion-modal{
+  ion-toolbar{
+    --background: #118044;
+    color: white;
+  }
+}

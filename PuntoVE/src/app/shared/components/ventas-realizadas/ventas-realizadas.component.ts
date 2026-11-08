@@ -14,6 +14,7 @@ export class VentasRealizadasComponent  implements OnInit {
   datosFiltrados: any[] = [];
    usuarioSeleccionado: any = '0';
    usuariosSubscription!: Subscription;
+   
 
   fire = inject(FirebaseService)
   constructor() { 
@@ -47,7 +48,7 @@ filtrarPorUsuario(event: any) {
 
   // Método alternativo si quieres resetear el filtro
   limpiarFiltro() {
-    this.usuarioSeleccionado = 0;
+    this.usuarioSeleccionado = '0';
     this.datosFiltrados = [...this.ventas];
   }
    cargarUsuarios() {
@@ -75,6 +76,9 @@ filtrarPorUsuario(event: any) {
         console.error('Error cargando ventas:', error);
       }
     });
+  }
+  impresionTikect(id){
+    alert('listado '+id)
   }
   ngOnInit() {
       this.cargarUsuarios();

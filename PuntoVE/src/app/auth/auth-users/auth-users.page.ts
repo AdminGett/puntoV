@@ -31,6 +31,7 @@ export class AuthUsersPage implements OnInit {
     .subscribe({
       next: async (exists) => {
         this.ID = exists;
+        sessionStorage.setItem('existe','Administrador')
         console.log('¿Existe el usuario?', exists);
         await loading.dismiss(); // Cierra el loading cuando se completa
         this.Redirecciona();

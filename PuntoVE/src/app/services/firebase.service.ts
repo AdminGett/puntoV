@@ -219,5 +219,10 @@ return docData(docRef).pipe(
   })
 );
   }
+  decontarproducto(Producto:any){
+    const primerProducto = Producto[0]['cantidad'];
+    console.log(primerProducto)
+    return true
+  }
   
 }

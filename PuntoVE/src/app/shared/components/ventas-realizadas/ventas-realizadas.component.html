@@ -1,6 +1,9 @@
 <ion-content [fullscreen]="true">
-  <ion-item lines="full">
+  <div class="white:100%; --background: #6b6b6b;" >
     <span slot="start" style="font-weight: bold; color: #6b6b6b;">Venta realizada</span>
+  </div>
+  <ion-item lines="full">
+    
     <!-- <select class="styled-select" [value]="usuarioSeleccionado" (ionChange)="filtrarPorUsuario($event)"
       interface="action-sheet" [disabled]="!usuarios.length">
       <option value="0" disabled selected>Selecciona Colaborador</option>
@@ -12,12 +15,18 @@
         {{ u.nombre }}
       </ion-select-option>
     </ion-select>
-    <ion-button>
+   <ion-input type="date" placeholder="Awesome Input"></ion-input>
+   <ion-input type="date" placeholder="Awesome Input"></ion-input>
+    <ion-button (click)="limpiarFiltro()">
       Limpiar
     </ion-button>
-    <ion-button>
-      Exportar Excel
+    <ion-button (click)="limpiarFiltro()">
+      Buscar
     </ion-button>
+    <!-- <ion-button style="--background: green; --color: white;">
+      <ion-icon name="download"></ion-icon>&nbsp;
+      Exportar Excel 
+    </ion-button>-->
   </ion-item>
 
   <!-- <div class="table-container">
@@ -57,23 +66,32 @@
     <table class="styled-table">
       <thead>
         <tr>
-          <th>Forlio</th>
-          <th>Producto</th>
+          <th style="text-align: center;">Forlio</th>
+          <th style="text-align: center;">Usuario</th>
+          <!-- <th>Producto</th>
           <th>Categoría</th>
-          <th>Cantidad</th>
-          <th>Precio</th>
-          <th>Estado</th>
+          <th>Cantidad</th> -->
+          <th style="text-align: center;">Fecha</th>
+          <!-- <th>Precio</th> -->
+          <th style="text-align: center;">Estado</th>
+          <th style="text-align: center;">Reimprimir</th>
         </tr>
       </thead>
       <tbody>
         <ng-container *ngFor="let venta of datosFiltrados">
-          <tr *ngFor="let item of venta.venta">
+          <!-- <tr *ngFor="let item of venta.venta"> -->
+          <tr style="text-align: center;">
             <td>{{ venta.Folio }}</td>
-            <td>{{ item.nombre }}</td>
+            <td>{{ venta.NombreUsuario }}</td>
+            <!-- <td>{{ item.nombre }}</td>
             <td>{{ item.categoria }}</td>
-            <td>{{ item.cantidad }}</td>
-            <td>{{ item.precio | currency:'USD':'symbol':'1.2-2' }}</td>
-            <td>Activo</td>
+            <td>{{ item.cantidad }}</td> -->
+            <td>{{ venta.fecha }}</td>
+            <!-- <td>{{ item.precio | currency:'USD':'symbol':'1.2-2' }}</td> -->
+            <td>Activa</td>
+            <td >
+                <ion-icon (click)="impresionTikect(venta.id)" name="print"></ion-icon>
+            </td> 
           </tr>
         </ng-container>
         <tr *ngIf="datosFiltrados.length === 0">

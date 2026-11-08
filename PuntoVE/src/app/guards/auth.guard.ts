@@ -49,7 +49,7 @@ export class RedirectGuard implements CanActivate {
     if(local === 'true'){
       this.redirectTo = 'auth-users';
     }else{
-      this.redirectTo = 'home';
+      this.redirectTo = 'auth-users';
       console.log(this.redirectTo)
     }
     //Redirigir a la página especificada

@@ -28,6 +28,8 @@ export class VentaProductoComponent  implements OnInit {
   modal = inject(ModalController)
   utils = inject(UtilsService)
   fire = inject(FirebaseService)
+  STOCK!:boolean 
+  Folio:string = 'F001'
   constructor() { }
 
   ngOnInit() {}
@@ -116,23 +118,68 @@ export class VentaProductoComponent  implements OnInit {
   }
   
   async Venta(){
-    const Folio = 'F001'
+    //const Folio = 'F001'
+    if(localStorage.getItem('F')!== 'F001'){
+      const Folio = localStorage.getItem('F') 
+      if (Folio) {
+        var prefix = Folio.substring(0, 5);
+      }
+      const numberPart = Folio.substring(1);
+    const nextNumber = parseInt(numberPart, 10) + 1;  
+    const newNumberPart = nextNumber.toString().padStart(numberPart.length, '0');
+    const nuevoCodigo = prefix + newNumberPart;
+    console.log(nuevoCodigo)
+    localStorage.setItem('F',nuevoCodigo)
+    this.Folio  = localStorage.getItem('F')
+    }else{
+       const Folio = localStorage.getItem('F') 
+      const prefix = Folio.substring(0, 1);
+      const numberPart = Folio.substring(1);
+    const nextNumber = parseInt(numberPart, 10) + 1;  
+    const newNumberPart = nextNumber.toString().padStart(numberPart.length, '0');
+    const nuevoCodigo = prefix + newNumberPart;
+    console.log(nuevoCodigo)
+    localStorage.setItem('F',nuevoCodigo)
+    this.Folio  = localStorage.getItem('F')
+    }
+
     if(this.Productos?.length > 0){
         const ventas = {
-        Folio:Folio,
+        Folio:this.Folio,
         venta:this.Productos,
-        IdUsuario: localStorage.getItem('IdUsuario'),
+        IdUsuario: sessionStorage.getItem('Id'),
         fecha: new Date().toLocaleDateString('es-MX')
       } 
       const loading = await this.utils.loading()
         await loading.present() 
 
-      this.fire.addVenta(ventas)
+      this.STOCK = this.fire.decontarproducto(this.Productos)
+      console.log(this.STOCK)
+      if(this.STOCK === true ){
+        this.fire.addVenta(ventas)
+      }else{
+        this.Utils.presentAlert({
+      header: 'Alerta',
+      message: 'Ya no cuentas con producto en STOCK',
+      mode:'ios',
+      cssClass: 'custom-alert',
+      buttons: [
+       {
+          text: 'Aceptar',
+          handler: () => {
+            // this.delateProduct(producto)
+          }
+        }
+      ]
+    });
+      }
+      
+      
       
       this.Productos = []
       this.modal.dismiss()
       loading.dismiss()
-    
+      this.Total=0
    
     } else {
       console.log('mensaje')

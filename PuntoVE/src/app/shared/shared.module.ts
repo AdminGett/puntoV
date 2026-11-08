@@ -9,6 +9,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ModalCompComponent } from './components/modal-comp/modal-comp.component';
 import { VentaProductoComponent } from './components/venta-producto/venta-producto.component';
 import { VentasRealizadasComponent } from './components/ventas-realizadas/ventas-realizadas.component';
+import { CancelacionComponent } from './components/cancelacion/cancelacion.component';
 
 
 
@@ -19,7 +20,8 @@ import { VentasRealizadasComponent } from './components/ventas-realizadas/ventas
     CustomInputComponent,
     ModalCompComponent,
     VentaProductoComponent,
-    VentasRealizadasComponent
+    VentasRealizadasComponent,
+    CancelacionComponent
   ],exports:[
     HeaderComponent,
     FooterComponent,
@@ -27,7 +29,8 @@ import { VentasRealizadasComponent } from './components/ventas-realizadas/ventas
     ReactiveFormsModule,
     ModalCompComponent,
     VentaProductoComponent,
-    VentasRealizadasComponent
+    VentasRealizadasComponent,
+    CancelacionComponent
   ],
   imports: [
     CommonModule,
